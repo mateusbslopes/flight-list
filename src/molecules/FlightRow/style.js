@@ -1,9 +1,7 @@
 const style = () => `
-    .block {
-        display: flex;
-        flex-flow: row nowrap;
-    }
-
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly
 `;
 
 export default style;

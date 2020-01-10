@@ -14,7 +14,7 @@ class FlightRow extends React.Component {
 
   render() {
     return (
-      <div>
+      <div css={style}>
         <FlightColumn text="GOL" info="G3-1307" />
         <FlightColumn text="11:25" info="CFN (Confins)" />
         <FlightColumn text="3H10" info="1 parada" />

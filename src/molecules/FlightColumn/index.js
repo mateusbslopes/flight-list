@@ -18,7 +18,7 @@ class FlightColumn extends React.Component {
 
   render() {
     return (
-      <div>
+      <div css={style}>
         <Text>{this.state.text}</Text>
         <Info>{this.state.info}</Info>
       </div>
