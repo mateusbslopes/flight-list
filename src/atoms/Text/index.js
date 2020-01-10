@@ -3,7 +3,6 @@ import style from "./style";
 
 class Text extends React.Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       children: props.children,

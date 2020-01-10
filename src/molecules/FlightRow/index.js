@@ -19,6 +19,7 @@ class FlightRow extends React.Component {
         <FlightColumn text="11:25" info="CFN (Confins)" />
         <FlightColumn text="3H10" info="1 parada" />
         <FlightColumn text="14:35" info="FLN" />
+        <Button />
       </div>
     );
   }
