@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import FlightRow from "./molecules/FlightRow/index";
+import FlightRow from "./organisms/FlightRow/index";
 
 class App extends React.Component {
   render() {

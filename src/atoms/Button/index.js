@@ -4,7 +4,11 @@ import style from "./style";
 class Button extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      children: props.children,
+      borderColor: props.borderColor,
+      backgroundColor: props.backgroundColor
+    };
   }
 
   componentDidMount() {
@@ -12,6 +16,14 @@ class Button extends React.Component {
   }
 
   render() {
-    return <button css={style}>{this.state.children}</button>;
+    return (
+      <button
+        css={() => style(this.state.backgroundColor, this.state.borderColor)}
+      >
+        {this.state.children}
+      </button>
+    );
   }
 }
+
+export default Button;

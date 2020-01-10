@@ -1,6 +1,8 @@
 import React from "react";
-import FlightColumn from "../FlightColumn/index";
+import FlightColumn from "../../molecules/FlightColumn/index";
+import Icon from "../../atoms/Icon/index";
 import style from "./style";
+import FlightDetailButton from "../../molecules/FlightDetailButton";
 
 class FlightRow extends React.Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class FlightRow extends React.Component {
         <FlightColumn text="11:25" info="CFN (Confins)" />
         <FlightColumn text="3H10" info="1 parada" />
         <FlightColumn text="14:35" info="FLN" />
-        <Button />
+        <FlightDetailButton />
       </div>
     );
   }
