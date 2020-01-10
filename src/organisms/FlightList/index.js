@@ -7,10 +7,7 @@ import style from "./style";
 class FlightList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { flights: null };
-    FlightService.getFlights().then(flights => {
-      this.setState({ flights: flights.data.outbound });
-    });
+    this.state = { ...props };
   }
   componentDidMount() {
     this.setState(this.state);
@@ -27,6 +24,7 @@ class FlightList extends React.Component {
           <Text>Detalhes</Text>
           <Text>Preco</Text>
         </div>
+        {console.log(this.state)}
         {this.state.flights ? (
           this.state.flights.map(flight => <FlightRow {...flight} />)
         ) : (

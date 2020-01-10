@@ -7,17 +7,17 @@ class Flights {
     );
   }
 
-  static makeSearchIntention() {
+  static makeSearchIntention(filter) {
     const SEARCH_FLIGHTS_API = "https://flight-price-hmg.maxmilhas.com.br";
     const postData = {
       tripType: "RT",
-      from: "REC", //origem
-      to: "RIO", //destino
-      outboundDate: "2020-08-22", //data de partida
-      inboundDate: "2020-08-28", //data de volta
+      from: filter.from, //origem
+      to: filter.to, //destino
+      outboundDate: filter.outboundDate, //data de partida
+      inboundDate: filter.inboundDate, //data de volta
       cabin: "EC", //classe econômica (EC) ou executiva (EX)
-      adults: 1, //adultos
-      children: 0, //crianças
+      adults: Number(filter.adults), //adultos
+      children: Number(filter.children), //crianças
       infants: 0 //bebês
     };
 
@@ -32,10 +32,10 @@ class Flights {
     );
   }
 
-  static getFlights() {
+  static getFlights(filter) {
     const SEARCH_FLIGHTS_API = "https://flight-price-hmg.maxmilhas.com.br";
 
-    return this.makeSearchIntention().then(response => {
+    return this.makeSearchIntention(filter).then(response => {
       return axios.get(
         `${SEARCH_FLIGHTS_API}/search/${response.data.id}/flights?airline=gol`,
         {

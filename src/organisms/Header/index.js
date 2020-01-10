@@ -7,26 +7,22 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      from: "",
-      to: "",
-      outboundDate: "",
-      inboundDate: "",
-      adults: "",
-      children: ""
+      from: "REC",
+      to: "RIO",
+      outboundDate: "2020-08-22",
+      inboundDate: "2020-08-26",
+      adults: "1",
+      children: "0",
+      onSearch: props.onSearch
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event, field) {
     let obj = {};
     obj[field] = event.target.value;
     this.setState(obj);
-  }
-
-  handleSubmit() {
-    console.log(this.state);
   }
 
   componentDidMount() {
@@ -146,7 +142,7 @@ class Header extends React.Component {
             </div>
             <Button
               backgroundColor={"rgb(26, 188, 156)"}
-              onClick={this.handleSubmit}
+              onClick={() => this.state.onSearch(this.state)}
             >
               <div
                 style={{
@@ -161,6 +157,20 @@ class Header extends React.Component {
             </Button>
           </div>
         </form>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between"
+          }}
+        >
+          <div>
+            <Text>Selecione seu voo de ida</Text>
+          </div>
+          <div>
+            <Text>Selecione seu voo de volta</Text>
+          </div>
+        </div>
       </div>
     );
   }
