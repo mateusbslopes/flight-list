@@ -1,9 +1,36 @@
-const style = () => `
-    justify-content: center;
-    font-family: Montserrat, arial, sans-serif;
-    color: rgb(135, 147, 149);
-    font-weight: 600;
-    font-size: 12px;
-`;
+const style = (size = 12, weight = "normal", color = "normal") => {
+  const getColor = () => {
+    switch (color) {
+      case "light":
+      case "normal":
+        return "rgb(135, 147, 149)";
+      case "black":
+        return "black";
+      case "white":
+        return "white";
+      case "green":
+        return "rgb(26, 188, 156);";
+      default:
+        throw new Error(`Invalid color ${color} given to component Text`);
+    }
+  };
+
+  const getWeight = weight => {
+    switch (weight) {
+      case "normal":
+        return 500;
+      case "bold":
+        return 600;
+    }
+  };
+
+  return `
+        justify-content: center;
+        font-family: Montserrat, arial, sans-serif;
+        color: ${getColor()};
+        font-weight: ${getWeight(weight)};
+        font-size: ${size};
+    `;
+};
 
 export default style;

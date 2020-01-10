@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./style";
+import Text from "../Text/index";
 
 class Info extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Info extends React.Component {
   }
 
   render() {
-    return <div css={style}>{this.state.children}</div>;
+    return <Text size={12}>{this.state.children}</Text>;
   }
 }
 

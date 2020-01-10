@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import FlightRow from "./molecules/FlightRow/index";
+import Info from "./atoms/Info/index";
 
 class App extends React.Component {
   render() {
-    return <FlightRow />;
+    return <Info size={10}>Frango</Info>;
   }
 }
 

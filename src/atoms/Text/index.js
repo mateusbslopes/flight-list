@@ -3,8 +3,13 @@ import style from "./style";
 
 class Text extends React.Component {
   constructor(props) {
+    console.log(props);
     super(props);
-    this.state = { children: props.children };
+    this.state = {
+      children: props.children,
+      size: props.size,
+      color: props.color
+    };
   }
 
   componentDidMount() {
@@ -12,7 +17,11 @@ class Text extends React.Component {
   }
 
   render() {
-    return <div css={style}>{this.state.children}</div>;
+    return (
+      <div css={() => style(this.state.size, this.state.color)}>
+        {this.state.children}
+      </div>
+    );
   }
 }
 
