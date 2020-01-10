@@ -12,7 +12,7 @@ class Info extends React.Component {
   }
 
   render() {
-    return <Text size={12}>{this.state.children}</Text>;
+    return <Text weight="light">{this.state.children}</Text>;
   }
 }
 

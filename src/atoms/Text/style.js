@@ -17,9 +17,9 @@ const style = (size = 12, weight = "normal", color = "normal") => {
 
   const getWeight = weight => {
     switch (weight) {
-      case "normal":
+      case "light":
         return 500;
-      case "bold":
+      case "normal":
         return 600;
     }
   };

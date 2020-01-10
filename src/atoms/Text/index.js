@@ -8,7 +8,8 @@ class Text extends React.Component {
     this.state = {
       children: props.children,
       size: props.size,
-      color: props.color
+      color: props.color,
+      weight: props.weight
     };
   }
 
@@ -18,7 +19,9 @@ class Text extends React.Component {
 
   render() {
     return (
-      <div css={() => style(this.state.size, this.state.color)}>
+      <div
+        css={() => style(this.state.size, this.state.weight, this.state.color)}
+      >
         {this.state.children}
       </div>
     );
