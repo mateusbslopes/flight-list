@@ -36,7 +36,6 @@ class Flights {
     const SEARCH_FLIGHTS_API = "https://flight-price-hmg.maxmilhas.com.br";
 
     return this.makeSearchIntention().then(response => {
-      console.log(response);
       return axios.get(
         `${SEARCH_FLIGHTS_API}/search/${response.data.id}/flights?airline=gol`,
         {

@@ -1,10 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import FlightList from "./organisms/FlightList/index";
+import Header from "./organisms/Header";
 
 class App extends React.Component {
   render() {
-    return <FlightList />;
+    return (
+      <div>
+        <Header />
+        <FlightList />
+      </div>
+    );
   }
 }
 

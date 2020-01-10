@@ -4,13 +4,14 @@ import style from "./style";
 import FlightDetailButton from "../../molecules/FlightDetailButton";
 
 import FlightController from "../../controllers/Flights";
+import FlightPrice from "../../molecules/FlightPrice";
 
 class FlightRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...props };
 
-    FlightController.getAirports().then(console.log);
+    // FlightController.getAirports().then();
   }
 
   componentDidMount() {
@@ -19,18 +20,19 @@ class FlightRow extends React.Component {
 
   render() {
     return (
-      <div css={style}>
+      <div css={style} key={this.state.id}>
         <FlightColumn
           text={this.state.airline}
           info={this.state.flightNumber}
         />
         <FlightColumn text={this.state.departureDate} info={this.state.from} />
         <FlightColumn
-          text={this.state.duration}
+          text={`${this.state.duration} minutos`}
           info={`${this.state.trips.length} parada(s)`}
         />
         <FlightColumn text={this.state.arrivalDate} info={this.state.to} />
         <FlightDetailButton />
+        <FlightPrice />
       </div>
     );
   }
