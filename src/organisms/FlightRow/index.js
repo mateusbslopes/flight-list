@@ -8,7 +8,7 @@ import FlightController from "../../controllers/Flights";
 class FlightRow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { ...props };
 
     FlightController.getAirports().then(console.log);
   }
@@ -20,10 +20,16 @@ class FlightRow extends React.Component {
   render() {
     return (
       <div css={style}>
-        <FlightColumn text="GOL" info="G3-1307" />
-        <FlightColumn text="11:25" info="CFN (Confins)" />
-        <FlightColumn text="3H10" info="1 parada" />
-        <FlightColumn text="14:35" info="FLN" />
+        <FlightColumn
+          text={this.state.airline}
+          info={this.state.flightNumber}
+        />
+        <FlightColumn text={this.state.departureDate} info={this.state.from} />
+        <FlightColumn
+          text={this.state.duration}
+          info={`${this.state.trips.length} parada(s)`}
+        />
+        <FlightColumn text={this.state.arrivalDate} info={this.state.to} />
         <FlightDetailButton />
       </div>
     );

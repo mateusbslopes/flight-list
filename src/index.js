@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import FlightList from "./molecules/FlightList/index";
+import FlightList from "./organisms/FlightList/index";
 
 class App extends React.Component {
   render() {
