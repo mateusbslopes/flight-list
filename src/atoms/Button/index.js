@@ -17,9 +17,7 @@ class Button extends React.Component {
 
   render() {
     return (
-      <button
-        css={() => style(this.state.backgroundColor, this.state.borderColor)}
-      >
+      <button css={() => style(this.state.borderColor)}>
         {this.state.children}
       </button>
     );

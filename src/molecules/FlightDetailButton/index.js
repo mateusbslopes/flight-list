@@ -7,7 +7,7 @@ import style from "./style";
 class FlightDetailButton extends React.Component {
   render() {
     return (
-      <Button backgroudColor={"white"} borderColor={"rgb(135, 147, 149)"}>
+      <Button borderColor={"rgb(135, 147, 149)"}>
         <div css={style}>
           <Icon name="action-add" size={"small"} color={"rgb(26, 188, 156)"} />
           <Text>DETALHES DO VOO</Text>
