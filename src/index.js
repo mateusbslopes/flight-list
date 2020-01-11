@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import FlightList from "./organisms/FlightList/index";
 import Header from "./organisms/Header";
 import FlightService from "./services/Flights";
+import Text from "./atoms/Text";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,11 @@ class App extends React.Component {
     return (
       <div>
         <Header onSearch={this.onSearch} />
-        <FlightList flights={this.state.flights} />
+        {this.state.flights ? (
+          <FlightList flights={this.state.flights} />
+        ) : (
+          <Text>Search!</Text>
+        )}
       </div>
     );
   }

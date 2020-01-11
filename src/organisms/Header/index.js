@@ -2,6 +2,7 @@ import React from "react";
 import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
+import SelectAutocomplete from "../../molecules/SelectAutocomplete";
 
 class Header extends React.Component {
   constructor(props) {
@@ -92,14 +93,7 @@ class Header extends React.Component {
         </div>
         <form>
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <div>
-              Sair de
-              <input
-                type="text"
-                value={this.state.from}
-                onChange={event => this.handleChange(event, "from")}
-              />
-            </div>
+            <SelectAutocomplete />
             <div>
               Ir para
               <input

@@ -1,17 +1,9 @@
 import React from "react";
-import FlightService from "../../services/Flights";
 import FlightRow from "../FlightRow";
 import Text from "../../atoms/Text";
 import style from "./style";
 
 class FlightList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...props };
-  }
-  componentDidMount() {
-    this.setState(this.state);
-  }
 
   render() {
     return (
@@ -24,12 +16,8 @@ class FlightList extends React.Component {
           <Text>Detalhes</Text>
           <Text>Preco</Text>
         </div>
-        {console.log(this.state)}
-        {this.state.flights ? (
-          this.state.flights.map(flight => <FlightRow {...flight} />)
-        ) : (
-          <img src="https://cdn.dribbble.com/users/5661/screenshots/2491233/loading-gif-800x600.gif" />
-        )}
+       
+        {this.props.flights.map(flight => <FlightRow {...flight} />)}
       </div>
     );
   }
