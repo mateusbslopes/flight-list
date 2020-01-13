@@ -12,25 +12,27 @@
 
    [x] Add checkbox
 
-4. [] Create basic autocomplete
+4. [x] Create basic autocomplete
 
 5. [] Create number fields for adults childs and infants
 
-6. [] Format fields properly on list
+6. [] Validate fields and thow error on screen
 
-7. [] Insert "Extra info" properly on diagram of page
+7. [] Format fields properly on list
 
-8. [] Create button design
+8. [] Insert "Extra info" properly on diagram of page
 
-9. [] Create cards design (Price alert, flight list and filter...)
+9. [] Create button design
 
-10. [] Update layout for mobile
+10. [] Create cards design (Price alert, flight list and filter...)
 
-11. [] Create filter for leaving hour
+11. [] Update layout for mobile
 
-12. [] Create filter for airports
+12. [] Create filter for leaving hour
 
-13. [] Create calendar field
+13. [] Create filter for airports
+
+14. [] Create calendar field
 
 ---
 
