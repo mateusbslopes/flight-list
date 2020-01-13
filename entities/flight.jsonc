@@ -1,0 +1,75 @@
+{
+  "id": "a698cd028d4d86ddf77c0f3a1fd97b96",
+  "airline": "gol",
+  "airlineTarget": "gol",
+  "from": "REC",
+  "to": "GIG",
+  "flightNumber": "G3-2087",
+  "cabin": "EC",
+  "duration": 180,
+  "departureDate": "2020-08-22T03:40:00Z",
+  "arrivalDate": "2020-08-22T06:40:00Z",
+  "direction": "outbound",
+  "stops": 0,
+  "trips": [
+    {
+      "departureDate": "2020-08-22T03:40:00Z",
+      "arrivalDate": "2020-08-22T06:40:00Z",
+      "from": "REC",
+      "to": "GIG",
+      "carrier": "GOL",
+      "flightNumber": "G3-2087",
+      "aircraft": "",
+      "duration": 180,
+      "layover": 0,
+      "stops": 0,
+      "cabin": "EC",
+      "isInternational": false
+    }
+  ],
+  "choosedTripType": "OW",
+  "availableIn": "price",
+  "pricing": {
+    "airline": {
+      "adult": {
+        "quantity": 1,
+        "fare": 295.9,
+        "fees": [{ "type": "BOARDING_TAX", "value": 34.57, "group": "price" }]
+      },
+      "luggage": {},
+      "fareTotal": 295.9,
+      "saleTotal": 330.47
+    },
+    "miles": null,
+    "ota": {
+      "adult": {
+        "quantity": 1,
+        "fare": 295.9,
+        "fees": [
+          {
+            "type": "BOARDING_TAX",
+            "value": 34.57,
+            "group": "ota",
+            "passengerType": "ADT"
+          },
+          { "id": 2772, "type": "SERVICE_FEE", "value": 0 }
+        ]
+      },
+      "luggage": {
+        "carryOn": { "weight": 10, "prices": [0] },
+        "checked": { "weight": null, "prices": [] }
+      },
+      "checkout": { "type": "internal", "target": "maxmilhas" },
+      "familyCode": "LT",
+      "recharged": false,
+      "fareTotal": 295.9,
+      "saleTotal": 330.47
+    },
+    "airlineName": "gol",
+    "isInternational": false,
+    "bestPriceAt": "airline",
+    "mmBestPriceAt": "ota",
+    "savingPercentage": 0
+  },
+  "otaAvailableIn": "both"
+}
