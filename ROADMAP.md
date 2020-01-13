@@ -39,3 +39,7 @@
 - When click on "Pesquisar" open a modal displaying the avaiable airlines and give the oportunity to the user filter by each airline, making the request faster?
 
 - Create error mapping to display to the user if somethng went wrong
+
+- autocomplete navigate with keyboard and select with enter and tab
+
+- develop color dictionary

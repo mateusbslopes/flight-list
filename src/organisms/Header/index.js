@@ -93,7 +93,7 @@ class Header extends React.Component {
         </div>
         <form>
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <SelectAutocomplete />
+            <SelectAutocomplete data={this.props.airports} />
             <div>
               Ir para
               <input

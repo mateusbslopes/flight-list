@@ -11,8 +11,13 @@ class App extends React.Component {
     this.state = {
       flights: null,
       displayedFlights: "outbound",
-      filterableAirlines: null
+      filterableAirlines: null,
+      airports: null
     };
+
+    FlightController.getAirports().then(response =>
+      this.setState({ airports: Object.values(response.data.airports) })
+    );
 
     this.onSearch = this.onSearch.bind(this);
     this.onChangeDisplayedFlights = this.onChangeDisplayedFlights.bind(this);
@@ -75,6 +80,7 @@ class App extends React.Component {
         <Header
           onSearch={this.onSearch}
           onChangeDisplayedFlights={this.onChangeDisplayedFlights}
+          airports={this.state.airports || []}
         />
         <div>
           <ExtraInfo

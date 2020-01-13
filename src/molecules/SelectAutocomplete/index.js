@@ -1,47 +1,24 @@
 import React from "react";
 import String from "../../Utils/String";
+import style from "./style";
 
 class SelectAutocomplete extends React.Component {
   constructor(props) {
-    const data = [
-      {
-        id: 1,
-        value: "BH",
-        value2: "Belo Horizonte"
-      },
-      {
-        id: 2,
-        value: "CA",
-        value2: "Campinas"
-      },
-      {
-        id: 3,
-        value: "SB",
-        value2: "Sabará"
-      },
-      {
-        id: 4,
-        value: "FT",
-        value2: "Fortaleza"
-      },
-      {
-        id: 5,
-        value: "CG",
-        value2: "Campo Grande"
-      }
-    ];
-
     super(props);
-    this.state = { search: "", isListOpen: false, data, filteredData: data };
+    this.state = {
+      search: "",
+      isListOpen: false,
+      selectedItem: null
+    };
 
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.filterData = this.filterData.bind(this);
   }
 
   handleChange(evt) {
     this.setState({
-      filteredData: this.search(evt.target.value),
       search: evt.target.value
     });
   }
@@ -54,20 +31,32 @@ class SelectAutocomplete extends React.Component {
     this.setState({ isListOpen: false });
   }
 
-  search(filter) {
-    filter = String.prepareToCompare(filter);
-    return this.state.data.filter(
-      d =>
-        String.prepareToCompare(d.value).search(filter) >= 0 ||
-        String.prepareToCompare(d.value2).search(filter) >= 0
+  filterData([label, airportCode, country]) {
+    if (!this.state.search) return [];
+
+    let search = String.prepareToCompare(this.state.search);
+    return (
+      String.prepareToCompare(label).search(search) >= 0 ||
+      String.prepareToCompare(airportCode).search(search) >= 0
     );
   }
 
-  getDisplayableRow(d) {}
+  getDisplayableRow([label, airportCode, country]) {
+    return (
+      <div className="list-item" key={airportCode}>
+        {`${airportCode} ${label}, ${country}`}{" "}
+      </div>
+    );
+  }
+
+  // TODO tranform to run like: data.filter(filterData).map(getDisplayableRow)
+  getDataToDisplay(data) {
+    return data.filter(this.filterData).map(this.getDisplayableRow);
+  }
 
   render() {
     return (
-      <div>
+      <div css={style}>
         Sair de
         <input
           type="text"
@@ -77,11 +66,7 @@ class SelectAutocomplete extends React.Component {
           onBlur={this.handleBlur}
         />
         {this.state.isListOpen && (
-          <div>
-            {this.state.filteredData.map(d => (
-              <div>{`${d.value} - ${d.value2} `} </div>
-            ))}
-          </div>
+          <div className="list">{this.getDataToDisplay(this.props.data)}</div>
         )}
       </div>
     );
