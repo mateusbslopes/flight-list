@@ -1,4 +1,28 @@
 import axios from "axios";
+import * as yup from "yup";
+
+const filterSchema = yup.object().shape({
+  from: yup.string().required(),
+  to: yup.string().required(),
+  outboundDate: yup.string().required(),
+  inboundDate: yup.string().required(),
+  adults: yup
+    .number()
+    .min(1)
+    .max(9),
+  children: yup
+    .number()
+    .min(0)
+    .max(9),
+  infants: yup
+    .number()
+    .min(0)
+    .max(9)
+});
+
+const schemaOptions = {
+  abortEarly: false
+};
 
 class Flights {
   static getAirports() {
@@ -8,6 +32,8 @@ class Flights {
   }
 
   static makeSearchIntention(filter) {
+    filterSchema.validateSync(filterSchema.cast(filter), schemaOptions);
+
     const SEARCH_FLIGHTS_API = "https://flight-price-hmg.maxmilhas.com.br";
     const postData = {
       tripType: "RT",

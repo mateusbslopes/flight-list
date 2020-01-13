@@ -14,7 +14,7 @@
 
 4. [x] Create basic autocomplete
 
-5. [] Create number fields for adults childs and infants
+5. [x] Create number fields for adults childs and infants
 
 6. [] Validate fields and thow error on screen
 
