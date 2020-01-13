@@ -16,15 +16,17 @@ class App extends React.Component {
     this.addFlights = this.addFlights.bind(this);
   }
 
-  addFlights(flights) {
-    let outbound = this.state.flights.outbound.push(flights.outbound);
-    let inbound = this.state.flights.inbound.push(flights.inbound);
-    this.setState({ outbound, inbound });
+  addFlights(newFlights) {
+    // TODO Null object pattern
+    let flights = this.state.flights || { outbound: [], inbound: [] };
+    flights.outbound = flights.outbound.concat(newFlights.outbound);
+    flights.inbound = flights.inbound.concat(newFlights.inbound);
+    this.setState({ flights });
   }
 
   onSearch(filter) {
     filter.airline = this.state.airline;
-    FlightController.getFlights(filter);
+    FlightController.getFlights(filter, this.addFlights);
   }
 
   onChangeAirline(newAirline) {
@@ -53,7 +55,10 @@ class App extends React.Component {
           onChangeDisplayedFlights={this.onChangeDisplayedFlights}
         />
         <div>
-          <ExtraInfo onChange={this.onChangeAirline} airlines={[]} />
+          <ExtraInfo
+            onChange={this.onChangeAirline}
+            filterableAirlines={this.state.filterableAirlines}
+          />
           <Body
             flights={this.getFlights(
               this.state.flights,
