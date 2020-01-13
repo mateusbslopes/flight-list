@@ -36,4 +36,6 @@
 
 14. [] Evaluate all development made and see w/ there is missing implementation
 
-In the future when click on "Pesquisar" open a modal displaying the avaiable airlines and give the oportunity to the user filter by each airline, making the request faster?
+- When click on "Pesquisar" open a modal displaying the avaiable airlines and give the oportunity to the user filter by each airline, making the request faster?
+
+- Create error mapping to display to the user if somethng went wrong

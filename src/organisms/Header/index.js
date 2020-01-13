@@ -159,10 +159,18 @@ class Header extends React.Component {
           }}
         >
           <div>
-            <Text>Selecione seu voo de ida</Text>
+            <Button
+              onClick={() => this.props.onChangeDisplayedFlights("outbound")}
+            >
+              Selecione seu voo de ida
+            </Button>
           </div>
           <div>
-            <Text>Selecione seu voo de volta</Text>
+            <Button
+              onClick={() => this.props.onChangeDisplayedFlights("inbound")}
+            >
+              Selecione seu voo de volta
+            </Button>
           </div>
         </div>
       </div>

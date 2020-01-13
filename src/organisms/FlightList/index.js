@@ -4,7 +4,6 @@ import Text from "../../atoms/Text";
 import style from "./style";
 
 class FlightList extends React.Component {
-
   render() {
     return (
       <div>
@@ -16,8 +15,10 @@ class FlightList extends React.Component {
           <Text>Detalhes</Text>
           <Text>Preco</Text>
         </div>
-       
-        {this.props.flights.map(flight => <FlightRow {...flight} />)}
+
+        {this.props.flights.map(flight => (
+          <FlightRow key={flight.id} {...flight} />
+        ))}
       </div>
     );
   }
