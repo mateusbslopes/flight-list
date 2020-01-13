@@ -39,15 +39,6 @@ class SelectAutocomplete extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  search(filter) {
-    filter = String.prepareToCompare(filter);
-    return this.state.data.filter(
-      d =>
-        String.prepareToCompare(d.value).search(filter) >= 0 ||
-        String.prepareToCompare(d.value2).search(filter) >= 0
-    );
-  }
-
   handleChange(evt) {
     this.setState({
       filteredData: this.search(evt.target.value),
@@ -62,6 +53,17 @@ class SelectAutocomplete extends React.Component {
   handleBlur() {
     this.setState({ isListOpen: false });
   }
+
+  search(filter) {
+    filter = String.prepareToCompare(filter);
+    return this.state.data.filter(
+      d =>
+        String.prepareToCompare(d.value).search(filter) >= 0 ||
+        String.prepareToCompare(d.value2).search(filter) >= 0
+    );
+  }
+
+  getDisplayableRow(d) {}
 
   render() {
     return (
