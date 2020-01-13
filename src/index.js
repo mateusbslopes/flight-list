@@ -11,7 +11,6 @@ class App extends React.Component {
     this.state = {
       flights: null,
       displayedFlights: "outbound",
-      airline: null,
       filterableAirlines: null
     };
 
@@ -43,7 +42,6 @@ class App extends React.Component {
   }
 
   onSearch(filter) {
-    filter.airline = this.state.airline;
     FlightController.getFlights(filter, this.addFlights);
   }
 
@@ -62,7 +60,13 @@ class App extends React.Component {
   }
 
   getFlights(flights, flightsToDisplay) {
-    return flights ? flights[flightsToDisplay] : [];
+    if (!flights) return [];
+    return flights[flightsToDisplay].filter(
+      flight =>
+        !!this.state.filterableAirlines.some(
+          airline => airline.label === flight.airline && airline.checked
+        )
+    );
   }
 
   render() {

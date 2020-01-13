@@ -6,11 +6,11 @@
 
    [x] Missing extra info fields
 
-3. [] Filter by company airlines
+3. [x] Filter by company airlines
 
-   [] Request in parallel by all companies adding to the screen when they will finishing
+   [x] Request in parallel by all companies adding to the screen when they will finishing
 
-   [] Add checkbox
+   [x] Add checkbox
 
 4. [] Create basic autocomplete
 
