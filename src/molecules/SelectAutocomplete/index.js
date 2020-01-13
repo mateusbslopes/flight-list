@@ -8,13 +8,18 @@ class SelectAutocomplete extends React.Component {
     this.state = {
       search: "",
       isListOpen: false,
-      selectedItem: null
+      selectedItem: null,
+      // Using Finite State machine concept. see more at https://github.com/jakesgordon/javascript-state-machine
+      state: "empty",
+      value: null
     };
 
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.filterData = this.filterData.bind(this);
+    this.selectItem = this.selectItem.bind(this);
+    this.getDisplayableRow = this.getDisplayableRow.bind(this);
   }
 
   handleChange(evt) {
@@ -24,14 +29,15 @@ class SelectAutocomplete extends React.Component {
   }
 
   handleFocus() {
-    this.setState({ isListOpen: true });
+    this.setState({ isListOpen: true, state: "searching" });
   }
 
   handleBlur() {
-    this.setState({ isListOpen: false });
+    let state = this.state.value ? "fulfilled" : "empty";
+    this.setState({ isListOpen: false, state });
   }
 
-  filterData([label, airportCode, country]) {
+  filterData([label, airportCode]) {
     if (!this.state.search) return [];
 
     let search = String.prepareToCompare(this.state.search);
@@ -41,15 +47,40 @@ class SelectAutocomplete extends React.Component {
     );
   }
 
+  selectItem(label, airportCode) {
+    console.log("aaa");
+    this.setState({ value: { label, airportCode }, state: "fulfilled" });
+  }
+
+  handleOnMouseDown(evnt) {
+    // Prevent blur on input to happen, allowing to click on list-item to be triggered
+    evnt.preventDefault();
+  }
+
   getDisplayableRow([label, airportCode, country]) {
     return (
-      <div className="list-item" key={airportCode}>
+      <div
+        className="list-item"
+        key={airportCode}
+        onClick={() => this.selectItem(label, airportCode)}
+        onMouseDown={this.handleOnMouseDown}
+      >
         {`${airportCode} ${label}, ${country}`}{" "}
       </div>
     );
   }
 
-  // TODO tranform to run like: data.filter(filterData).map(getDisplayableRow)
+  getDisplayedValue() {
+    switch (this.state.state) {
+      case "searching":
+        return this.state.search;
+      case "empty":
+        return "origem";
+      case "fulfilled":
+        return this.state.value.label;
+    }
+  }
+
   getDataToDisplay(data) {
     return data.filter(this.filterData).map(this.getDisplayableRow);
   }
@@ -60,12 +91,12 @@ class SelectAutocomplete extends React.Component {
         Sair de
         <input
           type="text"
-          value={this.state.search}
+          value={`${this.getDisplayedValue()}`}
           onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
         />
-        {this.state.isListOpen && (
+        {this.state.state === "searching" && (
           <div className="list">{this.getDataToDisplay(this.props.data)}</div>
         )}
       </div>

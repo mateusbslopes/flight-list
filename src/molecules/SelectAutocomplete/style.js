@@ -1,7 +1,7 @@
 export default () => `
 
     .list {
-        height: 90px;
+        max-height: 90px;
         background-color: white;
         overflow-y: auto;
         z-index: 10;
