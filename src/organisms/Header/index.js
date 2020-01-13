@@ -3,6 +3,7 @@ import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
 import SelectAutocomplete from "../../molecules/SelectAutocomplete";
+import Passengers from "../Passengers";
 
 class Header extends React.Component {
   constructor(props) {
@@ -10,14 +11,18 @@ class Header extends React.Component {
     this.state = {
       outboundDate: "2020-08-22",
       inboundDate: "2020-08-26",
-      adults: "1",
-      children: "0",
+      adults: 0,
+      children: 0,
+      infants: 0,
       onSearch: props.onSearch
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
+    this.handleAdultsChange = this.handleAdultsChange.bind(this);
+    this.handleChildrenChange = this.handleChildrenChange.bind(this);
+    this.handleInfantsChange = this.handleInfantsChange.bind(this);
   }
 
   handleChange(event, field) {
@@ -26,12 +31,24 @@ class Header extends React.Component {
     this.setState(obj);
   }
 
-  handleFromChange(newValue) {
-    this.setState({ from: newValue });
+  handleFromChange(from) {
+    this.setState({ from });
   }
 
-  handleToChange(newValue) {
-    this.setState({ to: newValue });
+  handleToChange(to) {
+    this.setState({ to });
+  }
+
+  handleAdultsChange(adults) {
+    this.setState({ adults });
+  }
+
+  handleChildrenChange(children) {
+    this.setState({ children });
+  }
+
+  handleInfantsChange(infants) {
+    this.setState({ infants });
   }
 
   componentDidMount() {
@@ -129,22 +146,14 @@ class Header extends React.Component {
                 onChange={event => this.handleChange(event, "inboundDate")}
               />
             </div>
-            <div>
-              Adultos
-              <input
-                type="text"
-                value={this.state.adults}
-                onChange={event => this.handleChange(event, "adults")}
-              />
-            </div>
-            <div>
-              Criancas
-              <input
-                type="text"
-                value={this.state.children}
-                onChange={event => this.handleChange(event, "children")}
-              />
-            </div>
+            <Passengers
+              adults={this.state.adults}
+              onChangeAdults={this.handleAdultsChange}
+              children={this.state.children}
+              onChangeChildren={this.handleChildrenChange}
+              infants={this.state.infants}
+              onChangeInfants={this.handleInfantsChange}
+            />
             <Button
               backgroundColor={"rgb(26, 188, 156)"}
               onClick={() => this.state.onSearch(this.state)}

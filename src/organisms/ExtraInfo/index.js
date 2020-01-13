@@ -14,6 +14,7 @@ class ExtraInfo extends React.Component {
         Selecione a companhia aeria:
         {this.props.airlines.map(airline => (
           <div key={airline.label}>
+            {/* TODO transform in atom/molecule */}
             <input
               type="checkbox"
               name={airline.label}
