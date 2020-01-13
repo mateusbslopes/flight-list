@@ -1,10 +1,10 @@
 1. [x] List data from basic request
 
-   [] Toggle inbound/outbound
+   [x] Toggle inbound/outbound
 
-2. [] Filter by all fields w./ simple input
+2. [x] Filter by all fields w./ simple input
 
-   [] Missing extra info fields
+   [x] Missing extra info fields
 
 3. [] Filter by company airlines
 

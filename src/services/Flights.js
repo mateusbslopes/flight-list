@@ -37,7 +37,7 @@ class Flights {
 
     return this.makeSearchIntention(filter).then(response => {
       return axios.get(
-        `${SEARCH_FLIGHTS_API}/search/${response.data.id}/flights?airline=gol`,
+        `${SEARCH_FLIGHTS_API}/search/${response.data.id}/flights?airline=${filter.airline}`,
         {
           headers: {
             Authorization: `JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJtYXhtaWxoYXMuY29tLmJyIiwiaWF0IjoxNTA5MTIwMTAxLCJleHAiOjE1MTA0MTYxMDEsImF1ZCI6InRlc3RlLWZyb250ZW5kLmNvbS5iciIsInN1YiI6InRlc3RlLWZyb250ZW5kIiwiZW52IjoiaG1nIn0.0oZUsoKp87qvB06DtaBmrQpBuDpig30eZCjQyIfvQT4`
