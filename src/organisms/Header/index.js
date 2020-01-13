@@ -8,8 +8,6 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      from: "REC",
-      to: "RIO",
       outboundDate: "2020-08-22",
       inboundDate: "2020-08-26",
       adults: "1",
@@ -19,6 +17,7 @@ class Header extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleFromChange = this.handleFromChange.bind(this);
+    this.handleToChange = this.handleToChange.bind(this);
   }
 
   handleChange(event, field) {
@@ -29,6 +28,10 @@ class Header extends React.Component {
 
   handleFromChange(newValue) {
     this.setState({ from: newValue });
+  }
+
+  handleToChange(newValue) {
+    this.setState({ to: newValue });
   }
 
   componentDidMount() {
@@ -104,14 +107,12 @@ class Header extends React.Component {
               label="Sair de"
               onChange={this.handleFromChange}
             />
-            <div>
-              Ir para
-              <input
-                type="text"
-                value={this.state.to}
-                onChange={event => this.handleChange(event, "to")}
-              />
-            </div>
+            <SelectAutocomplete
+              data={this.props.airports}
+              placeholder="destino"
+              label="Ir para"
+              onChange={this.handleToChange}
+            />
             <div>
               Ida
               <input

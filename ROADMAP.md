@@ -45,3 +45,5 @@
 - develop color dictionary
 
 - Add params to url so when someone send a link to another the filter will remain the same
+
+- Add internacionalization
