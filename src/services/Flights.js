@@ -32,19 +32,17 @@ class Flights {
     );
   }
 
-  static getFlights(filter) {
+  static getFlights(id, airline) {
     const SEARCH_FLIGHTS_API = "https://flight-price-hmg.maxmilhas.com.br";
 
-    return this.makeSearchIntention(filter).then(response => {
-      return axios.get(
-        `${SEARCH_FLIGHTS_API}/search/${response.data.id}/flights?airline=${filter.airline}`,
-        {
-          headers: {
-            Authorization: `JWT ${process.env.API_TOKEN}`
-          }
+    return axios.get(
+      `${SEARCH_FLIGHTS_API}/search/${id}/flights?airline=${airline}`,
+      {
+        headers: {
+          Authorization: `JWT ${process.env.API_TOKEN}`
         }
-      );
-    });
+      }
+    );
   }
 }
 export default Flights;

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./organisms/Header";
-import FlightService from "./services/Flights";
+import FlightController from "./controllers/Flights";
 import Body from "./organisms/Body";
 import ExtraInfo from "./organisms/ExtraInfo";
 
@@ -9,16 +9,22 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { flights: null, displayedFlights: "outbound", airline: null };
+
     this.onSearch = this.onSearch.bind(this);
     this.onChangeDisplayedFlights = this.onChangeDisplayedFlights.bind(this);
     this.onChangeAirline = this.onChangeAirline.bind(this);
+    this.addFlights = this.addFlights.bind(this);
+  }
+
+  addFlights(flights) {
+    let outbound = this.state.flights.outbound.push(flights.outbound);
+    let inbound = this.state.flights.inbound.push(flights.inbound);
+    this.setState({ outbound, inbound });
   }
 
   onSearch(filter) {
     filter.airline = this.state.airline;
-    FlightService.getFlights(filter).then(flights => {
-      this.setState({ flights: flights.data });
-    });
+    FlightController.getFlights(filter);
   }
 
   onChangeAirline(newAirline) {
@@ -47,7 +53,7 @@ class App extends React.Component {
           onChangeDisplayedFlights={this.onChangeDisplayedFlights}
         />
         <div>
-          <ExtraInfo onChange={this.onChangeAirline} />
+          <ExtraInfo onChange={this.onChangeAirline} airlines={[]} />
           <Body
             flights={this.getFlights(
               this.state.flights,

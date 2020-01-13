@@ -23,12 +23,10 @@ class ExtraInfo extends React.Component {
   render() {
     return (
       <div>
-        Digite a companhia aerea:{" "}
-        <input
-          value={this.state.value}
-          onChange={this.handleChange}
-          onBlur={this.handleBlur}
-        />
+        Selecione a companhia aeria:
+        {this.props.airlines.map(airline => (
+          <input type="checkbox" name={airline.label} checked />
+        ))}
       </div>
     );
   }
