@@ -1,23 +1,11 @@
 import React from "react";
 
 class ExtraInfo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { onChange: props.onChange, value: "" };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState(this.state);
-  }
-
-  handleChange(evt) {
-    this.setState({ value: evt.target.value });
-  }
-
-  handleBlur() {
-    this.state.onChange(this.state.value);
+  handleChange(airline, airlines, setAirlines) {
+    let newAirlines = [...airlines];
+    let indexOfElement = newAirlines.findIndex(a => a.label == airline.label);
+    newAirlines[indexOfElement].checked = !airline.checked;
+    setAirlines(newAirlines);
   }
 
   render() {
@@ -25,7 +13,21 @@ class ExtraInfo extends React.Component {
       <div>
         Selecione a companhia aeria:
         {this.props.airlines.map(airline => (
-          <input type="checkbox" name={airline.label} checked />
+          <div key={airline.label}>
+            <input
+              type="checkbox"
+              name={airline.label}
+              checked={airline.checked}
+              onChange={() =>
+                this.handleChange(
+                  airline,
+                  this.props.airlines,
+                  this.props.setAirlines
+                )
+              }
+            />
+            {`${airline.label} (${airline[this.props.displayedFlights]} VOOS)`}
+          </div>
         ))}
       </div>
     );

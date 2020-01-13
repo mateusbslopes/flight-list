@@ -12,10 +12,10 @@ class Flights {
         promises.push(
           FlightsService.getFlights(response.data.id, airline.label).then(
             response => {
-              addFlights(response.data);
+              addFlights(response.data, airline.label);
             },
             err => {
-              console.log(err);
+              // 404 should not be displayed
             }
           )
         );

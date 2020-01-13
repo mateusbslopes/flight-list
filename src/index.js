@@ -8,20 +8,38 @@ import ExtraInfo from "./organisms/ExtraInfo";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { flights: null, displayedFlights: "outbound", airline: null };
+    this.state = {
+      flights: null,
+      displayedFlights: "outbound",
+      airline: null,
+      filterableAirlines: null
+    };
 
     this.onSearch = this.onSearch.bind(this);
     this.onChangeDisplayedFlights = this.onChangeDisplayedFlights.bind(this);
-    this.onChangeAirline = this.onChangeAirline.bind(this);
+    this.onChangeFilterableAirlines = this.onChangeFilterableAirlines.bind(
+      this
+    );
     this.addFlights = this.addFlights.bind(this);
   }
 
-  addFlights(newFlights) {
+  addFlights(newFlights, airlineLabel) {
     // TODO Null object pattern
     let flights = this.state.flights || { outbound: [], inbound: [] };
     flights.outbound = flights.outbound.concat(newFlights.outbound);
     flights.inbound = flights.inbound.concat(newFlights.inbound);
-    this.setState({ flights });
+
+    let filterableAirline = {
+      label: airlineLabel,
+      inbound: newFlights.inbound.length,
+      outbound: newFlights.outbound.length,
+      checked: true
+    };
+
+    let filterableAirlines = this.state.filterableAirlines || [];
+    filterableAirlines.push(filterableAirline);
+
+    this.setState({ flights, filterableAirlines });
   }
 
   onSearch(filter) {
@@ -29,8 +47,8 @@ class App extends React.Component {
     FlightController.getFlights(filter, this.addFlights);
   }
 
-  onChangeAirline(newAirline) {
-    this.setState({ airline: newAirline });
+  onChangeFilterableAirlines(filterableAirlines) {
+    this.setState({ filterableAirlines });
   }
 
   onChangeDisplayedFlights(flightsToDisplay) {
@@ -56,8 +74,9 @@ class App extends React.Component {
         />
         <div>
           <ExtraInfo
-            onChange={this.onChangeAirline}
-            filterableAirlines={this.state.filterableAirlines}
+            airlines={this.state.filterableAirlines || []}
+            setAirlines={this.onChangeFilterableAirlines}
+            displayedFlights={this.state.displayedFlights}
           />
           <Body
             flights={this.getFlights(
