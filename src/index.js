@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import FlightList from "./organisms/FlightList/index";
 import Header from "./organisms/Header";
 import FlightService from "./services/Flights";
-import Text from "./atoms/Text";
 import Body from "./organisms/Body";
 import ExtraInfo from "./organisms/ExtraInfo";
 

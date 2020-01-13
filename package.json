@@ -14,7 +14,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --env.API_TOKEN=$API_TOKEN --config webpack.config.js"
   },
   "browserslist": {
     "production": [

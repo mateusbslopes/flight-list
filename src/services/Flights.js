@@ -11,14 +11,14 @@ class Flights {
     const SEARCH_FLIGHTS_API = "https://flight-price-hmg.maxmilhas.com.br";
     const postData = {
       tripType: "RT",
-      from: filter.from, //origem
-      to: filter.to, //destino
-      outboundDate: filter.outboundDate, //data de partida
-      inboundDate: filter.inboundDate, //data de volta
+      from: filter.from,
+      to: filter.to,
+      outboundDate: filter.outboundDate,
+      inboundDate: filter.inboundDate,
       cabin: "EC", //classe econômica (EC) ou executiva (EX)
-      adults: Number(filter.adults), //adultos
-      children: Number(filter.children), //crianças
-      infants: 0 //bebês
+      adults: Number(filter.adults),
+      children: Number(filter.children),
+      infants: 0
     };
 
     return axios.post(
@@ -26,7 +26,7 @@ class Flights {
       postData,
       {
         headers: {
-          Authorization: `JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJtYXhtaWxoYXMuY29tLmJyIiwiaWF0IjoxNTA5MTIwMTAxLCJleHAiOjE1MTA0MTYxMDEsImF1ZCI6InRlc3RlLWZyb250ZW5kLmNvbS5iciIsInN1YiI6InRlc3RlLWZyb250ZW5kIiwiZW52IjoiaG1nIn0.0oZUsoKp87qvB06DtaBmrQpBuDpig30eZCjQyIfvQT4`
+          Authorization: `JWT ${process.env.API_TOKEN}`
         }
       }
     );
@@ -40,7 +40,7 @@ class Flights {
         `${SEARCH_FLIGHTS_API}/search/${response.data.id}/flights?airline=${filter.airline}`,
         {
           headers: {
-            Authorization: `JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJtYXhtaWxoYXMuY29tLmJyIiwiaWF0IjoxNTA5MTIwMTAxLCJleHAiOjE1MTA0MTYxMDEsImF1ZCI6InRlc3RlLWZyb250ZW5kLmNvbS5iciIsInN1YiI6InRlc3RlLWZyb250ZW5kIiwiZW52IjoiaG1nIn0.0oZUsoKp87qvB06DtaBmrQpBuDpig30eZCjQyIfvQT4`
+            Authorization: `JWT ${process.env.API_TOKEN}`
           }
         }
       );
