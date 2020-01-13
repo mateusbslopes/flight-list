@@ -18,12 +18,17 @@ class Header extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleFromChange = this.handleFromChange.bind(this);
   }
 
   handleChange(event, field) {
     let obj = {};
     obj[field] = event.target.value;
     this.setState(obj);
+  }
+
+  handleFromChange(newValue) {
+    this.setState({ from: newValue });
   }
 
   componentDidMount() {
@@ -93,7 +98,12 @@ class Header extends React.Component {
         </div>
         <form>
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <SelectAutocomplete data={this.props.airports} />
+            <SelectAutocomplete
+              data={this.props.airports}
+              placeholder="origem"
+              label="Sair de"
+              onChange={this.handleFromChange}
+            />
             <div>
               Ir para
               <input

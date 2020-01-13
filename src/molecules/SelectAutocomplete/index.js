@@ -11,7 +11,10 @@ class SelectAutocomplete extends React.Component {
       selectedItem: null,
       // Using Finite State machine concept. see more at https://github.com/jakesgordon/javascript-state-machine
       state: "empty",
-      value: null
+      value: null,
+      label: props.label,
+      placeholder: props.placeholder,
+      onChange: props.onChange
     };
 
     this.handleFocus = this.handleFocus.bind(this);
@@ -48,8 +51,8 @@ class SelectAutocomplete extends React.Component {
   }
 
   selectItem(label, airportCode) {
-    console.log("aaa");
     this.setState({ value: { label, airportCode }, state: "fulfilled" });
+    this.state.onChange(airportCode);
   }
 
   handleOnMouseDown(evnt) {
@@ -75,7 +78,7 @@ class SelectAutocomplete extends React.Component {
       case "searching":
         return this.state.search;
       case "empty":
-        return "origem";
+        return this.state.placeholder;
       case "fulfilled":
         return this.state.value.label;
     }
@@ -88,7 +91,8 @@ class SelectAutocomplete extends React.Component {
   render() {
     return (
       <div css={style}>
-        Sair de
+        {/* TODO Label should be on state? */}
+        {this.state.label}
         <input
           type="text"
           value={`${this.getDisplayedValue()}`}
