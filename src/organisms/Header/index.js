@@ -31,6 +31,7 @@ class Header extends React.Component {
     this.setState(obj);
   }
 
+  // TODO centralize state management
   handleFromChange(from) {
     this.setState({ from });
   }
