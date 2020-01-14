@@ -4,6 +4,7 @@ import Passengers from "../Passengers";
 import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
+import style from "./style";
 
 class Filter extends React.Component {
   constructor(props) {
@@ -55,46 +56,75 @@ class Filter extends React.Component {
     this.setState(this.state);
   }
 
+  getFieldError(errors = [], fieldName) {
+    let error = errors.find(error => error.path === fieldName);
+    return error ? error.message : null;
+  }
+
+  getDisplayableError(errors = [], fieldName) {
+    let messageError = this.getFieldError(errors, fieldName);
+    return messageError ? <div className="error">{messageError}</div> : false;
+  }
+
   render() {
     return (
-      <form>
+      <form css={style}>
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <SelectAutocomplete
-            data={this.props.airports}
-            placeholder="origem"
-            label="Sair de"
-            onChange={this.handleFromChange}
-          />
-          <SelectAutocomplete
-            data={this.props.airports}
-            placeholder="destino"
-            label="Ir para"
-            onChange={this.handleToChange}
-          />
+          {/* TODO Make a component (field w/ error) */}
           <div>
-            Ida
-            <input
-              type="text"
-              value={this.state.outboundDate}
-              onChange={event => this.handleChange(event, "outboundDate")}
+            <SelectAutocomplete
+              data={this.props.airports}
+              placeholder="origem"
+              label="Sair de"
+              onChange={this.handleFromChange}
             />
+            {this.getDisplayableError(this.props.errors, "from")}
           </div>
           <div>
-            Volta
-            <input
-              type="text"
-              value={this.state.inboundDate}
-              onChange={event => this.handleChange(event, "inboundDate")}
+            <SelectAutocomplete
+              data={this.props.airports}
+              placeholder="destino"
+              label="Ir para"
+              onChange={this.handleToChange}
             />
+            {this.getDisplayableError(this.props.errors, "to")}
           </div>
-          <Passengers
-            adults={this.state.adults}
-            onChangeAdults={this.handleAdultsChange}
-            children={this.state.children}
-            onChangeChildren={this.handleChildrenChange}
-            infants={this.state.infants}
-            onChangeInfants={this.handleInfantsChange}
-          />
+          <div>
+            <div>
+              Ida
+              <input
+                type="text"
+                value={this.state.outboundDate}
+                onChange={event => this.handleChange(event, "outboundDate")}
+              />
+            </div>
+            {this.getDisplayableError(this.props.errors, "outboundDate")}
+          </div>
+          <div>
+            <div>
+              Volta
+              <input
+                type="text"
+                value={this.state.inboundDate}
+                onChange={event => this.handleChange(event, "inboundDate")}
+              />
+            </div>
+            {this.getDisplayableError(this.props.errors, "inboundDate")}
+          </div>
+
+          <div>
+            <Passengers
+              adults={this.state.adults}
+              onChangeAdults={this.handleAdultsChange}
+              children={this.state.children}
+              onChangeChildren={this.handleChildrenChange}
+              infants={this.state.infants}
+              onChangeInfants={this.handleInfantsChange}
+            />
+            {this.getDisplayableError(this.props.errors, "adults")}
+            {this.getDisplayableError(this.props.errors, "children")}
+            {this.getDisplayableError(this.props.errors, "infants")}
+          </div>
           <Button
             backgroundColor={"rgb(26, 188, 156)"}
             onClick={() => this.state.onSearch(this.state)}

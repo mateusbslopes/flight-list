@@ -66,7 +66,11 @@ class Header extends React.Component {
             </div>
           </div>
         </div>
-        <Filter onSearch={this.props.onSearch} />
+        <Filter
+          onSearch={this.props.onSearch}
+          airports={this.props.airports}
+          errors={this.props.filterErrors}
+        />
         <div
           style={{
             display: "flex",

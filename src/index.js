@@ -12,7 +12,8 @@ class App extends React.Component {
       flights: null,
       displayedFlights: "outbound",
       filterableAirlines: null,
-      airports: null
+      airports: null,
+      errors: {}
     };
 
     FlightController.getAirports().then(response =>
@@ -47,7 +48,11 @@ class App extends React.Component {
   }
 
   onSearch(filter) {
-    FlightController.getFlights(filter, this.addFlights);
+    try {
+      FlightController.getFlights(filter, this.addFlights);
+    } catch (error) {
+      this.setState({ errors: { filter: error.inner } });
+    }
   }
 
   onChangeFilterableAirlines(filterableAirlines) {
@@ -81,6 +86,7 @@ class App extends React.Component {
           onSearch={this.onSearch}
           onChangeDisplayedFlights={this.onChangeDisplayedFlights}
           airports={this.state.airports || []}
+          filterErrors={this.state.errors.filter}
         />
         <div>
           <ExtraInfo
