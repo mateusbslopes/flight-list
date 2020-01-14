@@ -18,19 +18,49 @@ class FlightRow extends React.Component {
     this.setState(this.state);
   }
 
+  formatAirline(airline) {
+    return airline.toUpperCase();
+  }
+
+  formatHour(date) {
+    return new Date(date).toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: false
+    });
+  }
+
+  formatDuration(duration) {
+    let hour = Math.trunc(duration / 60);
+    let minutes = duration % 60;
+    let text = hour ? `${hour}H` : "";
+    text += text ? minutes || "" : `${minutes} minutos`;
+    return text;
+  }
+
+  formatStops(stops) {
+    return stops > 1 ? `${stops} paradas` : `${stops} parada`;
+  }
+
   render() {
     return (
       <div css={style} key={this.state.id}>
         <FlightColumn
-          text={this.state.airline}
+          text={this.formatAirline(this.state.airline)}
           info={this.state.flightNumber}
         />
-        <FlightColumn text={this.state.departureDate} info={this.state.from} />
         <FlightColumn
-          text={`${this.state.duration} minutos`}
-          info={`${this.state.trips.length} parada(s)`}
+          text={this.formatHour(this.state.departureDate)}
+          info={this.state.from}
         />
-        <FlightColumn text={this.state.arrivalDate} info={this.state.to} />
+        <FlightColumn
+          text={this.formatDuration(this.state.duration)}
+          info={this.formatStops(this.state.trips.length)}
+        />
+        <FlightColumn
+          text={this.formatHour(this.state.arrivalDate)}
+          info={this.state.to}
+        />
         <FlightDetailButton />
         <FlightPrice />
       </div>
