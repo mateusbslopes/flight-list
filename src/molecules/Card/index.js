@@ -4,7 +4,7 @@ import style from "./style";
 class Card extends React.Component {
   render() {
     return (
-      <div css={style}>
+      <div css={() => style(this.props.margin)}>
         <div className="content">
           {this.props.header && (
             <div className="header">{this.props.header}</div>

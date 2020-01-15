@@ -1,10 +1,11 @@
-export default () => `
+export default (margin = 0) => `
     .content {
         display: flex;
         flex-direction: column;
-        -webkit-box-shadow: 3px 3px 9px 0px rgba(158,158,158,1);
-        -moz-box-shadow: 3px 3px 9px 0px rgba(158,158,158,1);
-        box-shadow: 3px 3px 9px 0px rgba(158,158,158,1);
+        -webkit-box-shadow: 1px 1px 4px 0px rgba(158,158,158,1);
+        -moz-box-shadow: 1px 1px 4px 0px rgba(158,158,158,1);
+        box-shadow: 1px 1px 4px 0px rgba(158,158,158,1);
+        margin: ${margin}
     }
     .header {
         background-color: rgb(137, 147, 149);

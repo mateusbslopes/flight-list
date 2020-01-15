@@ -2,9 +2,8 @@ import React from "react";
 import FlightColumn from "../../molecules/FlightColumn";
 import style from "./style";
 import FlightDetailButton from "../../molecules/FlightDetailButton";
-
-import FlightController from "../../controllers/Flights";
 import FlightPrice from "../../molecules/FlightPrice";
+import Card from "../../molecules/Card";
 
 class FlightRow extends React.Component {
   constructor(props) {
@@ -44,26 +43,31 @@ class FlightRow extends React.Component {
 
   render() {
     return (
-      <div css={style} key={this.state.id}>
-        <FlightColumn
-          text={this.formatAirline(this.state.airline)}
-          info={this.state.flightNumber}
-        />
-        <FlightColumn
-          text={this.formatHour(this.state.departureDate)}
-          info={this.state.from}
-        />
-        <FlightColumn
-          text={this.formatDuration(this.state.duration)}
-          info={this.formatStops(this.state.trips.length)}
-        />
-        <FlightColumn
-          text={this.formatHour(this.state.arrivalDate)}
-          info={this.state.to}
-        />
-        <FlightDetailButton />
-        <FlightPrice />
-      </div>
+      <Card
+        margin="0px 0px 5px 0px"
+        body={
+          <div css={style} key={this.state.id}>
+            <FlightColumn
+              text={this.formatAirline(this.state.airline)}
+              info={this.state.flightNumber}
+            />
+            <FlightColumn
+              text={this.formatHour(this.state.departureDate)}
+              info={this.state.from}
+            />
+            <FlightColumn
+              text={this.formatDuration(this.state.duration)}
+              info={this.formatStops(this.state.trips.length)}
+            />
+            <FlightColumn
+              text={this.formatHour(this.state.arrivalDate)}
+              info={this.state.to}
+            />
+            <FlightDetailButton />
+            <FlightPrice />
+          </div>
+        }
+      />
     );
   }
 }
