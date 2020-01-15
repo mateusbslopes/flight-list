@@ -15,7 +15,7 @@ class Header extends React.Component {
             justifyContent: "space-between"
           }}
         >
-          <Text>Teste Frontend</Text>
+          <Text size="big">Teste Frontend</Text>
           <div
             style={{
               display: "flex",
@@ -34,7 +34,7 @@ class Header extends React.Component {
                 size={"big"}
                 color={"rgb(26, 188, 156)"}
               />
-              <Text>Venda suas milhas</Text>
+              <Text weight="light">Venda suas milhas</Text>
             </div>
             <div
               style={{
@@ -48,7 +48,7 @@ class Header extends React.Component {
                 size={"big"}
                 color={"rgb(26, 188, 156)"}
               />
-              <Text>Tire suas duvidas</Text>
+              <Text weight="light">Tire suas duvidas</Text>
             </div>
             <div
               style={{
@@ -62,7 +62,7 @@ class Header extends React.Component {
                 size={"big"}
                 color={"rgb(26, 188, 156)"}
               />
-              <Text>Login ou cadastro</Text>
+              <Text weight="light">Login ou cadastro</Text>
             </div>
           </div>
         </div>
@@ -82,14 +82,14 @@ class Header extends React.Component {
             <Button
               onClick={() => this.props.onChangeDisplayedFlights("outbound")}
             >
-              Selecione seu voo de ida
+              <Text size="big">Selecione seu voo de ida</Text>
             </Button>
           </div>
           <div>
             <Button
               onClick={() => this.props.onChangeDisplayedFlights("inbound")}
             >
-              Selecione seu voo de volta
+              <Text size="big">Selecione seu voo de volta</Text>
             </Button>
           </div>
         </div>

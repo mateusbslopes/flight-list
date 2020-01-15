@@ -7,7 +7,7 @@ const style = (color, size) => {
       case "medium":
         return "black";
       case "big":
-        return "30px";
+        return "28px";
       default:
         throw new Error(`Invalid size ${size} given to component Icon`);
     }

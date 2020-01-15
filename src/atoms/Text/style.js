@@ -1,4 +1,4 @@
-const style = (size = 12, weight = "normal", color = "normal") => {
+const style = (size = "normal", weight = "normal", color = "normal") => {
   const getColor = () => {
     switch (color) {
       case "light":
@@ -24,12 +24,23 @@ const style = (size = 12, weight = "normal", color = "normal") => {
     }
   };
 
+  const getFontSize = size => {
+    switch (size) {
+      case "small":
+        return "10px";
+      case "normal":
+        return "12px";
+      case "big":
+        return "18px";
+    }
+  };
+
   return `
         justify-content: center;
         font-family: Montserrat, arial, sans-serif;
         color: ${getColor()};
         font-weight: ${getWeight(weight)};
-        font-size: ${size};
+        font-size: ${getFontSize(size)};
     `;
 };
 

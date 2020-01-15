@@ -18,11 +18,15 @@ class ExtraInfo extends React.Component {
           <Card
             header={<Text color="white">Alerta de preco</Text>}
             body={
-              <Text>
-                <b>Crie um alerta de preco de ORIGEM para DESTINO. </b>Quando o
-                voo estiver no preco cadastrado, enviaremos um alerta para seu
-                e-mail e voce economiza ainda mais.
-              </Text>
+              <div>
+                <Text size="small">
+                  Crie um alerta de preco de ORIGEM para DESTINO.
+                </Text>
+                <Text size="small" weight="light">
+                  Quando o voo estiver no preco cadastrado, enviaremos um alerta
+                  para seu e-mail e voce economiza ainda mais.
+                </Text>
+              </div>
             }
           />
         </div>
