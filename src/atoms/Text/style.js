@@ -29,7 +29,7 @@ const style = (size = "normal", weight = "normal", color = "normal") => {
       case "small":
         return "10px";
       case "normal":
-        return "12px";
+        return "30px";
       case "big":
         return "60px";
     }

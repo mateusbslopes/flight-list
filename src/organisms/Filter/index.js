@@ -1,5 +1,5 @@
 import React from "react";
-import SelectAutocomplete from "../../molecules/SelectAutocomplete";
+import FlightSelection from "../../molecules/FlightSelection";
 import Passengers from "../Passengers";
 import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
@@ -23,6 +23,7 @@ class Filter extends React.Component {
     this.handleAdultsChange = this.handleAdultsChange.bind(this);
     this.handleChildrenChange = this.handleChildrenChange.bind(this);
     this.handleInfantsChange = this.handleInfantsChange.bind(this);
+    this.getDisplayableError = this.getDisplayableError.bind(this);
   }
 
   handleChange(event, field) {
@@ -33,10 +34,14 @@ class Filter extends React.Component {
 
   // TODO centralize state management
   handleFromChange(from) {
+    console.log("from");
+    console.log(from);
     this.setState({ from });
   }
 
   handleToChange(to) {
+    console.log("to");
+    console.log(to);
     this.setState({ to });
   }
 
@@ -71,24 +76,14 @@ class Filter extends React.Component {
       <form css={style}>
         <div style={{ display: "flex", flexDirection: "row" }}>
           {/* TODO Make a component (field w/ error) */}
-          <div>
-            <SelectAutocomplete
-              data={this.props.airports}
-              placeholder="origem"
-              label="Sair de"
-              onChange={this.handleFromChange}
-            />
-            {this.getDisplayableError(this.props.errors, "from")}
-          </div>
-          <div>
-            <SelectAutocomplete
-              data={this.props.airports}
-              placeholder="destino"
-              label="Ir para"
-              onChange={this.handleToChange}
-            />
-            {this.getDisplayableError(this.props.errors, "to")}
-          </div>
+          <FlightSelection
+            airports={this.props.airports}
+            handleFromChange={this.handleFromChange}
+            handleToChange={this.handleToChange}
+            to={this.state.to}
+            from={this.state.from}
+            getDisplayableError={this.getDisplayableError}
+          />
           <div>
             <div>
               Ida

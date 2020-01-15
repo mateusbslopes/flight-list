@@ -89,7 +89,7 @@ class Flights extends React.Component {
           airports={this.state.airports || []}
           filterErrors={this.state.errors.filter}
         />
-        <div className="content">
+        {/* <div className="content">
           <div className="extraInfo">
             <ExtraInfo
               airlines={this.state.filterableAirlines || []}
@@ -106,7 +106,7 @@ class Flights extends React.Component {
               )}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

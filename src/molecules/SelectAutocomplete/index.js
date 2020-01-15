@@ -17,7 +17,7 @@ class SelectAutocomplete extends React.Component {
       onChange: props.onChange
     };
 
-    this.handleFocus = this.handleFocus.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.filterData = this.filterData.bind(this);
@@ -31,12 +31,12 @@ class SelectAutocomplete extends React.Component {
     });
   }
 
-  handleFocus() {
+  handleClick() {
     this.setState({ isListOpen: true, state: "searching" });
   }
 
-  handleBlur() {
-    let state = this.state.value ? "fulfilled" : "empty";
+  handleBlur(value) {
+    let state = value ? "fulfilled" : "empty";
     this.setState({ isListOpen: false, state });
   }
 
@@ -51,8 +51,8 @@ class SelectAutocomplete extends React.Component {
   }
 
   selectItem(label, airportCode) {
-    this.setState({ value: { label, airportCode }, state: "fulfilled" });
-    this.state.onChange(airportCode);
+    this.setState({ state: "fulfilled" });
+    this.state.onChange({ label, airportCode });
   }
 
   handleOnMouseDown(evnt) {
@@ -73,14 +73,14 @@ class SelectAutocomplete extends React.Component {
     );
   }
 
-  getDisplayedValue() {
+  getDisplayedValue(value) {
     switch (this.state.state) {
       case "searching":
         return this.state.search;
       case "empty":
         return this.state.placeholder;
       case "fulfilled":
-        return this.state.value.label;
+        return value.label;
     }
   }
 
@@ -91,18 +91,25 @@ class SelectAutocomplete extends React.Component {
   render() {
     return (
       <div css={style}>
-        {/* TODO Label should be on state? */}
-        {this.state.label}
-        <input
-          type="text"
-          value={`${this.getDisplayedValue()}`}
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-        />
-        {this.state.state === "searching" && (
-          <div className="list">{this.getDataToDisplay(this.props.data)}</div>
-        )}
+        <div className="autocompleteContent">
+          {/* TODO Label should be on state? */}
+          <div className="label">{this.state.label}</div>
+          <div className="autocompleteValue">
+            <input
+              className="inputValue"
+              type="text"
+              value={`${this.getDisplayedValue(this.props.value)}`}
+              onChange={this.handleChange}
+              onClick={this.handleClick}
+              onBlur={() => this.handleBlur(this.props.value)}
+            />
+            {this.state.state === "searching" && (
+              <div className="list">
+                {this.getDataToDisplay(this.props.data)}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     );
   }

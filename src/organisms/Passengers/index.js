@@ -6,19 +6,19 @@ class Passengers extends React.Component {
   constructor(props) {
     super(props);
     this.state = { optionsIsVisible: false };
-    this.handleOnMouseEnter = this.handleOnMouseEnter.bind(this);
-    this.handleOnMouseLeave = this.handleOnMouseLeave.bind(this);
+    this.onTouchEnd = this.onTouchEnd.bind(this);
+    this.handleOnBlur = this.handleOnBlur.bind(this);
   }
 
   componentDidMount() {
     this.setState(this.state);
   }
 
-  handleOnMouseEnter() {
+  onTouchEnd() {
     this.setState({ optionsIsVisible: true });
   }
 
-  handleOnMouseLeave() {
+  handleOnBlur() {
     this.setState({ optionsIsVisible: false });
   }
 
@@ -30,11 +30,7 @@ class Passengers extends React.Component {
 
   render() {
     return (
-      <div
-        onMouseEnter={this.handleOnMouseEnter}
-        onMouseLeave={this.handleOnMouseLeave}
-        css={style}
-      >
+      <div onTouchEnd={this.onTouchEnd} onBlur={this.handleOnBlur} css={style}>
         <div>
           {this.getDisplayValue(
             this.props.adults,
