@@ -3,25 +3,16 @@ import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
 import Filter from "../Filter";
+import style from "./style";
 
 class Header extends React.Component {
   render() {
     return (
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between"
-          }}
-        >
-          <Text size="big">Teste Frontend</Text>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row"
-            }}
-          >
+      <div className="row" css={style}>
+        <div className="title row">
+          <Icon name="navigation-menu" size="big" color="rgb(26, 188, 156)" />
+          <Text size="big">Teste Front</Text>
+          <div className="links">
             <div
               style={{
                 display: "flex",

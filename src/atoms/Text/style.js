@@ -31,7 +31,7 @@ const style = (size = "normal", weight = "normal", color = "normal") => {
       case "normal":
         return "12px";
       case "big":
-        return "18px";
+        return "60px";
     }
   };
 

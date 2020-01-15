@@ -81,8 +81,9 @@ class Flights extends React.Component {
 
   render() {
     return (
-      <div css={style}>
+      <div css={style} className="container-fluid">
         <Header
+          className="row"
           onSearch={this.onSearch}
           onChangeDisplayedFlights={this.onChangeDisplayedFlights}
           airports={this.state.airports || []}
