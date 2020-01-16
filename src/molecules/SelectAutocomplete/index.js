@@ -50,7 +50,7 @@ class SelectAutocomplete extends React.Component {
     );
   }
 
-  selectItem(label, airportCode) {
+  selectItem(evt, label, airportCode) {
     this.setState({ state: "fulfilled" });
     this.state.onChange({ label, airportCode });
   }
@@ -65,7 +65,7 @@ class SelectAutocomplete extends React.Component {
       <div
         className="list-item"
         key={airportCode}
-        onClick={() => this.selectItem(label, airportCode)}
+        onClick={evt => this.selectItem(evt, label, airportCode)}
         onMouseDown={this.handleOnMouseDown}
       >
         {`${airportCode} ${label}, ${country}`}{" "}
@@ -91,7 +91,10 @@ class SelectAutocomplete extends React.Component {
   render() {
     return (
       <div css={style}>
-        <div className="autocompleteContent">
+        <div
+          className="autocompleteContent"
+          onBlur={() => this.handleBlur(this.props.value)}
+        >
           {/* TODO Label should be on state? */}
           <div className="label">{this.state.label}</div>
           <div className="autocompleteValue">
@@ -101,7 +104,6 @@ class SelectAutocomplete extends React.Component {
               value={`${this.getDisplayedValue(this.props.value)}`}
               onChange={this.handleChange}
               onClick={this.handleClick}
-              onBlur={() => this.handleBlur(this.props.value)}
             />
             {this.state.state === "searching" && (
               <div className="list">

@@ -37,8 +37,8 @@ class Flights {
     const SEARCH_FLIGHTS_API = "https://flight-price-hmg.maxmilhas.com.br";
     const postData = {
       tripType: "RT",
-      from: filter.from,
-      to: filter.to,
+      from: filter.from.airportCode,
+      to: filter.to.airportCode,
       outboundDate: filter.outboundDate,
       inboundDate: filter.inboundDate,
       cabin: "EC", //classe econômica (EC) ou executiva (EX)

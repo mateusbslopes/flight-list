@@ -13,7 +13,7 @@ class Filter extends React.Component {
       onSearch: props.onSearch,
       outboundDate: "2020-08-22",
       inboundDate: "2020-08-26",
-      adults: 0,
+      adults: 1,
       children: 0,
       infants: 0
     };
@@ -34,14 +34,10 @@ class Filter extends React.Component {
 
   // TODO centralize state management
   handleFromChange(from) {
-    console.log("from");
-    console.log(from);
     this.setState({ from });
   }
 
   handleToChange(to) {
-    console.log("to");
-    console.log(to);
     this.setState({ to });
   }
 

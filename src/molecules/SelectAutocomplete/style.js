@@ -6,7 +6,7 @@ export default () => `
     }
     .autocompleteValue {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
 
     .inputValue{
@@ -26,12 +26,13 @@ export default () => `
     }
 
     .list {
-        max-height: 90px;
-        background-color: white;
+        max-height: 400px;
         overflow-y: auto;
-        z-index: 10;
-        position: absolute;
-        border: solid black 2px
+        widht: 100%;
+    }
+
+    .list-item {
+        font-size: 20px;
     }
     
     .list-item:hover{

@@ -8,19 +8,15 @@ class FlightSelection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      FieldsSection: false
+      fieldsSection: false
     };
 
+    // TODO see how to close flight list
     this.handleOnMouseEnter = this.handleOnMouseEnter.bind(this);
-    this.handleOnMouseLeave = this.handleOnMouseLeave.bind(this);
   }
 
   handleOnMouseEnter() {
-    this.setState({ FieldsSection: true });
-  }
-
-  handleOnMouseLeave() {
-    this.setState({ FieldsSection: false });
+    this.setState({ fieldsSection: true });
   }
 
   componentDidMount() {
@@ -35,7 +31,7 @@ class FlightSelection extends React.Component {
       return "Sel. Origem";
     }
     if (to) {
-      return `${from} - ${to}`;
+      return `${from.airportCode} - ${to.airportCode}`;
     }
     return "Sel. Dest";
   }
@@ -45,7 +41,7 @@ class FlightSelection extends React.Component {
       <div
         css={style}
         onMouseEnter={this.handleOnMouseEnter}
-        onMouseLeave={this.handleOnMouseLeave}
+        onBlur={this.handleOnMouseLeave}
       >
         <div className="mobile-display">
           <Icon
@@ -57,7 +53,7 @@ class FlightSelection extends React.Component {
             {this.getDisplayableValue(this.props.from, this.props.to)}
           </Text>
         </div>
-        {this.state.FieldsSection && (
+        {this.state.fieldsSection && (
           <div className="fields-section">
             <div>
               <SelectAutocomplete
