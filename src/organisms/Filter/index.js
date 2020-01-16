@@ -93,19 +93,23 @@ class Filter extends React.Component {
             />
             {this.getDisplayableError(this.props.errors, "to")}
           </div>
-          <div className="row">
-            <Calendar
-              label="Ida"
-              value={this.state.outboundDate}
-              handleChange={event => this.handleChange(event, "outboundDate")}
-            />
-            {this.getDisplayableError(this.props.errors, "outboundDate")}
-            <Calendar
-              label="Volta"
-              value={this.state.inboundDate}
-              handleChange={event => this.handleChange(event, "inboundDate")}
-            />
-            {this.getDisplayableError(this.props.errors, "inboundDate")}
+          <div className="flight-dates">
+            <div className="col-sm-8">
+              <Calendar
+                label="Ida"
+                value={this.state.outboundDate}
+                handleChange={event => this.handleChange(event, "outboundDate")}
+              />
+              {this.getDisplayableError(this.props.errors, "outboundDate")}
+            </div>
+            <div className="col-sm-8">
+              <Calendar
+                label="Volta"
+                value={this.state.inboundDate}
+                handleChange={event => this.handleChange(event, "inboundDate")}
+              />
+              {this.getDisplayableError(this.props.errors, "inboundDate")}
+            </div>
           </div>
 
           <div>
@@ -121,21 +125,19 @@ class Filter extends React.Component {
             {this.getDisplayableError(this.props.errors, "children")}
             {this.getDisplayableError(this.props.errors, "infants")}
           </div>
-          <Button
-            backgroundColor={"rgb(26, 188, 156)"}
-            onClick={() => this.state.onSearch(this.state)}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center"
-              }}
-            >
-              <Icon name="action-search" size={"small"} color={"white"} />
-              <Text color={"white"}>Pesquisar</Text>
+          <div className="row search-buttom">
+            <div>
+              <Button
+                backgroundColor={"rgb(26, 188, 156)"}
+                onClick={() => this.state.onSearch(this.state)}
+              >
+                <div className="search-buttom-content">
+                  <Icon name="action-search" size={"big"} color={"white"} />
+                  <Text color={"white"}>Pesquisar</Text>
+                </div>
+              </Button>
             </div>
-          </Button>
+          </div>
         </div>
       </div>
     );

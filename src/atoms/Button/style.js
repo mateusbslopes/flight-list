@@ -3,6 +3,7 @@ const style = (borderColor, bgColor) => `
     border-color: ${borderColor || "white"};
     border-radius: 9px;
     border-width: 1px;
+    height: 48px;
     outline: inherit;
 `;
 

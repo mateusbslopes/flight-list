@@ -1,7 +1,5 @@
 export default () => `
 
-    padding: 10px;
-
     .filter-option {
         position: absolute;
         display: flex;
@@ -16,6 +14,22 @@ export default () => `
         color: white;
         padding: 2px;
         position: absolute;
+    }
+
+    .flight-dates {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .search-buttom {
+        display: flex;
+        align-self: flex-end;
+    }
+
+    .search-buttom-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 
 `;
