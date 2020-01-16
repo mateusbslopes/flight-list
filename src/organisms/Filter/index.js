@@ -5,6 +5,7 @@ import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
 import style from "./style";
+import Calendar from "../../molecules/Calendar";
 
 class Filter extends React.Component {
   constructor(props) {
@@ -93,23 +94,17 @@ class Filter extends React.Component {
             {this.getDisplayableError(this.props.errors, "to")}
           </div>
           <div className="row">
-            <div className="col-sm-8">
-              Ida
-              <input
-                type="text"
-                value={this.state.outboundDate}
-                onChange={event => this.handleChange(event, "outboundDate")}
-              />
-            </div>
+            <Calendar
+              label="Ida"
+              value={this.state.outboundDate}
+              handleChange={event => this.handleChange(event, "outboundDate")}
+            />
             {this.getDisplayableError(this.props.errors, "outboundDate")}
-            <div className="col-sm-8">
-              Volta
-              <input
-                type="text"
-                value={this.state.inboundDate}
-                onChange={event => this.handleChange(event, "inboundDate")}
-              />
-            </div>
+            <Calendar
+              label="Volta"
+              value={this.state.inboundDate}
+              handleChange={event => this.handleChange(event, "inboundDate")}
+            />
             {this.getDisplayableError(this.props.errors, "inboundDate")}
           </div>
 
