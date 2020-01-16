@@ -81,7 +81,7 @@ class Flights extends React.Component {
 
   render() {
     return (
-      <div css={style} className="container-fluid">
+      <div css={style} className="container-flex">
         <Header
           className="row"
           onSearch={this.onSearch}
