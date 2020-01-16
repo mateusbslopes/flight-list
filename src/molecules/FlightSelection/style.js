@@ -6,8 +6,9 @@ export default () => `
     }
 
     .fields-section {
+        display: flex;
         position: absolute;
-        background-color: rgb(238, 243, 247);
+        background-color: white;
     }
 
 `;

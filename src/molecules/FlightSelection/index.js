@@ -3,12 +3,13 @@ import SelectAutocomplete from "../SelectAutocomplete";
 import Icon from "../../atoms/Icon";
 import Text from "../../atoms/Text";
 import style from "./style";
+import Card from "../Card";
 
 class FlightSelection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fieldsSection: false
+      fieldsSectionIsOpen: false
     };
 
     // TODO see how to close flight list
@@ -16,7 +17,7 @@ class FlightSelection extends React.Component {
   }
 
   handleOnMouseEnter() {
-    this.setState({ fieldsSection: true });
+    this.setState({ fieldsSectionIsOpen: true });
   }
 
   componentDidMount() {
@@ -53,9 +54,9 @@ class FlightSelection extends React.Component {
             {this.getDisplayableValue(this.props.from, this.props.to)}
           </Text>
         </div>
-        {this.state.fieldsSection && (
-          <div className="fields-section">
-            <div>
+        {this.state.fieldsSectionIsOpen && (
+          <div className="col-sm-16 fields-section">
+            <div className="col-sm-8">
               <SelectAutocomplete
                 data={this.props.airports}
                 placeholder="origem"
@@ -65,7 +66,7 @@ class FlightSelection extends React.Component {
               />
               {this.props.getDisplayableError(this.props.errors, "from")}
             </div>
-            <div>
+            <div className="col-sm-8">
               <SelectAutocomplete
                 data={this.props.airports}
                 placeholder="destino"
