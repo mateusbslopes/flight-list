@@ -1,15 +1,27 @@
 export default () => `
 
-    .autocompleteContent {
+    .autocomplete-content {
         display: flex;
         flex-direction: column;
     }
-    .autocompleteValue {
+    .autocomplete-config {
         display: flex;
         flex-direction: column;
     }
 
-    .inputValue{
+    .autocomplete-value {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .autocomplete-value-desc {
+        display: flex;
+        align-self: flex-end;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .input-value{
         color: rgb(26, 188, 156);
         background: none;
         border: none;
@@ -21,7 +33,7 @@ export default () => `
     .label {
         align-self: start;
         font-style: italic;
-        font-size: 30px;
+        font-size: 25px;
         color: rgb(135, 147, 149);
         font-weight: 20;
     }
@@ -32,6 +44,8 @@ export default () => `
         max-height: 400px;
         overflow-y: auto;
         background-color: white;
+        z-index: 10;
+        border: solid 1px rgb(135, 147, 149);
     }
 
     .list-item {

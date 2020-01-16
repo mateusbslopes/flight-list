@@ -1,5 +1,6 @@
 import React from "react";
 import String from "../../Utils/String";
+import Text from "../../atoms/Text";
 import style from "./style";
 
 class SelectAutocomplete extends React.Component {
@@ -92,21 +93,28 @@ class SelectAutocomplete extends React.Component {
     return (
       <div css={style}>
         <div
-          className="autocompleteContent"
+          className="autocomplete-content"
           onBlur={() => this.handleBlur(this.props.value)}
         >
-          {/* TODO Label should be on state? */}
           <div className="label">{this.state.label}</div>
-          <div className="autocompleteValue">
-            <input
-              className="inputValue"
-              type="text"
-              value={`${this.getDisplayedValue(this.props.value)}`}
-              onChange={this.handleChange}
-              onClick={this.handleClick}
-            />
+          <div className="autocomplete-config">
+            <div className="autocomplete-value col-sm-16">
+              <input
+                className="input-value col-sm-8"
+                type="text"
+                value={`${this.getDisplayedValue(this.props.value)}`}
+                onChange={this.handleChange}
+                onClick={this.handleClick}
+              />
+              <div className="autocomplete-value-desc">
+                <div>
+                  {this.state.state === "fulfilled" &&
+                    this.props.value.airportCode}
+                </div>
+              </div>
+            </div>
             {this.state.state === "searching" && (
-              <div className="col-sm-16 list">
+              <div className="col-sm-8 list">
                 {this.getDataToDisplay(this.props.data)}
               </div>
             )}

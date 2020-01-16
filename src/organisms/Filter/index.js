@@ -69,10 +69,10 @@ class Filter extends React.Component {
 
   render() {
     return (
-      <form css={style}>
-        <div>
+      <div css={style}>
+        <div className="filter-options">
           {/* TODO Make a component (field w/ error) */}
-          <div className="row">
+          <div>
             <SelectAutocomplete
               data={this.props.airports}
               placeholder="Origem"
@@ -82,7 +82,7 @@ class Filter extends React.Component {
             />
             {this.getDisplayableError(this.props.errors, "from")}
           </div>
-          <div className="row">
+          <div>
             <SelectAutocomplete
               data={this.props.airports}
               placeholder="Destino"
@@ -92,8 +92,8 @@ class Filter extends React.Component {
             />
             {this.getDisplayableError(this.props.errors, "to")}
           </div>
-          <div>
-            <div>
+          <div className="row">
+            <div className="col-sm-8">
               Ida
               <input
                 type="text"
@@ -102,9 +102,7 @@ class Filter extends React.Component {
               />
             </div>
             {this.getDisplayableError(this.props.errors, "outboundDate")}
-          </div>
-          <div>
-            <div>
+            <div className="col-sm-8">
               Volta
               <input
                 type="text"
@@ -144,7 +142,7 @@ class Filter extends React.Component {
             </div>
           </Button>
         </div>
-      </form>
+      </div>
     );
   }
 }
