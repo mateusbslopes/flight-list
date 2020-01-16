@@ -13,6 +13,7 @@ export default () => `
         color: rgb(26, 188, 156);
         background: none;
         border: none;
+        border-bottom: 1px solid rgb(135, 147, 149);
         font-size: 30px;
         outline: none;
     }
@@ -26,9 +27,11 @@ export default () => `
     }
 
     .list {
+        position: absolute;
+        margin-top: 45px;
         max-height: 400px;
         overflow-y: auto;
-        widht: 100%;
+        background-color: white;
     }
 
     .list-item {

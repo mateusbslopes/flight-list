@@ -106,7 +106,7 @@ class SelectAutocomplete extends React.Component {
               onClick={this.handleClick}
             />
             {this.state.state === "searching" && (
-              <div className="list">
+              <div className="col-sm-16 list">
                 {this.getDataToDisplay(this.props.data)}
               </div>
             )}
