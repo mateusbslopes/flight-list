@@ -1,5 +1,5 @@
 import React from "react";
-import FlightSelection from "../../molecules/FlightSelection";
+import SelectAutocomplete from "../../molecules/SelectAutocomplete";
 import Passengers from "../Passengers";
 import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
@@ -70,16 +70,28 @@ class Filter extends React.Component {
   render() {
     return (
       <form css={style}>
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div>
           {/* TODO Make a component (field w/ error) */}
-          <FlightSelection
-            airports={this.props.airports}
-            handleFromChange={this.handleFromChange}
-            handleToChange={this.handleToChange}
-            to={this.state.to}
-            from={this.state.from}
-            getDisplayableError={this.getDisplayableError}
-          />
+          <div className="row">
+            <SelectAutocomplete
+              data={this.props.airports}
+              placeholder="Origem"
+              label="Sair de"
+              value={this.state.from}
+              onChange={this.handleFromChange}
+            />
+            {this.getDisplayableError(this.props.errors, "from")}
+          </div>
+          <div className="row">
+            <SelectAutocomplete
+              data={this.props.airports}
+              placeholder="Destino"
+              label="Ir para"
+              value={this.state.to}
+              onChange={this.handleToChange}
+            />
+            {this.getDisplayableError(this.props.errors, "to")}
+          </div>
           <div>
             <div>
               Ida
