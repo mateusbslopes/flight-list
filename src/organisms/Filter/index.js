@@ -242,7 +242,7 @@ class Filter extends React.Component {
             </div>
             <div className="w-100"></div>
             <div className="row">
-              <div className="search-buttom">
+              <div>
                 <Button
                   backgroundColor={"rgb(26, 188, 156)"}
                   onClick={this.onSearch}

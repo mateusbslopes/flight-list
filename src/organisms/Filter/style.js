@@ -23,6 +23,7 @@ export default () => `
         height: 45px;
         padding: 18px;
         border-radius: 5px;
+        border-bottom: 2px solid rgb(77, 164, 139);
     }
 
     .filter-option {
@@ -51,6 +52,7 @@ export default () => `
     .filter-date-day {
         font-weight: 20;
         margin-right: 10px;
+        margin-left: 10px;
     }
 
     .filter-passengers {
