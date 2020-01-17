@@ -1,8 +1,6 @@
 export default () => `
     .options {
         display: flex;
-        z-index: 10;
-        position: absolute;
         flex-direction: column;
     }
 
@@ -10,5 +8,8 @@ export default () => `
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        font-size: 25px;
+        font-style: italic;
+        font-weight: 20;
     }
 `;

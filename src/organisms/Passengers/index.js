@@ -1,11 +1,12 @@
 import React from "react";
 import Icon from "../../atoms/Icon";
+import Text from "../../atoms/Text";
 import style from "./style";
 
 class Passengers extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { optionsIsVisible: false };
+    this.state = { optionsIsVisible: true };
     this.onTouchEnd = this.onTouchEnd.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
   }
@@ -31,20 +32,13 @@ class Passengers extends React.Component {
   render() {
     return (
       <div onTouchEnd={this.onTouchEnd} onBlur={this.handleOnBlur} css={style}>
-        <div>
-          {this.getDisplayValue(
-            this.props.adults,
-            this.props.children,
-            this.props.infants
-          )}
-        </div>
         {this.state.optionsIsVisible && (
-          <div className="options">
+          <div className="options col-sm-6">
             <div className="options-item">
-              Adulto
+              <div>Adulto</div>
               <div>
                 <Icon
-                  size="small"
+                  size="medium"
                   name="action-remove"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
@@ -53,7 +47,7 @@ class Passengers extends React.Component {
                 />
                 {this.props.adults}
                 <Icon
-                  size="small"
+                  size="medium"
                   name="action-add"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
@@ -66,7 +60,7 @@ class Passengers extends React.Component {
               Crianca
               <div>
                 <Icon
-                  size="small"
+                  size="medium"
                   name="action-remove"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
@@ -75,7 +69,7 @@ class Passengers extends React.Component {
                 />
                 {this.props.children}
                 <Icon
-                  size="small"
+                  size="medium"
                   name="action-add"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
@@ -88,7 +82,7 @@ class Passengers extends React.Component {
               Bebe
               <div>
                 <Icon
-                  size="small"
+                  size="medium"
                   name="action-remove"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
@@ -97,7 +91,7 @@ class Passengers extends React.Component {
                 />
                 {this.props.infants}
                 <Icon
-                  size="small"
+                  size="medium"
                   name="action-add"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
