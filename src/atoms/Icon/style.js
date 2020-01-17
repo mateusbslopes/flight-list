@@ -5,7 +5,7 @@ const style = (color, size) => {
       case "small":
         return "15px";
       case "medium":
-        return "22px";
+        return "30px";
       case "big":
         return "40px";
       default:

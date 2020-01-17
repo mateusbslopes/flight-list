@@ -15,7 +15,11 @@ class Calendar extends React.Component {
               value={this.props.value}
               onChange={this.props.handleChange}
             />
-            <Icon color="rgb(26, 188, 156)" size="big" name="action-calendar" />
+            <Icon
+              color="rgb(26, 188, 156)"
+              size="big"
+              name="max-icon-action-calendar"
+            />
           </div>
         </div>
       </div>

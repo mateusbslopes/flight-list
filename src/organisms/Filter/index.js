@@ -16,7 +16,8 @@ class Filter extends React.Component {
       inboundDate: "2020-08-26",
       adults: 1,
       children: 0,
-      infants: 0
+      infants: 0,
+      filterOptionIsOpen: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFromChange = this.handleFromChange.bind(this);
@@ -71,75 +72,120 @@ class Filter extends React.Component {
   render() {
     return (
       <div css={style}>
-        <div className="filter-options">
-          {/* TODO Make a component (field w/ error) */}
-          <div>
-            <SelectAutocomplete
-              data={this.props.airports}
-              placeholder="Origem"
-              label="Sair de"
-              value={this.state.from}
-              onChange={this.handleFromChange}
+        <div className="filter-value">
+          <div className="filter-locations">
+            <Icon
+              size="medium"
+              name="icon-max-communication-location"
+              color="rgb(26, 188, 156)"
             />
-            {this.getDisplayableError(this.props.errors, "from")}
+            <div className="filter-locations-value">CNF-FLN</div>
           </div>
-          <div>
-            <SelectAutocomplete
-              data={this.props.airports}
-              placeholder="Destino"
-              label="Ir para"
-              value={this.state.to}
-              onChange={this.handleToChange}
+          <div className="filter-date">
+            <Icon
+              color="rgb(26, 188, 156)"
+              size="medium"
+              name="icon-max-action-calendar"
             />
-            {this.getDisplayableError(this.props.errors, "to")}
+            <div className="filter-date-day">08</div>
+            NOV 2017
           </div>
-          <div className="flight-dates">
-            <div className="col-sm-8">
-              <Calendar
-                label="Ida"
-                value={this.state.outboundDate}
-                handleChange={event => this.handleChange(event, "outboundDate")}
+          <div className="filter-date">
+            <Icon
+              color="rgb(26, 188, 156)"
+              size="medium"
+              name="icon-max-action-calendar"
+            />
+            <div className="filter-date-day">08</div>
+            NOV 2017
+          </div>
+          <div className="filter-passengers">
+            <div className="filter-date">
+              <Icon
+                color="rgb(26, 188, 156)"
+                size="medium"
+                name="icon-max-action-calendar"
               />
-              {this.getDisplayableError(this.props.errors, "outboundDate")}
-            </div>
-            <div className="col-sm-8">
-              <Calendar
-                label="Volta"
-                value={this.state.inboundDate}
-                handleChange={event => this.handleChange(event, "inboundDate")}
-              />
-              {this.getDisplayableError(this.props.errors, "inboundDate")}
-            </div>
-          </div>
-
-          <div className="row">
-            <Passengers
-              adults={this.state.adults}
-              onChangeAdults={this.handleAdultsChange}
-              children={this.state.children}
-              onChangeChildren={this.handleChildrenChange}
-              infants={this.state.infants}
-              onChangeInfants={this.handleInfantsChange}
-            />
-            {this.getDisplayableError(this.props.errors, "adults")}
-            {this.getDisplayableError(this.props.errors, "children")}
-            {this.getDisplayableError(this.props.errors, "infants")}
-          </div>
-          <div class="w-100"></div>
-          <div className="row">
-            <div className="search-buttom">
-              <Button
-                backgroundColor={"rgb(26, 188, 156)"}
-                onClick={() => this.state.onSearch(this.state)}
-              >
-                <div className="search-buttom-content">
-                  <Icon name="action-search" size={"big"} color={"white"} />
-                  <Text color={"white"}>Pesquisar</Text>
-                </div>
-              </Button>
+              <div className="filter-date-day">08</div>
+              NOV 2017
             </div>
           </div>
         </div>
+        {this.state.filterOptionIsOpen && (
+          <div className="filter-options">
+            {/* TODO Make a component (field w/ error) */}
+            <div>
+              <SelectAutocomplete
+                data={this.props.airports}
+                placeholder="Origem"
+                label="Sair de"
+                value={this.state.from}
+                onChange={this.handleFromChange}
+              />
+              {this.getDisplayableError(this.props.errors, "from")}
+            </div>
+            <div>
+              <SelectAutocomplete
+                data={this.props.airports}
+                placeholder="Destino"
+                label="Ir para"
+                value={this.state.to}
+                onChange={this.handleToChange}
+              />
+              {this.getDisplayableError(this.props.errors, "to")}
+            </div>
+            <div className="flight-dates">
+              <div className="col-sm-8">
+                <Calendar
+                  label="Ida"
+                  value={this.state.outboundDate}
+                  handleChange={event =>
+                    this.handleChange(event, "outboundDate")
+                  }
+                />
+                {this.getDisplayableError(this.props.errors, "outboundDate")}
+              </div>
+              <div className="col-sm-8">
+                <Calendar
+                  label="Volta"
+                  value={this.state.inboundDate}
+                  handleChange={event =>
+                    this.handleChange(event, "inboundDate")
+                  }
+                />
+                {this.getDisplayableError(this.props.errors, "inboundDate")}
+              </div>
+            </div>
+
+            <div className="row">
+              <Passengers
+                adults={this.state.adults}
+                onChangeAdults={this.handleAdultsChange}
+                children={this.state.children}
+                onChangeChildren={this.handleChildrenChange}
+                infants={this.state.infants}
+                onChangeInfants={this.handleInfantsChange}
+              />
+              {this.getDisplayableError(this.props.errors, "adults")}
+              {this.getDisplayableError(this.props.errors, "children")}
+              {this.getDisplayableError(this.props.errors, "infants")}
+            </div>
+            <div class="w-100"></div>
+            <div className="row">
+              <div className="search-buttom">
+                <Button
+                  backgroundColor={"rgb(26, 188, 156)"}
+                  onClick={() => this.state.onSearch(this.state)}
+                >
+                  <div className="search-buttom-content">
+                    <Icon name="action-search" size={"big"} color={"white"} />
+                    <Text color={"white"}>Pesquisar</Text>
+                  </div>
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

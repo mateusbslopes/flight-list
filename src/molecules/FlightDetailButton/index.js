@@ -9,7 +9,11 @@ class FlightDetailButton extends React.Component {
     return (
       <Button borderColor={"rgb(135, 147, 149)"}>
         <div css={style}>
-          <Icon name="action-add" size={"small"} color={"rgb(26, 188, 156)"} />
+          <Icon
+            name="icon-max-action-add"
+            size={"small"}
+            color={"rgb(26, 188, 156)"}
+          />
           <Text>DETALHES DO VOO</Text>
         </div>
       </Button>
