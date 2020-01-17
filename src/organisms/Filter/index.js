@@ -112,7 +112,7 @@ class Filter extends React.Component {
             </div>
           </div>
 
-          <div>
+          <div className="row">
             <Passengers
               adults={this.state.adults}
               onChangeAdults={this.handleAdultsChange}
@@ -125,8 +125,9 @@ class Filter extends React.Component {
             {this.getDisplayableError(this.props.errors, "children")}
             {this.getDisplayableError(this.props.errors, "infants")}
           </div>
-          <div className="row search-buttom">
-            <div>
+          <div class="w-100"></div>
+          <div className="row">
+            <div className="search-buttom">
               <Button
                 backgroundColor={"rgb(26, 188, 156)"}
                 onClick={() => this.state.onSearch(this.state)}

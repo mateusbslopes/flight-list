@@ -14,22 +14,20 @@ export default () => `
         color: white;
         padding: 2px;
         position: absolute;
+        font-size: 18px;
+        z-index: 20;
     }
 
     .flight-dates {
         display: flex;
         flex-direction: row;
     }
-
-    .search-buttom {
-        display: flex;
-        align-self: flex-end;
-    }
-
+    
     .search-buttom-content {
         display: flex;
         flex-direction: row;
         align-items: center;
+        align-self: center;
     }
 
 `;
