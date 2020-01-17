@@ -26,6 +26,13 @@ class Filter extends React.Component {
     this.handleChildrenChange = this.handleChildrenChange.bind(this);
     this.handleInfantsChange = this.handleInfantsChange.bind(this);
     this.getDisplayableError = this.getDisplayableError.bind(this);
+    this.toggleFilterOption = this.toggleFilterOption.bind(this);
+    this.onSearch = this.onSearch.bind(this);
+  }
+
+  onSearch() {
+    this.state.onSearch(this.state);
+    this.toggleFilterOption();
   }
 
   handleChange(event, field) {
@@ -69,6 +76,10 @@ class Filter extends React.Component {
     return messageError ? <div className="error">{messageError}</div> : false;
   }
 
+  toggleFilterOption() {
+    this.setState({ filterOptionIsOpen: !this.state.filterOptionIsOpen });
+  }
+
   render() {
     return (
       <div css={style}>
@@ -109,6 +120,18 @@ class Filter extends React.Component {
               <div className="filter-date-day">08</div>
               NOV 2017
             </div>
+          </div>
+          <div className="filter-action" onClick={this.toggleFilterOption}>
+            {this.state.filterOptionIsOpen && (
+              <Icon
+                name="icon-max-communication-circle-close"
+                color="white"
+                size="medium"
+              />
+            )}
+            {!this.state.filterOptionIsOpen && (
+              <Icon name="icon-pencil" color="white" size="medium" />
+            )}
           </div>
         </div>
         {this.state.filterOptionIsOpen && (
@@ -170,12 +193,14 @@ class Filter extends React.Component {
               {this.getDisplayableError(this.props.errors, "children")}
               {this.getDisplayableError(this.props.errors, "infants")}
             </div>
-            <div class="w-100"></div>
+            <div className="w-100"></div>
             <div className="row">
               <div className="search-buttom">
                 <Button
                   backgroundColor={"rgb(26, 188, 156)"}
-                  onClick={() => this.state.onSearch(this.state)}
+                  onClick={() =>
+                    this.state.onSearch(this.state) && this.toggleFilterOption()
+                  }
                 >
                   <div className="search-buttom-content">
                     <Icon name="action-search" size={"big"} color={"white"} />

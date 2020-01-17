@@ -12,6 +12,19 @@ export default () => `
     .filter-value {
         display: flex;
         flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        border-bottom: 1px solid rgb(136, 140, 142);
+        padding: 15px;
+    }
+
+    .filter-action {
+        display: flex;
+        align-items: center;
+        background-color: rgb(26, 188, 156);
+        height: 45px;
+        padding: 18px;
+        border-radius: 5px;
     }
 
     .filter-locations {
