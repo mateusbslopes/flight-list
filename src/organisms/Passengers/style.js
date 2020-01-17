@@ -12,4 +12,11 @@ export default () => `
         font-style: italic;
         font-weight: 20;
     }
+
+    .options-item-config {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
 `;

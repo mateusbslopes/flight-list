@@ -15,4 +15,15 @@ export default () => `
         display: none;
     }
 
+    .header-navigation {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    
+    .header-navigation-item {
+        display: flex;
+        align-items: center;
+    }
+
 `;

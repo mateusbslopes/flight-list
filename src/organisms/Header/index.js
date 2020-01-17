@@ -11,7 +11,11 @@ class Header extends React.Component {
       <div css={style}>
         <div className="header-content col-sm-16">
           <div className="title row">
-            <Icon name="navigation-menu" size="big" color="rgb(26, 188, 156)" />
+            <Icon
+              name="icon-max-navigation-menu"
+              size="big"
+              color="rgb(26, 188, 156)"
+            />
             <Text size="big">Teste Front</Text>
             <div className="links">
               <div
@@ -63,21 +67,15 @@ class Header extends React.Component {
             airports={this.props.airports}
             errors={this.props.filterErrors}
           />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between"
-            }}
-          >
-            <div>
+          <div className="row header-navigation">
+            <div className="header-navigation-item">
               <Button
                 onClick={() => this.props.onChangeDisplayedFlights("outbound")}
               >
                 <Text>Selecione sua ida</Text>
               </Button>
             </div>
-            <div>
+            <div className="header-navigation-item">
               <Button
                 onClick={() => this.props.onChangeDisplayedFlights("inbound")}
               >

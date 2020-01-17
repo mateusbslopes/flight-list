@@ -111,15 +111,7 @@ class Filter extends React.Component {
             NOV 2017
           </div>
           <div className="filter-passengers">
-            <div className="filter-date">
-              <Icon
-                color="rgb(26, 188, 156)"
-                size="medium"
-                name="icon-max-action-calendar"
-              />
-              <div className="filter-date-day">08</div>
-              NOV 2017
-            </div>
+            <Icon name="icon-users" color="rgb(26, 188, 156)" size="medium" />2
           </div>
           <div className="filter-action" onClick={this.toggleFilterOption}>
             {this.state.filterOptionIsOpen && (
@@ -137,7 +129,7 @@ class Filter extends React.Component {
         {this.state.filterOptionIsOpen && (
           <div className="filter-options">
             {/* TODO Make a component (field w/ error) */}
-            <div>
+            <div className="filter-option">
               <SelectAutocomplete
                 data={this.props.airports}
                 placeholder="Origem"
@@ -147,7 +139,7 @@ class Filter extends React.Component {
               />
               {this.getDisplayableError(this.props.errors, "from")}
             </div>
-            <div>
+            <div className="filter-option">
               <SelectAutocomplete
                 data={this.props.airports}
                 placeholder="Destino"
@@ -158,7 +150,7 @@ class Filter extends React.Component {
               {this.getDisplayableError(this.props.errors, "to")}
             </div>
             <div className="flight-dates">
-              <div className="col-sm-8">
+              <div className="filter-option col-sm-8">
                 <Calendar
                   label="Ida"
                   value={this.state.outboundDate}
@@ -168,7 +160,7 @@ class Filter extends React.Component {
                 />
                 {this.getDisplayableError(this.props.errors, "outboundDate")}
               </div>
-              <div className="col-sm-8">
+              <div className="filter-option col-sm-8">
                 <Calendar
                   label="Volta"
                   value={this.state.inboundDate}
@@ -180,7 +172,7 @@ class Filter extends React.Component {
               </div>
             </div>
 
-            <div className="row">
+            <div className="filter-option">
               <Passengers
                 adults={this.state.adults}
                 onChangeAdults={this.handleAdultsChange}
@@ -203,7 +195,11 @@ class Filter extends React.Component {
                   }
                 >
                   <div className="search-buttom-content">
-                    <Icon name="action-search" size={"big"} color={"white"} />
+                    <Icon
+                      name="icon-max-action-search"
+                      size={"big"}
+                      color={"white"}
+                    />
                     <Text color={"white"}>Pesquisar</Text>
                   </div>
                 </Button>

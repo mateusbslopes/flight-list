@@ -44,12 +44,12 @@ export default () => `
         max-height: 400px;
         overflow-y: auto;
         background-color: white;
-        z-index: 10;
+        z-index: 40;
         border: solid 1px rgb(135, 147, 149);
     }
 
     .list-item {
-        font-size: 20px;
+        font-size: 30px;
     }
     
     .list-item:hover{

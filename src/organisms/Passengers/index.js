@@ -36,10 +36,10 @@ class Passengers extends React.Component {
           <div className="options col-sm-6">
             <div className="options-item">
               <div>Adulto</div>
-              <div>
+              <div className="options-item-config">
                 <Icon
-                  size="medium"
-                  name="action-remove"
+                  size="big"
+                  name="icon-max-action-remove"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
                     this.props.onChangeAdults(this.props.adults - 1)
@@ -47,8 +47,8 @@ class Passengers extends React.Component {
                 />
                 {this.props.adults}
                 <Icon
-                  size="medium"
-                  name="action-add"
+                  size="big"
+                  name="icon-max-action-add"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
                     this.props.onChangeAdults(this.props.adults + 1)
@@ -58,10 +58,10 @@ class Passengers extends React.Component {
             </div>
             <div className="options-item">
               Crianca
-              <div>
+              <div className="options-item-config">
                 <Icon
-                  size="medium"
-                  name="action-remove"
+                  size="big"
+                  name="icon-max-action-remove"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
                     this.props.onChangeChildren(this.props.children - 1)
@@ -69,8 +69,8 @@ class Passengers extends React.Component {
                 />
                 {this.props.children}
                 <Icon
-                  size="medium"
-                  name="action-add"
+                  size="big"
+                  name="icon-max-action-add"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
                     this.props.onChangeChildren(this.props.children + 1)
@@ -80,10 +80,10 @@ class Passengers extends React.Component {
             </div>
             <div className="options-item">
               Bebe
-              <div>
+              <div className="options-item-config">
                 <Icon
-                  size="medium"
-                  name="action-remove"
+                  size="big"
+                  name="icon-max-action-remove"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
                     this.props.onChangeInfants(this.props.infants - 1)
@@ -91,8 +91,8 @@ class Passengers extends React.Component {
                 />
                 {this.props.infants}
                 <Icon
-                  size="medium"
-                  name="action-add"
+                  size="big"
+                  name="icon-max-action-add"
                   color="rgb(26, 188, 156)"
                   onClick={() =>
                     this.props.onChangeInfants(this.props.infants + 1)

@@ -1,12 +1,10 @@
 export default () => `
 
-    .filter-option {
-        position: absolute;
+    .filter-options {
         display: flex;
         flex-direction: column;
         z-index: 10;
-        width: 100%;
-        height: 100%;
+        background-color: white;
     }
 
     .filter-value {
@@ -25,6 +23,10 @@ export default () => `
         height: 45px;
         padding: 18px;
         border-radius: 5px;
+    }
+
+    .filter-option {
+        padding: 25px;
     }
 
     .filter-locations {
@@ -48,6 +50,10 @@ export default () => `
 
     .filter-date-day {
         font-weight: 20;
+    }
+
+    .filter-passengers {
+        font-size: 40px;
     }
 
     .error {
