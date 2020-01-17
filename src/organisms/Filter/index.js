@@ -7,6 +7,21 @@ import Button from "../../atoms/Button";
 import style from "./style";
 import Calendar from "../../molecules/Calendar";
 
+const brazilianMonth = [
+  "JAN",
+  "FEV",
+  "MAR",
+  "ABR",
+  "MAI",
+  "JUN",
+  "JUL",
+  "AGO",
+  "SET",
+  "OUT",
+  "NOV",
+  "DEZ"
+];
+
 class Filter extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +29,8 @@ class Filter extends React.Component {
       onSearch: props.onSearch,
       outboundDate: "2020-08-22",
       inboundDate: "2020-08-26",
+      from: {},
+      to: {},
       adults: 1,
       children: 0,
       infants: 0,
@@ -28,6 +45,10 @@ class Filter extends React.Component {
     this.getDisplayableError = this.getDisplayableError.bind(this);
     this.toggleFilterOption = this.toggleFilterOption.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.getOutboundDisplayableDate = this.getOutboundDisplayableDate.bind(
+      this
+    );
+    this.getInboundDisplayableDate = this.getInboundDisplayableDate.bind(this);
   }
 
   onSearch() {
@@ -38,6 +59,7 @@ class Filter extends React.Component {
   handleChange(event, field) {
     let obj = {};
     obj[field] = event.target.value;
+    console.log(obj);
     this.setState(obj);
   }
 
@@ -80,6 +102,38 @@ class Filter extends React.Component {
     this.setState({ filterOptionIsOpen: !this.state.filterOptionIsOpen });
   }
 
+  getOutboundDisplayableDate() {
+    let date = new Date(this.state.outboundDate);
+    if (!isNaN(date.getTime()) && this.state.outboundDate.length == 10) {
+      return (
+        <div className="filter-date">
+          <div className="filter-date-day">{date.getDate()}</div>
+          {brazilianMonth[date.getMonth()]} {date.getFullYear()}
+        </div>
+      );
+    } else {
+      return "-";
+    }
+  }
+
+  getInboundDisplayableDate() {
+    let date = new Date(this.state.inboundDate);
+    if (!isNaN(date.getTime()) && this.state.inboundDate.length == 10) {
+      return (
+        <div className="filter-date">
+          <div className="filter-date-day">{date.getDate()}</div>
+          {brazilianMonth[date.getMonth()]} {date.getFullYear()}
+        </div>
+      );
+    } else {
+      return "-";
+    }
+  }
+
+  getPassengersAmount() {
+    return this.state.adults + this.state.children + this.state.infants;
+  }
+
   render() {
     return (
       <div css={style}>
@@ -90,7 +144,10 @@ class Filter extends React.Component {
               name="icon-max-communication-location"
               color="rgb(26, 188, 156)"
             />
-            <div className="filter-locations-value">CNF-FLN</div>
+            <div className="filter-locations-value">
+              {this.state.from && this.state.from.airportCode}-
+              {this.state.to && this.state.to.airportCode}
+            </div>
           </div>
           <div className="filter-date">
             <Icon
@@ -98,8 +155,7 @@ class Filter extends React.Component {
               size="medium"
               name="icon-max-action-calendar"
             />
-            <div className="filter-date-day">08</div>
-            NOV 2017
+            {this.getOutboundDisplayableDate()}
           </div>
           <div className="filter-date">
             <Icon
@@ -107,11 +163,11 @@ class Filter extends React.Component {
               size="medium"
               name="icon-max-action-calendar"
             />
-            <div className="filter-date-day">08</div>
-            NOV 2017
+            {this.getInboundDisplayableDate()}
           </div>
           <div className="filter-passengers">
-            <Icon name="icon-users" color="rgb(26, 188, 156)" size="medium" />2
+            <Icon name="icon-users" color="rgb(26, 188, 156)" size="medium" />
+            {this.getPassengersAmount()}
           </div>
           <div className="filter-action" onClick={this.toggleFilterOption}>
             {this.state.filterOptionIsOpen && (
@@ -128,7 +184,6 @@ class Filter extends React.Component {
         </div>
         {this.state.filterOptionIsOpen && (
           <div className="filter-options">
-            {/* TODO Make a component (field w/ error) */}
             <div className="filter-option">
               <SelectAutocomplete
                 data={this.props.airports}
@@ -190,9 +245,7 @@ class Filter extends React.Component {
               <div className="search-buttom">
                 <Button
                   backgroundColor={"rgb(26, 188, 156)"}
-                  onClick={() =>
-                    this.state.onSearch(this.state) && this.toggleFilterOption()
-                  }
+                  onClick={this.onSearch}
                 >
                   <div className="search-buttom-content">
                     <Icon

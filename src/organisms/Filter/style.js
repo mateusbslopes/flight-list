@@ -50,6 +50,7 @@ export default () => `
 
     .filter-date-day {
         font-weight: 20;
+        margin-right: 10px;
     }
 
     .filter-passengers {
