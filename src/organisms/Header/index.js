@@ -68,14 +68,29 @@ class Header extends React.Component {
             errors={this.props.filterErrors}
           />
           <div className="row header-navigation">
-            <div className="header-navigation-item">
+            <div
+              className={
+                "header-navigation-item" +
+                (this.props.displayedFlights == "outbound"
+                  ? " header-navigation-item-selected"
+                  : "")
+              }
+            >
               <Button
                 onClick={() => this.props.onChangeDisplayedFlights("outbound")}
               >
+                {console.log(this.props.displayedFlights)}
                 <Text>Selecione sua ida</Text>
               </Button>
             </div>
-            <div className="header-navigation-item">
+            <div
+              className={
+                "header-navigation-item" +
+                (this.props.displayedFlights == "inbound"
+                  ? " header-navigation-item-selected"
+                  : "")
+              }
+            >
               <Button
                 onClick={() => this.props.onChangeDisplayedFlights("inbound")}
               >

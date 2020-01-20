@@ -19,11 +19,17 @@ export default () => `
         display: flex;
         justify-content: space-between;
         padding: 10px;
+        align-items: center;
+
     }
     
     .header-navigation-item {
         display: flex;
         align-items: center;
+    }
+
+    .header-navigation-item-selected {
+        border-bottom: 2px solid rgb(26, 188, 156);
     }
 
 `;

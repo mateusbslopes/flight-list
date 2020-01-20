@@ -85,6 +85,7 @@ class Flights extends React.Component {
         <Header
           onSearch={this.onSearch}
           onChangeDisplayedFlights={this.onChangeDisplayedFlights}
+          displayedFlights={this.state.displayedFlights}
           airports={this.state.airports || []}
           filterErrors={this.state.errors.filter}
         />
