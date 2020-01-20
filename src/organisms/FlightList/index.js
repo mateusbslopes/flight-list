@@ -7,7 +7,7 @@ import Card from "../../molecules/Card";
 class FlightList extends React.Component {
   render() {
     return (
-      <div css={style} className="col-sm-14">
+      <div css={style} className="col-sm-15">
         <Card
           header={
             <div className="flight-list-header">

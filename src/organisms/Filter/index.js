@@ -59,7 +59,6 @@ class Filter extends React.Component {
   handleChange(event, field) {
     let obj = {};
     obj[field] = event.target.value;
-    console.log(obj);
     this.setState(obj);
   }
 

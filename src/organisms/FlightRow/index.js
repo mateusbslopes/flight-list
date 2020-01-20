@@ -47,7 +47,7 @@ class FlightRow extends React.Component {
         <Card
           body={
             <div className="flight-row-content" key={this.state.id}>
-              <div className="flight-row-content-descriptions">
+              <div className="flight-row-descriptions">
                 <FlightColumn
                   text={this.formatAirline(this.state.airline)}
                   info={this.state.flightNumber}
@@ -65,8 +65,11 @@ class FlightRow extends React.Component {
                   info={this.state.to}
                 />
               </div>
-              <div>
+              <div className="flight-row-action">
                 <FlightPrice />
+              </div>
+              <div className="flight-row-action">
+                <FlightDetailButton />
               </div>
             </div>
           }

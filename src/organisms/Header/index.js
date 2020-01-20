@@ -79,7 +79,6 @@ class Header extends React.Component {
               <Button
                 onClick={() => this.props.onChangeDisplayedFlights("outbound")}
               >
-                {console.log(this.props.displayedFlights)}
                 <Text>Selecione sua ida</Text>
               </Button>
             </div>
