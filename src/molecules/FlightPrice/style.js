@@ -6,4 +6,12 @@ export default () => `
         height: 45px;
     }
 
+    .extra-info {
+        display: flex;
+        justify-content: center;
+    }
+
+    .line-through {
+        text-decoration: line-through;
+    }
 `;

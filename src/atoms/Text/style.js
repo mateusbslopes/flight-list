@@ -10,6 +10,8 @@ const style = (size = "normal", weight = "normal", color = "normal") => {
         return "white";
       case "green":
         return "rgb(26, 188, 156);";
+      case "orange":
+        return "rgb(230, 173, 59)";
       default:
         throw new Error(`Invalid color ${color} given to component Text`);
     }

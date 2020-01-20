@@ -9,8 +9,6 @@ class FlightRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...props };
-
-    // FlightController.getAirports().then();
   }
 
   componentDidMount() {
@@ -66,7 +64,7 @@ class FlightRow extends React.Component {
                 />
               </div>
               <div className="flight-row-action">
-                <FlightPrice />
+                <FlightPrice pricing={this.state.pricing} />
               </div>
               <div className="flight-row-action">
                 <FlightDetailButton />

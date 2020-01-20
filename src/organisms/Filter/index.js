@@ -243,16 +243,16 @@ class Filter extends React.Component {
             <div className="row">
               <div>
                 <Button
-                  backgroundColor={"rgb(26, 188, 156)"}
+                  backgroundColor="rgb(26, 188, 156)"
                   onClick={this.onSearch}
                 >
                   <div className="search-buttom-content">
                     <Icon
                       name="icon-max-action-search"
-                      size={"big"}
-                      color={"white"}
+                      size="big"
+                      color="white"
                     />
-                    <Text color={"white"}>Pesquisar</Text>
+                    <Text color="white">Pesquisar</Text>
                   </div>
                 </Button>
               </div>

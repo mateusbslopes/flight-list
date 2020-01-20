@@ -27,8 +27,8 @@ class Header extends React.Component {
               >
                 <Icon
                   name="finance-coin"
-                  size={"big"}
-                  color={"rgb(26, 188, 156)"}
+                  size="big"
+                  color="rgb(26, 188, 156)"
                 />
                 <Text weight="light">Venda suas milhas</Text>
               </div>
@@ -41,8 +41,8 @@ class Header extends React.Component {
               >
                 <Icon
                   name="communication-question"
-                  size={"big"}
-                  color={"rgb(26, 188, 156)"}
+                  size="big"
+                  color="rgb(26, 188, 156)"
                 />
                 <Text weight="light">Tire suas duvidas</Text>
               </div>
@@ -53,11 +53,7 @@ class Header extends React.Component {
                   alignItems: "center"
                 }}
               >
-                <Icon
-                  name="action-user"
-                  size={"big"}
-                  color={"rgb(26, 188, 156)"}
-                />
+                <Icon name="action-user" size="big" color="rgb(26, 188, 156)" />
                 <Text weight="light">Login ou cadastro</Text>
               </div>
             </div>
