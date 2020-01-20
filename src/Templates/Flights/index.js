@@ -83,30 +83,24 @@ class Flights extends React.Component {
     return (
       <div css={style} className="container-flex">
         <Header
-          className="row"
           onSearch={this.onSearch}
           onChangeDisplayedFlights={this.onChangeDisplayedFlights}
           airports={this.state.airports || []}
           filterErrors={this.state.errors.filter}
         />
-        {/* <div className="content">
-          <div className="extraInfo">
+        {/* <div className="extraInfo">
             <ExtraInfo
               airlines={this.state.filterableAirlines || []}
               setAirlines={this.onChangeFilterableAirlines}
               displayedFlights={this.state.displayedFlights}
             />
-          </div>
-          <div className="body">
-            <Body
-              className="body"
-              flights={this.getFlights(
-                this.state.flights,
-                this.state.displayedFlights
-              )}
-            />
-          </div>
-        </div> */}
+          </div> */}
+        <Body
+          flights={this.getFlights(
+            this.state.flights,
+            this.state.displayedFlights
+          )}
+        />
       </div>
     );
   }

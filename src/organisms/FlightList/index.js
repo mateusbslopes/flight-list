@@ -10,7 +10,7 @@ class FlightList extends React.Component {
       <div>
         <Card
           header={
-            <div css={style}>
+            <div>
               <Text color="white">Companhia</Text>
               <Text color="white">Partida</Text>
               <Text color="white">Duracao</Text>
