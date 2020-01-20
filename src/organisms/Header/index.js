@@ -70,7 +70,7 @@ class Header extends React.Component {
           <div className="row header-navigation">
             <div
               className={
-                "header-navigation-item" +
+                "header-navigation-item col-sm-8 header-navigation-item-first" +
                 (this.props.displayedFlights == "outbound"
                   ? " header-navigation-item-selected"
                   : "")
@@ -85,7 +85,7 @@ class Header extends React.Component {
             </div>
             <div
               className={
-                "header-navigation-item" +
+                "header-navigation-item col-sm-8" +
                 (this.props.displayedFlights == "inbound"
                   ? " header-navigation-item-selected"
                   : "")
