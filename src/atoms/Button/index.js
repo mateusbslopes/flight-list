@@ -8,7 +8,8 @@ class Button extends React.Component {
       children: props.children,
       borderColor: props.borderColor,
       backgroundColor: props.backgroundColor,
-      onClick: props.onClick
+      onClick: props.onClick,
+      borderBottomColor: props.borderBottomColor
     };
   }
 
@@ -20,7 +21,13 @@ class Button extends React.Component {
     return (
       <div
         onClick={this.state.onClick}
-        css={() => style(this.state.borderColor, this.state.backgroundColor)}
+        css={() =>
+          style(
+            this.state.borderColor,
+            this.state.backgroundColor,
+            this.state.borderBottomColor
+          )
+        }
       >
         {this.state.children}
       </div>

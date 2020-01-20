@@ -1,7 +1,6 @@
 const style = () => `
     justify-content: center;
-    margin-top: 10px;
-    padding: 40px;
+    margin-top: 30px;
 
     .flight-list-header {
         display: flex;
