@@ -43,31 +43,30 @@ class FlightRow extends React.Component {
 
   render() {
     return (
-      <Card
-        margin="0px 0px 5px 0px"
-        body={
-          <div css={style} key={this.state.id}>
-            <FlightColumn
-              text={this.formatAirline(this.state.airline)}
-              info={this.state.flightNumber}
-            />
-            <FlightColumn
-              text={this.formatHour(this.state.departureDate)}
-              info={this.state.from}
-            />
-            <FlightColumn
-              text={this.formatDuration(this.state.duration)}
-              info={this.formatStops(this.state.trips.length)}
-            />
-            <FlightColumn
-              text={this.formatHour(this.state.arrivalDate)}
-              info={this.state.to}
-            />
-            <FlightDetailButton />
-            <FlightPrice />
-          </div>
-        }
-      />
+      <div css={style}>
+        <Card
+          body={
+            <div className="flight-row-content" key={this.state.id}>
+              <FlightColumn
+                text={this.formatAirline(this.state.airline)}
+                info={this.state.flightNumber}
+              />
+              <FlightColumn
+                text={this.formatHour(this.state.departureDate)}
+                info={this.state.from}
+              />
+              <FlightColumn
+                text={this.formatDuration(this.state.duration)}
+                info={this.formatStops(this.state.trips.length)}
+              />
+              <FlightColumn
+                text={this.formatHour(this.state.arrivalDate)}
+                info={this.state.to}
+              />
+            </div>
+          }
+        />
+      </div>
     );
   }
 }

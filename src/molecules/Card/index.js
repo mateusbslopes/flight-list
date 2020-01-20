@@ -10,7 +10,9 @@ class Card extends React.Component {
             <div className="header">{this.props.header}</div>
           )}
 
-          {this.props.body && <div className="body">{this.props.body}</div>}
+          {this.props.body && (
+            <div className="card-body">{this.props.body}</div>
+          )}
         </div>
       </div>
     );

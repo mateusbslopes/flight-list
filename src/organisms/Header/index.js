@@ -9,7 +9,7 @@ class Header extends React.Component {
   render() {
     return (
       <div css={style}>
-        <div className="header-content col-sm-16">
+        <div className="header-content">
           <div className="title row">
             <Icon
               name="icon-max-navigation-menu"
