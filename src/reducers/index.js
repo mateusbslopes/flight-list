@@ -22,6 +22,7 @@ const initialState = {
   infants: 0
 };
 
+// Separate reduces from store
 function storage(state = initialState, { type, payload }) {
   switch (type) {
     case ADD_FLIGHTS:

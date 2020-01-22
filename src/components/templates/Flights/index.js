@@ -70,6 +70,7 @@ class Flights extends React.Component {
   }
 
   componentDidMount() {
+    // Add destruct
     this.props.getAirports();
   }
 
@@ -101,6 +102,7 @@ class Flights extends React.Component {
   }
 }
 
+// Filtrar via chebox aqui
 const mapStateToProps = state => ({
   flights: state.flights,
   displayedFlights: state.displayedFlights,
