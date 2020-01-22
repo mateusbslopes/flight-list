@@ -2,23 +2,13 @@ import React from "react";
 import Header from "../../organisms/Header";
 import FlightController from "../../../controllers/Flights";
 import Body from "../../organisms/Body";
-import ExtraInfo from "../../organisms/ExtraInfo";
+import { getAirports as getAirportsAction } from "../../../actions/index";
+import { connect } from "react-redux";
 import style from "./style";
 
 class Flights extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      flights: null,
-      displayedFlights: "outbound",
-      filterableAirlines: null,
-      airports: null,
-      errors: {}
-    };
-
-    FlightController.getAirports().then(response =>
-      this.setState({ airports: Object.values(response.data.airports) })
-    );
 
     this.onSearch = this.onSearch.bind(this);
     this.onChangeDisplayedFlights = this.onChangeDisplayedFlights.bind(this);
@@ -30,7 +20,7 @@ class Flights extends React.Component {
 
   addFlights(newFlights, airlineLabel) {
     // TODO Null object pattern
-    let flights = this.state.flights || { outbound: [], inbound: [] };
+    let flights = this.props.flights || { outbound: [], inbound: [] };
     flights.outbound = flights.outbound.concat(newFlights.outbound);
     flights.inbound = flights.inbound.concat(newFlights.inbound);
 
@@ -41,7 +31,7 @@ class Flights extends React.Component {
       checked: true
     };
 
-    let filterableAirlines = this.state.filterableAirlines || [];
+    let filterableAirlines = this.props.filterableAirlines || [];
     filterableAirlines.push(filterableAirline);
 
     this.setState({ flights, filterableAirlines });
@@ -60,8 +50,8 @@ class Flights extends React.Component {
   }
 
   onChangeDisplayedFlights(flightsToDisplay) {
-    if (!this.state.flights) return;
-    if (!this.state.flights[flightsToDisplay])
+    if (!this.props.flights) return;
+    if (!this.props.flights[flightsToDisplay])
       throw new Error(
         `there is no display flights w/ name ${flightsToDisplay}`
       );
@@ -73,10 +63,14 @@ class Flights extends React.Component {
     if (!flights) return [];
     return flights[flightsToDisplay].filter(
       flight =>
-        !!this.state.filterableAirlines.some(
+        !!this.props.filterableAirlines.some(
           airline => airline.label === flight.airline && airline.checked
         )
     );
+  }
+
+  componentDidMount() {
+    this.props.getAirports();
   }
 
   render() {
@@ -85,21 +79,21 @@ class Flights extends React.Component {
         <Header
           onSearch={this.onSearch}
           onChangeDisplayedFlights={this.onChangeDisplayedFlights}
-          displayedFlights={this.state.displayedFlights}
-          airports={this.state.airports || []}
-          filterErrors={this.state.errors.filter}
+          displayedFlights={this.props.displayedFlights}
+          airports={this.props.airports || []}
+          filterErrors={this.props.errors.filter}
         />
         {/* <div className="extraInfo">
             <ExtraInfo
-              airlines={this.state.filterableAirlines || []}
+              airlines={this.props.filterableAirlines || []}
               setAirlines={this.onChangeFilterableAirlines}
-              displayedFlights={this.state.displayedFlights}
+              displayedFlights={this.props.displayedFlights}
             />
           </div> */}
         <Body
           flights={this.getFlights(
-            this.state.flights,
-            this.state.displayedFlights
+            this.props.flights,
+            this.props.displayedFlights
           )}
         />
       </div>
@@ -107,4 +101,16 @@ class Flights extends React.Component {
   }
 }
 
-export default Flights;
+const mapStateToProps = state => ({
+  flights: state.flights,
+  displayedFlights: state.displayedFlights,
+  filterableAirlines: state.filterableAirlines,
+  airports: state.airports,
+  errors: state.errors
+});
+
+const mapDispatchToProps = {
+  getAirports: () => getAirportsAction()
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Flights);

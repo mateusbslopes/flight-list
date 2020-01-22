@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { ADD_FLIGHTS, SET_AIRPORTS, SET_DISPLAYED_FLIGHTS } from "../actions";
 
@@ -34,11 +34,6 @@ function storage(state = initialState, { type, payload }) {
       return {
         ...state,
         airports: payload.airports
-      };
-    case SET_SEARCH_INTENTION_ID:
-      return {
-        ...state,
-        searchIntentionId: payload.searchIntentionId
       };
     default:
       return state;

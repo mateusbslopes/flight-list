@@ -1,3 +1,4 @@
+import { fetchAirports } from "../api/airports";
 // Action types
 export const ADD_FLIGHTS = "ADD_FLIGHTS";
 export const SET_AIRPORTS = "SET_AIRPORTS";
@@ -14,8 +15,9 @@ export const DisplayableFlights = {
 // Actions
 export const getAirports = () => async dispach => {
   dispach({ type: GET_AIRPORTS });
-  let response = fetchAirports();
+  let response = await fetchAirports();
   dispach(airportsSuccess(response.data));
+  return response.data;
 };
 
 export const airportsSuccess = airports => ({

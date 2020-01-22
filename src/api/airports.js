@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export function fetchAirports() {
   return axios.get(
     // TODO use env params
