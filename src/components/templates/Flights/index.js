@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../organisms/Header";
-import FlightController from "../../controllers/Flights";
+import FlightController from "../../../controllers/Flights";
 import Body from "../../organisms/Body";
 import ExtraInfo from "../../organisms/ExtraInfo";
 import style from "./style";

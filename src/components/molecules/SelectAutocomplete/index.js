@@ -1,5 +1,5 @@
 import React from "react";
-import String from "../../Utils/String";
+import String from "../../../Utils/String";
 import Text from "../../atoms/Text";
 import style from "./style";
 
