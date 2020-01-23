@@ -9,9 +9,9 @@ export const SET_AIRLINES = "SET_AIRLINES";
 export const SET_AIRPORTS = "SET_AIRPORTS";
 export const SET_DISPLAYED_FLIGHTS = "SET_DISPLAYED_FLIGHTS";
 export const SET_FILTER = "SET_FILTER";
+export const START_FETCHING = "START_FETCHING";
+export const END_FETCHING = "END_FETCHING";
 export const GET_AIRPORTS = "GET_AIRPORTS";
-export const GET_AIRPORTS_SUCCESS = "GET_AIRPORTS_SUCCESS";
-export const GET_FLIGHTS = "GET_FLIGHTS";
 export const ADD_AIRLINES = "ADD_AIRLINES";
 export const CLEAR_AIRLINES = "CLEAR_AIRLINES";
 export const ADD_FLIGHTS = "ADD_FLIGHTS";
@@ -33,9 +33,9 @@ export const setAirports = airports => ({
   payload: { airports }
 });
 
-export const setDisplayedFlights = displayedFlights => ({
+export const setDisplayedFlights = displayed => ({
   type: SET_DISPLAYED_FLIGHTS,
-  payload: { displayedFlights }
+  payload: { displayed }
 });
 
 export const setFilter = filter => ({
@@ -51,7 +51,7 @@ export const getAirports = () => async dispach => {
 };
 
 export const getFlights = filter => async dispach => {
-  dispach({ type: GET_FLIGHTS });
+  dispach({ type: START_FETCHING });
   makeSearchIntention(filter).then(response => {
     let promises = [];
     response.data.airlines.forEach(airline => {
@@ -69,7 +69,9 @@ export const getFlights = filter => async dispach => {
         )
       );
     });
-    Promise.allSettled(promises);
+    Promise.allSettled(promises).then(() => {
+      dispach({ type: END_FETCHING });
+    });
   });
 };
 

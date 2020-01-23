@@ -79,8 +79,8 @@ class Flights extends React.Component {
   }
 }
 
-const getFlights = (flights, displayedFlights, filterableAirlines) => {
-  flights[displayedFlights].filter(
+const getFlights = (flights, filterableAirlines) => {
+  flights[flights.displayed].filter(
     flight =>
       !!filterableAirlines.filterableAirlines.some(
         airline => airline.label === flight.airline && airline.checked
@@ -90,11 +90,7 @@ const getFlights = (flights, displayedFlights, filterableAirlines) => {
 
 // Filtrar via chebox aqui
 const mapStateToProps = state => ({
-  flights: getFlights(
-    state.flights,
-    state.displayedFlights,
-    state.filterableAirlines
-  ),
+  flights: getFlights(state.flights, state.filterableAirlines),
   filterableAirlines: state.filterableAirlines,
   airports: state.airports,
   filter: state.filter

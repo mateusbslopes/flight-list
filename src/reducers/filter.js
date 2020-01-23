@@ -16,7 +16,7 @@ const initialState = {
 export default function filter(state = initialState, { type, payload }) {
   switch (type) {
     case SET_FILTER:
-      return payload.filter;
+      return { ...payload.filter };
     default:
       return state;
   }

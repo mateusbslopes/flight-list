@@ -69,7 +69,7 @@ class Header extends React.Component {
             <div
               className={
                 "header-navigation-item col-sm-8 header-navigation-item-first" +
-                (this.props.displayedFlights == DisplayableFlights.OUTBOUND
+                (this.props.displayed == DisplayableFlights.OUTBOUND
                   ? " header-navigation-item-selected"
                   : "")
               }
@@ -83,7 +83,7 @@ class Header extends React.Component {
             <div
               className={
                 "header-navigation-item col-sm-8" +
-                (this.props.displayedFlights == DisplayableFlights.INBOUND
+                (this.props.displayed == DisplayableFlights.INBOUND
                   ? " header-navigation-item-selected"
                   : "")
               }
@@ -102,12 +102,11 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  displayedFlights: state.displayedFlights
+  displayed: state.flights.displayed
 });
 
 const mapDispachToProps = {
-  setDisplayedFlights: displayedFlights =>
-    setDisplayedFlightsAction(displayedFlights)
+  setDisplayedFlights: displayed => setDisplayedFlightsAction(displayed)
 };
 
 export default connect(mapStateToProps, mapDispachToProps)(Header);

@@ -3,6 +3,7 @@ import FlightRow from "../FlightRow";
 import Text from "../../atoms/Text";
 import style from "./style";
 import Card from "../../molecules/Card";
+import { connect } from "react-redux";
 
 class FlightList extends React.Component {
   render() {
@@ -27,4 +28,8 @@ class FlightList extends React.Component {
   }
 }
 
-export default FlightList;
+const mapStateToProps = state => ({
+  flights: state.flights[state.flights.displayed]
+});
+
+export default connect(mapStateToProps)(FlightList);
