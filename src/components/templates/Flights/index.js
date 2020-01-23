@@ -78,6 +78,7 @@ class Flights extends React.Component {
     return (
       <div css={style} className="container-flex">
         <Header
+          filter={this.props.filter}
           onSearch={this.onSearch}
           onChangeDisplayedFlights={this.onChangeDisplayedFlights}
           displayedFlights={this.props.displayedFlights}
@@ -108,7 +109,8 @@ const mapStateToProps = state => ({
   displayedFlights: state.displayedFlights,
   filterableAirlines: state.filterableAirlines,
   airports: state.airports,
-  errors: state.errors
+  errors: state.errors,
+  filter: state.filter
 });
 
 const mapDispatchToProps = {
