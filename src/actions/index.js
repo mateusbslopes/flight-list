@@ -12,7 +12,7 @@ export const SET_FILTER = "SET_FILTER";
 export const START_FETCHING = "START_FETCHING";
 export const END_FETCHING = "END_FETCHING";
 export const GET_AIRPORTS = "GET_AIRPORTS";
-export const ADD_AIRLINES = "ADD_AIRLINES";
+export const ADD_AIRLINE = "ADD_AIRLINE";
 export const CLEAR_AIRLINES = "CLEAR_AIRLINES";
 export const ADD_FLIGHTS = "ADD_FLIGHTS";
 
@@ -58,10 +58,8 @@ export const getFlights = filter => async dispach => {
       promises.push(
         requestFlights(response.data.id, airline.label).then(
           response => {
-            dispach({
-              type: ADD_FLIGHTS,
-              payload: { flights: response.data, airlineLabel: airline.label }
-            });
+            dispach(addFlights(response.data));
+            dispach(addAirline(airline));
           },
           err => {
             // 404 should not be displayed
@@ -75,9 +73,14 @@ export const getFlights = filter => async dispach => {
   });
 };
 
-export const addFlights = (flights, airlineLabel) => {
-  return {
-    type: ADD_FLIGHTS,
-    payload: { flights }
-  };
-};
+export const addFlights = flights => ({
+  type: ADD_FLIGHTS,
+  payload: { flights }
+});
+
+export const addAirline = airline => ({
+  type: ADD_AIRLINE,
+  payload: {
+    airline: { ...airline, checked: true }
+  }
+});

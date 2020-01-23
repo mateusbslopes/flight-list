@@ -37,26 +37,6 @@ class Flights extends React.Component {
   //   this.setState({ filterableAirlines });
   // }
 
-  // onChangeDisplayedFlights(flightsToDisplay) {
-  //   if (!this.props.flights) return;
-  //   if (!this.props.flights[flightsToDisplay])
-  //     throw new Error(
-  //       `there is no display flights w/ name ${flightsToDisplay}`
-  //     );
-
-  //   this.setState({ displayedFlights: flightsToDisplay });
-  // }
-
-  // getFlights(flights, flightsToDisplay) {
-  //   if (!flights) return [];
-  //   return flights[flightsToDisplay].filter(
-  //     flight =>
-  //       !!this.props.filterableAirlines.some(
-  //         airline => airline.label === flight.airline && airline.checked
-  //       )
-  //   );
-  // }
-
   componentDidMount() {
     const { getAirports } = this.props;
     getAirports();
@@ -79,25 +59,8 @@ class Flights extends React.Component {
   }
 }
 
-const getFlights = (flights, filterableAirlines) => {
-  flights[flights.displayed].filter(
-    flight =>
-      !!filterableAirlines.filterableAirlines.some(
-        airline => airline.label === flight.airline && airline.checked
-      )
-  );
-};
-
-// Filtrar via chebox aqui
-const mapStateToProps = state => ({
-  flights: getFlights(state.flights, state.filterableAirlines),
-  filterableAirlines: state.filterableAirlines,
-  airports: state.airports,
-  filter: state.filter
-});
-
 const mapDispatchToProps = {
   getAirports: () => getAirportsAction()
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Flights);
+export default connect(null, mapDispatchToProps)(Flights);

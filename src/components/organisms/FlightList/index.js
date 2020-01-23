@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 class FlightList extends React.Component {
   render() {
     return (
-      <div css={style} className="col-sm-15">
+      <div css={style}>
         <Card
           header={
             <div className="flight-list-header">
@@ -27,9 +27,17 @@ class FlightList extends React.Component {
     );
   }
 }
+function getFlights(flights, flightsToDisplay, airlines) {
+  return flights[flightsToDisplay].filter(
+    flight =>
+      !!airlines.some(
+        airline => airline.label === flight.airline && airline.checked
+      )
+  );
+}
 
 const mapStateToProps = state => ({
-  flights: state.flights[state.flights.displayed]
+  flights: getFlights(state.flights, state.flights.displayed, state.airlines)
 });
 
 export default connect(mapStateToProps)(FlightList);

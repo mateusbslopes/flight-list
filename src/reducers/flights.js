@@ -18,11 +18,9 @@ const initialState = {
 };
 
 function addFlights(state, payload) {
-  console.log(payload);
   let flights = { ...payload.flights };
   state.outbound = state.outbound.concat(flights.outbound);
   state.inbound = state.inbound.concat(flights.inbound);
-  console.log("STATE", state);
   return { ...state };
 }
 

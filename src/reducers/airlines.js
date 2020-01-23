@@ -1,13 +1,13 @@
-import { ADD_AIRLINES, CLEAR_AIRLINES } from "../actions";
+import { ADD_AIRLINE, CLEAR_AIRLINES } from "../actions";
 
-function addAirlines(state, payload) {
+function addAirline(state, payload) {
   return state.slice().concat(payload.airline);
 }
 
 export default function airlines(state = [], { type, payload }) {
   switch (type) {
-    case ADD_AIRLINES:
-      return addAirlines(state, payload);
+    case ADD_AIRLINE:
+      return addAirline(state, payload);
     case CLEAR_AIRLINES:
       return [];
     default:
