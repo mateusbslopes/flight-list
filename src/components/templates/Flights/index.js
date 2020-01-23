@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../../organisms/Header";
-import FlightController from "../../../controllers/Flights";
 import Body from "../../organisms/Body";
 import { getAirports as getAirportsAction } from "../../../actions/index";
 import { connect } from "react-redux";
@@ -59,7 +58,6 @@ class Flights extends React.Component {
   // }
 
   componentDidMount() {
-    // Add destruct
     const { getAirports } = this.props;
     getAirports();
   }
@@ -67,14 +65,7 @@ class Flights extends React.Component {
   render() {
     return (
       <div css={style} className="container-flex">
-        <Header
-          filter={this.props.filter}
-          onSearch={this.onSearch}
-          onChangeDisplayedFlights={this.onChangeDisplayedFlights}
-          displayedFlights={this.props.displayedFlights}
-          airports={this.props.airports}
-          filterErrors={this.props.errors.filter}
-        />
+        <Header />
         {/* <div className="extraInfo">
             <ExtraInfo
               airlines={this.props.filterableAirlines || []}
@@ -88,18 +79,24 @@ class Flights extends React.Component {
   }
 }
 
-// Filtrar via chebox aqui
-const mapStateToProps = state => ({
-  flights: state.flights[state.flightsToDisplay].filter(
+const getFlights = (flights, displayedFlights, filterableAirlines) => {
+  flights[displayedFlights].filter(
     flight =>
-      !!state.filterableAirlines.filterableAirlines.some(
+      !!filterableAirlines.filterableAirlines.some(
         airline => airline.label === flight.airline && airline.checked
       )
+  );
+};
+
+// Filtrar via chebox aqui
+const mapStateToProps = state => ({
+  flights: getFlights(
+    state.flights,
+    state.displayedFlights,
+    state.filterableAirlines
   ),
-  displayedFlights: state.displayedFlights,
   filterableAirlines: state.filterableAirlines,
   airports: state.airports,
-  errors: state.errors,
   filter: state.filter
 });
 

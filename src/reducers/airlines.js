@@ -1,4 +1,4 @@
-import { SET_AIRLINES } from "../actions";
+import { ADD_AIRLINES, CLEAR_AIRLINES } from "../actions";
 
 function addAirlines(state, payload) {
   return state.slice().concat(payload.airline);

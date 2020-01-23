@@ -6,6 +6,8 @@ import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
 import style from "./style";
 import Calendar from "../../molecules/Calendar";
+import { connect } from "react-redux";
+import { getFlights as getFlightsAction } from "../../../actions";
 
 const brazilianMonth = [
   "JAN",
@@ -26,7 +28,6 @@ class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      onSearch: props.onSearch,
       outboundDate: "2020-08-22",
       inboundDate: "2020-08-26",
       from: {},
@@ -45,14 +46,11 @@ class Filter extends React.Component {
     this.getDisplayableError = this.getDisplayableError.bind(this);
     this.toggleFilterOption = this.toggleFilterOption.bind(this);
     this.onSearch = this.onSearch.bind(this);
-    this.getOutboundDisplayableDate = this.getOutboundDisplayableDate.bind(
-      this
-    );
-    this.getInboundDisplayableDate = this.getInboundDisplayableDate.bind(this);
+    this.getDisplayableDate = this.getDisplayableDate.bind(this);
   }
 
   onSearch() {
-    this.state.onSearch(this.state);
+    this.props.getFlights(this.state);
     this.toggleFilterOption();
   }
 
@@ -101,9 +99,9 @@ class Filter extends React.Component {
     this.setState({ filterOptionIsOpen: !this.state.filterOptionIsOpen });
   }
 
-  getOutboundDisplayableDate() {
-    let date = new Date(this.state.outboundDate);
-    if (!isNaN(date.getTime()) && this.state.outboundDate.length == 10) {
+  getDisplayableDate(dateToDisplay) {
+    let date = new Date(dateToDisplay);
+    if (!isNaN(date.getTime()) && dateToDisplay.length == 10) {
       return (
         <div className="filter-date">
           <div className="filter-date-day">{date.getDate()}</div>
@@ -115,22 +113,8 @@ class Filter extends React.Component {
     }
   }
 
-  getInboundDisplayableDate() {
-    let date = new Date(this.state.inboundDate);
-    if (!isNaN(date.getTime()) && this.state.inboundDate.length == 10) {
-      return (
-        <div className="filter-date">
-          <div className="filter-date-day">{date.getDate()}</div>
-          {brazilianMonth[date.getMonth()]} {date.getFullYear()}
-        </div>
-      );
-    } else {
-      return "-";
-    }
-  }
-
-  getPassengersAmount() {
-    return this.state.adults + this.state.children + this.state.infants;
+  getPassengersAmount(adults, children, infants) {
+    return adults + children + infants;
   }
 
   render() {
@@ -154,7 +138,7 @@ class Filter extends React.Component {
               size="medium"
               name="icon-max-action-calendar"
             />
-            {this.getOutboundDisplayableDate()}
+            {this.getDisplayableDate(this.state.outboundDate)}
           </div>
           <div className="filter-date">
             <Icon
@@ -162,11 +146,15 @@ class Filter extends React.Component {
               size="medium"
               name="icon-max-action-calendar"
             />
-            {this.getInboundDisplayableDate()}
+            {this.getDisplayableDate(this.state.inboundDate)}
           </div>
           <div className="filter-passengers">
             <Icon name="icon-users" color="rgb(26, 188, 156)" size="medium" />
-            {this.getPassengersAmount()}
+            {this.getPassengersAmount(
+              this.state.adults,
+              this.state.children,
+              this.state.infants
+            )}
           </div>
           <div className="filter-action" onClick={this.toggleFilterOption}>
             {this.state.filterOptionIsOpen && (
@@ -235,9 +223,9 @@ class Filter extends React.Component {
                 infants={this.state.infants}
                 onChangeInfants={this.handleInfantsChange}
               />
-              {this.getDisplayableError(this.props.errors, "adults")}
-              {this.getDisplayableError(this.props.errors, "children")}
-              {this.getDisplayableError(this.props.errors, "infants")}
+              {this.getDisplayableError(this.state.errors, "adults")}
+              {this.getDisplayableError(this.state.errors, "children")}
+              {this.getDisplayableError(this.state.errors, "infants")}
             </div>
             <div className="w-100"></div>
             <div className="row">
@@ -264,4 +252,14 @@ class Filter extends React.Component {
   }
 }
 
-export default Filter;
+const mapStateToProps = state => ({
+  filter: state.filter,
+  errors: state.errors,
+  airports: state.airports
+});
+
+const mapDispatchToProps = {
+  getFlights: filter => getFlightsAction(filter)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

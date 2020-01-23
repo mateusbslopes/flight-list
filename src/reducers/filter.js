@@ -1,7 +1,6 @@
 import { SET_FILTER } from "../actions";
 
 const initialState = {
-  isOpen: false,
   intentionId: null,
   from: {},
   to: {},
@@ -11,7 +10,7 @@ const initialState = {
   adults: 1,
   children: 0,
   infants: 0,
-  errors: {}
+  errors: []
 };
 
 export default function filter(state = initialState, { type, payload }) {

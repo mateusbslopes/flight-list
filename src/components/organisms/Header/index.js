@@ -4,6 +4,7 @@ import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
 import Filter from "../Filter";
 import style from "./style";
+import { connect } from "react-redux";
 import {
   setDisplayedFlights as setDisplayedFlightsAction,
   DisplayableFlights
@@ -11,6 +12,7 @@ import {
 
 class Header extends React.Component {
   render() {
+    const { setDisplayedFlights } = this.props;
     return (
       <div css={style}>
         <div className="header-content">
@@ -62,11 +64,7 @@ class Header extends React.Component {
               </div>
             </div>
           </div>
-          <Filter
-            onSearch={this.props.onSearch}
-            airports={this.props.airports}
-            errors={this.props.filterErrors}
-          />
+          <Filter />
           <div className="row header-navigation">
             <div
               className={
@@ -77,11 +75,7 @@ class Header extends React.Component {
               }
             >
               <Button
-                onClick={() =>
-                  this.props.onChangeDisplayedFlights(
-                    DisplayableFlights.OUTBOUND
-                  )
-                }
+                onClick={() => setDisplayedFlights(DisplayableFlights.OUTBOUND)}
               >
                 <Text>Selecione sua ida</Text>
               </Button>
@@ -95,11 +89,7 @@ class Header extends React.Component {
               }
             >
               <Button
-                onClick={() =>
-                  this.props.onChangeDisplayedFlights(
-                    DisplayableFlights.INBOUND
-                  )
-                }
+                onClick={() => setDisplayedFlights(DisplayableFlights.INBOUND)}
               >
                 <Text>Selecione sua volta</Text>
               </Button>
@@ -111,4 +101,13 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  displayedFlights: state.displayedFlights
+});
+
+const mapDispachToProps = {
+  setDisplayedFlights: displayedFlights =>
+    setDisplayedFlightsAction(displayedFlights)
+};
+
+export default connect(mapStateToProps, mapDispachToProps)(Header);
