@@ -1,9 +1,15 @@
 import { SET_AIRLINES } from "../actions";
 
-export default function airlines(state = null, { type, payload }) {
+function addAirlines(state, payload) {
+  return state.slice().concat(payload.airline);
+}
+
+export default function airlines(state = [], { type, payload }) {
   switch (type) {
-    case SET_AIRLINES:
-      return payload.airlines;
+    case ADD_AIRLINES:
+      return addAirlines(state, payload);
+    case CLEAR_AIRLINES:
+      return [];
     default:
       return state;
   }

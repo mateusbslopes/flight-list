@@ -4,6 +4,10 @@ import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
 import Filter from "../Filter";
 import style from "./style";
+import {
+  setDisplayedFlights as setDisplayedFlightsAction,
+  DisplayableFlights
+} from "../../../actions";
 
 class Header extends React.Component {
   render() {
@@ -67,13 +71,17 @@ class Header extends React.Component {
             <div
               className={
                 "header-navigation-item col-sm-8 header-navigation-item-first" +
-                (this.props.displayedFlights == "outbound"
+                (this.props.displayedFlights == DisplayableFlights.OUTBOUND
                   ? " header-navigation-item-selected"
                   : "")
               }
             >
               <Button
-                onClick={() => this.props.onChangeDisplayedFlights("outbound")}
+                onClick={() =>
+                  this.props.onChangeDisplayedFlights(
+                    DisplayableFlights.OUTBOUND
+                  )
+                }
               >
                 <Text>Selecione sua ida</Text>
               </Button>
@@ -81,13 +89,17 @@ class Header extends React.Component {
             <div
               className={
                 "header-navigation-item col-sm-8" +
-                (this.props.displayedFlights == "inbound"
+                (this.props.displayedFlights == DisplayableFlights.INBOUND
                   ? " header-navigation-item-selected"
                   : "")
               }
             >
               <Button
-                onClick={() => this.props.onChangeDisplayedFlights("inbound")}
+                onClick={() =>
+                  this.props.onChangeDisplayedFlights(
+                    DisplayableFlights.INBOUND
+                  )
+                }
               >
                 <Text>Selecione sua volta</Text>
               </Button>

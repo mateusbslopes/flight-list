@@ -7,71 +7,61 @@ import { connect } from "react-redux";
 import style from "./style";
 
 class Flights extends React.Component {
-  constructor(props) {
-    super(props);
+  // addFlights(newFlights, airlineLabel) {
+  //   // TODO Null object pattern
+  //   let flights = this.props.flights || { outbound: [], inbound: [] };
+  //   flights.outbound = flights.outbound.concat(newFlights.outbound);
+  //   flights.inbound = flights.inbound.concat(newFlights.inbound);
 
-    this.onSearch = this.onSearch.bind(this);
-    this.onChangeDisplayedFlights = this.onChangeDisplayedFlights.bind(this);
-    this.onChangeFilterableAirlines = this.onChangeFilterableAirlines.bind(
-      this
-    );
-    this.addFlights = this.addFlights.bind(this);
-  }
+  //   let filterableAirline = {
+  //     label: airlineLabel,
+  //     inbound: newFlights.inbound.length,
+  //     outbound: newFlights.outbound.length,
+  //     checked: true
+  //   };
 
-  addFlights(newFlights, airlineLabel) {
-    // TODO Null object pattern
-    let flights = this.props.flights || { outbound: [], inbound: [] };
-    flights.outbound = flights.outbound.concat(newFlights.outbound);
-    flights.inbound = flights.inbound.concat(newFlights.inbound);
+  //   let filterableAirlines = this.props.filterableAirlines || [];
+  //   filterableAirlines.push(filterableAirline);
 
-    let filterableAirline = {
-      label: airlineLabel,
-      inbound: newFlights.inbound.length,
-      outbound: newFlights.outbound.length,
-      checked: true
-    };
+  //   this.setState({ flights, filterableAirlines });
+  // }
 
-    let filterableAirlines = this.props.filterableAirlines || [];
-    filterableAirlines.push(filterableAirline);
+  // onSearch(filter) {
+  //   try {
+  //     FlightController.getFlights(filter, this.addFlights);
+  //   } catch (error) {
+  //     this.setState({ errors: { filter: error.inner } });
+  //   }
+  // }
 
-    this.setState({ flights, filterableAirlines });
-  }
+  // onChangeFilterableAirlines(filterableAirlines) {
+  //   this.setState({ filterableAirlines });
+  // }
 
-  onSearch(filter) {
-    try {
-      FlightController.getFlights(filter, this.addFlights);
-    } catch (error) {
-      this.setState({ errors: { filter: error.inner } });
-    }
-  }
+  // onChangeDisplayedFlights(flightsToDisplay) {
+  //   if (!this.props.flights) return;
+  //   if (!this.props.flights[flightsToDisplay])
+  //     throw new Error(
+  //       `there is no display flights w/ name ${flightsToDisplay}`
+  //     );
 
-  onChangeFilterableAirlines(filterableAirlines) {
-    this.setState({ filterableAirlines });
-  }
+  //   this.setState({ displayedFlights: flightsToDisplay });
+  // }
 
-  onChangeDisplayedFlights(flightsToDisplay) {
-    if (!this.props.flights) return;
-    if (!this.props.flights[flightsToDisplay])
-      throw new Error(
-        `there is no display flights w/ name ${flightsToDisplay}`
-      );
-
-    this.setState({ displayedFlights: flightsToDisplay });
-  }
-
-  getFlights(flights, flightsToDisplay) {
-    if (!flights) return [];
-    return flights[flightsToDisplay].filter(
-      flight =>
-        !!this.props.filterableAirlines.some(
-          airline => airline.label === flight.airline && airline.checked
-        )
-    );
-  }
+  // getFlights(flights, flightsToDisplay) {
+  //   if (!flights) return [];
+  //   return flights[flightsToDisplay].filter(
+  //     flight =>
+  //       !!this.props.filterableAirlines.some(
+  //         airline => airline.label === flight.airline && airline.checked
+  //       )
+  //   );
+  // }
 
   componentDidMount() {
     // Add destruct
-    this.props.getAirports();
+    const { getAirports } = this.props;
+    getAirports();
   }
 
   render() {
@@ -82,7 +72,7 @@ class Flights extends React.Component {
           onSearch={this.onSearch}
           onChangeDisplayedFlights={this.onChangeDisplayedFlights}
           displayedFlights={this.props.displayedFlights}
-          airports={this.props.airports || []}
+          airports={this.props.airports}
           filterErrors={this.props.errors.filter}
         />
         {/* <div className="extraInfo">
@@ -92,12 +82,7 @@ class Flights extends React.Component {
               displayedFlights={this.props.displayedFlights}
             />
           </div> */}
-        <Body
-          flights={this.getFlights(
-            this.props.flights,
-            this.props.displayedFlights
-          )}
-        />
+        <Body flights={this.props.flights} />
       </div>
     );
   }
@@ -105,7 +90,12 @@ class Flights extends React.Component {
 
 // Filtrar via chebox aqui
 const mapStateToProps = state => ({
-  flights: state.flights,
+  flights: state.flights[state.flightsToDisplay].filter(
+    flight =>
+      !!state.filterableAirlines.filterableAirlines.some(
+        airline => airline.label === flight.airline && airline.checked
+      )
+  ),
   displayedFlights: state.displayedFlights,
   filterableAirlines: state.filterableAirlines,
   airports: state.airports,
