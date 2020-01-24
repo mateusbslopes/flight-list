@@ -28,12 +28,20 @@ class FlightList extends React.Component {
   }
 }
 function getFlights(flights, flightsToDisplay, airlines) {
-  return flights[flightsToDisplay].filter(
+  let flightsToReturn = [];
+  flightsToReturn = flights[flightsToDisplay].filter(
     flight =>
       !!airlines.some(
         airline => airline.label === flight.airline && airline.checked
       )
   );
+  flightsToReturn = flightsToReturn.sort((flightA, flightB) => {
+    return flightA.pricing[flightA.pricing.bestPriceAt].saleTotal <
+      flightB.pricing[flightB.pricing.bestPriceAt].saleTotal
+      ? -1
+      : 1;
+  });
+  return flightsToReturn;
 }
 
 const mapStateToProps = state => ({

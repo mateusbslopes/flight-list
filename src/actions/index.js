@@ -14,6 +14,7 @@ export const END_FETCHING = "END_FETCHING";
 export const GET_AIRPORTS = "GET_AIRPORTS";
 export const ADD_AIRLINE = "ADD_AIRLINE";
 export const CLEAR_AIRLINES = "CLEAR_AIRLINES";
+export const CLEAR_FLIGHTS = "CLEAR_AIRLINES";
 export const ADD_FLIGHTS = "ADD_FLIGHTS";
 
 // Project conts

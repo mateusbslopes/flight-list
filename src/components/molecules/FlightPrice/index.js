@@ -19,9 +19,7 @@ class FlightPrice extends React.Component {
         >
           <div className="flight-price-content">
             <Text color="white">
-              {pricing.ota
-                ? l10nBRL.format(pricing.ota.saleTotal)
-                : l10nBRL.format(pricing.miles.saleTotal)}
+              {l10nBRL.format(pricing[pricing.bestPriceAt].saleTotal)}
             </Text>
           </div>
         </Button>
@@ -74,9 +72,7 @@ class FlightPrice extends React.Component {
         >
           <div className="flight-price-content">
             <Text color="white">
-              {pricing.bestPriceAt == "ota"
-                ? l10nBRL.format(pricing.ota.saleTotal)
-                : l10nBRL.format(pricing.miles.saleTotal)}
+              {l10nBRL.format(pricing[pricing.bestPriceAt].saleTotal)}
             </Text>
           </div>
         </Button>
