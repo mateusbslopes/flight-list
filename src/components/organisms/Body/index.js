@@ -24,7 +24,7 @@ class Body extends React.Component {
             </div>
           )}
           {!isFetching && !hasItems && hasSearched && (
-            <Text>Opa, nao encontramos voos! Tente para um outro lugar</Text>
+            <Text>Opa, nao encontramos voos! Tente para um outro lugar.</Text>
           )}
           {!isFetching && !hasItems && !hasSearched && (
             <Text>Faca uma pesquisa!</Text>
