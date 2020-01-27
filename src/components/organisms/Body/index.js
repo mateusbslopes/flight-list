@@ -16,7 +16,7 @@ class Body extends React.Component {
       <div css={style}>
         <div className="header-info">
           {isFetching && (
-            <div class="lds-ellipsis">
+            <div className="lds-ellipsis">
               <div></div>
               <div></div>
               <div></div>

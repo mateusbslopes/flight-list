@@ -7,7 +7,13 @@ import { connect } from "react-redux";
 
 class FlightList extends React.Component {
   render() {
-    if (!this.props.flights.length) return null;
+    if (!this.props.flights.length)
+      return (
+        <Text>
+          Opa, nao encontramos voos com esse filtro! Tente deixa-lo mais
+          generico.
+        </Text>
+      );
 
     return (
       <div css={style}>
