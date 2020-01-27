@@ -1,7 +1,17 @@
-import { ADD_AIRLINE, CLEAR_AIRLINES } from "../actions";
+import { ADD_AIRLINE, CLEAR_AIRLINES, TOGGLE_AIRLINE } from "../actions";
 
 function addAirline(state, payload) {
   return state.slice().concat(payload.airline);
+}
+
+function toggleAirline(state, payload) {
+  let airlinesToReturn = state.slice();
+  let indexToUpdate = state.findIndex(
+    airline => airline.label === payload.airlineLabel
+  );
+  airlinesToReturn[indexToUpdate].checked = !airlinesToReturn[indexToUpdate]
+    .checked;
+  return airlinesToReturn;
 }
 
 export default function airlines(state = [], { type, payload }) {
@@ -10,6 +20,8 @@ export default function airlines(state = [], { type, payload }) {
       return addAirline(state, payload);
     case CLEAR_AIRLINES:
       return [];
+    case TOGGLE_AIRLINE:
+      return toggleAirline(state, payload);
     default:
       return state;
   }

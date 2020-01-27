@@ -16,6 +16,7 @@ export const ADD_AIRLINE = "ADD_AIRLINE";
 export const CLEAR_AIRLINES = "CLEAR_AIRLINES";
 export const CLEAR_FLIGHTS = "CLEAR_AIRLINES";
 export const ADD_FLIGHTS = "ADD_FLIGHTS";
+export const TOGGLE_AIRLINE = "TOGGLE_AIRLINE";
 
 // Project conts
 export const DisplayableFlights = {
@@ -60,7 +61,7 @@ export const getFlights = filter => async dispach => {
         requestFlights(response.data.id, airline.label).then(
           response => {
             dispach(addFlights(response.data));
-            dispach(addAirline(airline));
+            dispach(addAirline(airline, response.data));
           },
           err => {
             // 404 should not be displayed
@@ -79,9 +80,19 @@ export const addFlights = flights => ({
   payload: { flights }
 });
 
-export const addAirline = airline => ({
+export const addAirline = (airline, flights) => ({
   type: ADD_AIRLINE,
   payload: {
-    airline: { ...airline, checked: true }
+    airline: {
+      ...airline,
+      checked: true,
+      inbound: flights.inbound.length,
+      outbound: flights.outbound.length
+    }
   }
+});
+
+export const toggleAirline = airlineLabel => ({
+  type: TOGGLE_AIRLINE,
+  payload: { airlineLabel }
 });

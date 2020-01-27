@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 
 class FlightList extends React.Component {
   render() {
+    if (!this.props.flights.length) return null;
+
     return (
       <div css={style}>
         <Card

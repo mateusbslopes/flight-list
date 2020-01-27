@@ -41,7 +41,9 @@ export default function flights(state = initialState, { type, payload }) {
       return {
         ...state,
         isFetching: true,
-        hasSearched: true
+        hasSearched: true,
+        outbound: [],
+        inbound: []
       };
     case END_FETCHING:
       return {

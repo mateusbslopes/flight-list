@@ -4,6 +4,7 @@ import Body from "../../organisms/Body";
 import { getAirports as getAirportsAction } from "../../../actions/index";
 import { connect } from "react-redux";
 import style from "./style";
+import Footer from "../../organisms/Footer";
 
 class Flights extends React.Component {
   // addFlights(newFlights, airlineLabel) {
@@ -54,6 +55,7 @@ class Flights extends React.Component {
             />
           </div> */}
         <Body flights={this.props.flights} />
+        <Footer />
       </div>
     );
   }

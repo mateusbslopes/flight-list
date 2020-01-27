@@ -30,34 +30,6 @@ class ExtraInfo extends React.Component {
             }
           />
         </div>
-        <Card
-          header={<Text color="white">Filtre seus resultados por</Text>}
-          body={
-            <div>
-              Selecione a companhia aeria:
-              {this.props.airlines.map(airline => (
-                <div key={airline.label}>
-                  {/* TODO transform in atom/molecule */}
-                  <input
-                    type="checkbox"
-                    name={airline.label}
-                    checked={airline.checked}
-                    onChange={() =>
-                      this.handleChange(
-                        airline,
-                        this.props.airlines,
-                        this.props.setAirlines
-                      )
-                    }
-                  />
-                  {`${airline.label} (${
-                    airline[this.props.displayedFlights]
-                  } VOOS)`}
-                </div>
-              ))}
-            </div>
-          }
-        />
       </div>
     );
   }
