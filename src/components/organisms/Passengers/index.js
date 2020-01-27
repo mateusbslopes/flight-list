@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "../../atoms/Icon";
-import Text from "../../atoms/Text";
 import style from "./style";
+import Spinner from "../../atoms/Spinner";
 
 class Passengers extends React.Component {
   constructor(props) {
@@ -35,70 +35,26 @@ class Passengers extends React.Component {
         {this.state.optionsIsVisible && (
           <div className="options col-sm-6">
             <div className="options-item">
-              <div>Adulto</div>
-              <div className="options-item-config">
-                <Icon
-                  size="big"
-                  name="icon-max-action-remove"
-                  color="rgb(26, 188, 156)"
-                  onClick={() =>
-                    this.props.onChangeAdults(this.props.adults - 1)
-                  }
-                />
-                {this.props.adults}
-                <Icon
-                  size="big"
-                  name="icon-max-action-add"
-                  color="rgb(26, 188, 156)"
-                  onClick={() =>
-                    this.props.onChangeAdults(this.props.adults + 1)
-                  }
-                />
-              </div>
+              <Spinner
+                label="Adultos"
+                value={this.props.adults}
+                onChange={this.props.onChangeAdults}
+                min={1}
+              />
             </div>
             <div className="options-item">
-              Crianca
-              <div className="options-item-config">
-                <Icon
-                  size="big"
-                  name="icon-max-action-remove"
-                  color="rgb(26, 188, 156)"
-                  onClick={() =>
-                    this.props.onChangeChildren(this.props.children - 1)
-                  }
-                />
-                {this.props.children}
-                <Icon
-                  size="big"
-                  name="icon-max-action-add"
-                  color="rgb(26, 188, 156)"
-                  onClick={() =>
-                    this.props.onChangeChildren(this.props.children + 1)
-                  }
-                />
-              </div>
+              <Spinner
+                label="Criancas"
+                value={this.props.children}
+                onChange={this.props.onChangeChildren}
+              />
             </div>
             <div className="options-item">
-              Bebe
-              <div className="options-item-config">
-                <Icon
-                  size="big"
-                  name="icon-max-action-remove"
-                  color="rgb(26, 188, 156)"
-                  onClick={() =>
-                    this.props.onChangeInfants(this.props.infants - 1)
-                  }
-                />
-                {this.props.infants}
-                <Icon
-                  size="big"
-                  name="icon-max-action-add"
-                  color="rgb(26, 188, 156)"
-                  onClick={() =>
-                    this.props.onChangeInfants(this.props.infants + 1)
-                  }
-                />
-              </div>
+              <Spinner
+                label="Bebe"
+                value={this.props.infants}
+                onChange={this.props.onChangeInfants}
+              />
             </div>
           </div>
         )}
