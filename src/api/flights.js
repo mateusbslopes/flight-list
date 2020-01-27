@@ -1,11 +1,28 @@
 import axios from "axios";
 import * as yup from "yup";
 
+yup.setLocale({
+  mixed: {
+    default: "Nao eh valido",
+    required: "O campo eh obrigatorio"
+  }
+});
+
 const filterSchema = yup.object().shape({
-  from: yup.string().required(),
-  to: yup.string().required(),
-  outboundDate: yup.string().required(),
-  inboundDate: yup.string().required(),
+  from: yup.object().shape({
+    airportCode: yup.string().required()
+  }),
+  to: yup.object().shape({
+    airportCode: yup.string().required()
+  }),
+  outboundDate: yup
+    .date()
+    .min(new Date())
+    .required(),
+  inboundDate: yup
+    .date()
+    .min(new Date())
+    .required(),
   adults: yup
     .number()
     .min(1)

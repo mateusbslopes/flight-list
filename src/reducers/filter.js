@@ -1,4 +1,4 @@
-import { SET_FILTER } from "../actions";
+import { SET_FILTER, FILTER_ERROR } from "../actions";
 
 const initialState = {
   intentionId: null,
@@ -13,10 +13,22 @@ const initialState = {
   errors: []
 };
 
+const filterError = (state, errors) => {
+  return {
+    ...state,
+    errors: errors.map(err => {
+      err.path = err.path.split(".")[0];
+      return err;
+    })
+  };
+};
+
 export default function filter(state = initialState, { type, payload }) {
   switch (type) {
     case SET_FILTER:
       return { ...payload.filter };
+    case FILTER_ERROR:
+      return filterError(state, payload.errors);
     default:
       return state;
   }

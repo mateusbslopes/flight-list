@@ -17,6 +17,7 @@ export const CLEAR_AIRLINES = "CLEAR_AIRLINES";
 export const CLEAR_FLIGHTS = "CLEAR_AIRLINES";
 export const ADD_FLIGHTS = "ADD_FLIGHTS";
 export const TOGGLE_AIRLINE = "TOGGLE_AIRLINE";
+export const FILTER_ERROR = "FILTER_ERROR";
 
 // Project conts
 export const DisplayableFlights = {
@@ -53,26 +54,30 @@ export const getAirports = () => async dispach => {
 };
 
 export const getFlights = filter => async dispach => {
-  dispach({ type: START_FETCHING });
-  makeSearchIntention(filter).then(response => {
-    let promises = [];
-    response.data.airlines.forEach(airline => {
-      promises.push(
-        requestFlights(response.data.id, airline.label).then(
-          response => {
-            dispach(addFlights(response.data));
-            dispach(addAirline(airline, response.data));
-          },
-          err => {
-            // 404 should not be displayed
-          }
-        )
-      );
-    });
-    Promise.allSettled(promises).then(() => {
-      dispach({ type: END_FETCHING });
-    });
-  });
+  makeSearchIntention(filter)
+    .then(response => {
+      dispach({ type: START_FETCHING });
+      let promises = [];
+      response.data.airlines.forEach(airline => {
+        promises.push(
+          requestFlights(response.data.id, airline.label).then(
+            response => {
+              dispach(addFlights(response.data));
+              dispach(addAirline(airline, response.data));
+            },
+            err => {
+              // 404 should not be displayed
+            }
+          )
+        );
+      });
+      Promise.allSettled(promises).then(() => {
+        dispach({ type: END_FETCHING });
+      });
+    })
+    .catch(err =>
+      dispach({ type: FILTER_ERROR, payload: { errors: err.inner } })
+    );
 };
 
 export const addFlights = flights => ({
