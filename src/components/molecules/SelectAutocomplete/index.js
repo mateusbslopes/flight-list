@@ -11,8 +11,7 @@ class SelectAutocomplete extends React.Component {
       isListOpen: false,
       selectedItem: null,
       // Using Finite State machine concept. see more at https://github.com/jakesgordon/javascript-state-machine
-      state: "empty",
-      value: null,
+      state: this.isEmpty(props.value) ? "empty" : "fulfilled",
       label: props.label,
       placeholder: props.placeholder,
       onChange: props.onChange
@@ -26,6 +25,10 @@ class SelectAutocomplete extends React.Component {
     this.getDisplayableRow = this.getDisplayableRow.bind(this);
   }
 
+  isEmpty(value) {
+    return Object.entries(value).length === 0;
+  }
+
   handleChange(evt) {
     this.setState({
       search: evt.target.value
@@ -37,7 +40,7 @@ class SelectAutocomplete extends React.Component {
   }
 
   handleBlur(value) {
-    let state = value ? "fulfilled" : "empty";
+    let state = this.isEmpty(value) ? "empty" : "fulfilled";
     this.setState({ isListOpen: false, state });
   }
 
