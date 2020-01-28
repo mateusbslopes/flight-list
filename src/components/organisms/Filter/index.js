@@ -82,6 +82,15 @@ class Filter extends React.Component {
   }
 
   render() {
+    const {
+      closeFilter,
+      openFilter,
+      airports,
+      errors,
+      filter,
+      getFlights
+    } = this.props;
+
     return (
       <div css={style}>
         <div className="filter-value">
@@ -121,8 +130,8 @@ class Filter extends React.Component {
             )}
           </div>
           <div className="filter-action">
-            {this.props.filter.isOpen && (
-              <div onClick={this.props.closeFilter}>
+            {filter.isOpen && (
+              <div onClick={closeFilter}>
                 <Icon
                   name="icon-max-communication-circle-close"
                   color="white"
@@ -130,34 +139,34 @@ class Filter extends React.Component {
                 />
               </div>
             )}
-            {!this.props.filter.isOpen && (
-              <div onClick={this.props.openFilter}>
+            {!filter.isOpen && (
+              <div onClick={openFilter}>
                 <Icon name="icon-pencil" color="white" size="medium" />
               </div>
             )}
           </div>
         </div>
-        {this.props.filter.isOpen && (
+        {filter.isOpen && (
           <div className="filter-options">
             <div className="filter-option">
               <SelectAutocomplete
-                data={this.props.airports}
+                data={airports}
                 placeholder="Origem"
                 label="Sair de"
                 value={this.state.from}
                 onChange={value => this.handleChange(value, "from")}
               />
-              {this.getDisplayableError(this.props.errors, "from")}
+              {this.getDisplayableError(errors, "from")}
             </div>
             <div className="filter-option">
               <SelectAutocomplete
-                data={this.props.airports}
+                data={airports}
                 placeholder="Destino"
                 label="Ir para"
                 value={this.state.to}
                 onChange={value => this.handleChange(value, "to")}
               />
-              {this.getDisplayableError(this.props.errors, "to")}
+              {this.getDisplayableError(errors, "to")}
             </div>
             <div className="flight-dates">
               <div className="filter-option col-sm-8">
@@ -168,7 +177,7 @@ class Filter extends React.Component {
                     this.handleChange(event.target.value, "outboundDate")
                   }
                 />
-                {this.getDisplayableError(this.props.errors, "outboundDate")}
+                {this.getDisplayableError(errors, "outboundDate")}
               </div>
               <div className="filter-option col-sm-8">
                 <Calendar
@@ -178,7 +187,7 @@ class Filter extends React.Component {
                     this.handleChange(event.target.value, "inboundDate")
                   }
                 />
-                {this.getDisplayableError(this.props.errors, "inboundDate")}
+                {this.getDisplayableError(errors, "inboundDate")}
               </div>
             </div>
 
@@ -200,7 +209,7 @@ class Filter extends React.Component {
               <div>
                 <Button
                   backgroundColor="rgb(26, 188, 156)"
-                  onClick={() => this.props.getFlights(this.state)}
+                  onClick={() => getFlights(this.state)}
                 >
                   <div className="search-buttom-content">
                     <Icon

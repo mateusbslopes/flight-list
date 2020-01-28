@@ -7,37 +7,6 @@ import style from "./style";
 import Footer from "../../organisms/Footer";
 
 class Flights extends React.Component {
-  // addFlights(newFlights, airlineLabel) {
-  //   // TODO Null object pattern
-  //   let flights = this.props.flights || { outbound: [], inbound: [] };
-  //   flights.outbound = flights.outbound.concat(newFlights.outbound);
-  //   flights.inbound = flights.inbound.concat(newFlights.inbound);
-
-  //   let filterableAirline = {
-  //     label: airlineLabel,
-  //     inbound: newFlights.inbound.length,
-  //     outbound: newFlights.outbound.length,
-  //     checked: true
-  //   };
-
-  //   let filterableAirlines = this.props.filterableAirlines || [];
-  //   filterableAirlines.push(filterableAirline);
-
-  //   this.setState({ flights, filterableAirlines });
-  // }
-
-  // onSearch(filter) {
-  //   try {
-  //     FlightController.getFlights(filter, this.addFlights);
-  //   } catch (error) {
-  //     this.setState({ errors: { filter: error.inner } });
-  //   }
-  // }
-
-  // onChangeFilterableAirlines(filterableAirlines) {
-  //   this.setState({ filterableAirlines });
-  // }
-
   componentDidMount() {
     const { getAirports } = this.props;
     getAirports();

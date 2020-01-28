@@ -12,7 +12,7 @@ import {
 
 class Header extends React.Component {
   render() {
-    const { setDisplayedFlights } = this.props;
+    const { setDisplayedFlights, displayed } = this.props;
     return (
       <div css={style}>
         <div className="header-content">
@@ -69,7 +69,7 @@ class Header extends React.Component {
             <div
               className={
                 "header-navigation-item col-sm-8 header-navigation-item-first" +
-                (this.props.displayed == DisplayableFlights.OUTBOUND
+                (displayed == DisplayableFlights.OUTBOUND
                   ? " header-navigation-item-selected"
                   : "")
               }
@@ -83,7 +83,7 @@ class Header extends React.Component {
             <div
               className={
                 "header-navigation-item col-sm-8" +
-                (this.props.displayed == DisplayableFlights.INBOUND
+                (displayed == DisplayableFlights.INBOUND
                   ? " header-navigation-item-selected"
                   : "")
               }
