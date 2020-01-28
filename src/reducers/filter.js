@@ -1,7 +1,13 @@
-import { SET_FILTER, FILTER_ERROR } from "../actions";
+import {
+  SET_FILTER,
+  FILTER_ERROR,
+  OPEN_FILTER,
+  CLOSE_FILTER
+} from "../actions";
 
 const initialState = {
   intentionId: null,
+  isOpen: false,
   from: {},
   to: {},
   outboundDate: "2020-08-22",
@@ -26,7 +32,11 @@ const filterError = (state, errors) => {
 export default function filter(state = initialState, { type, payload }) {
   switch (type) {
     case SET_FILTER:
-      return { ...payload.filter };
+      return { ...payload.filter, errors: [] };
+    case OPEN_FILTER:
+      return { ...state, isOpen: true };
+    case CLOSE_FILTER:
+      return { ...state, isOpen: false };
     case FILTER_ERROR:
       return filterError(state, payload.errors);
     default:

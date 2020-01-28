@@ -7,7 +7,11 @@ import Button from "../../atoms/Button";
 import style from "./style";
 import Calendar from "../../molecules/Calendar";
 import { connect } from "react-redux";
-import { getFlights as getFlightsAction } from "../../../actions";
+import {
+  getFlights as getFlightsAction,
+  openFilter as openFilterAction,
+  closeFilter as closeFilterAction
+} from "../../../actions";
 
 const brazilianMonth = [
   "JAN",
@@ -34,8 +38,7 @@ class Filter extends React.Component {
       to: {},
       adults: 1,
       children: 0,
-      infants: 0,
-      filterOptionIsOpen: false
+      infants: 0
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFromChange = this.handleFromChange.bind(this);
@@ -44,14 +47,12 @@ class Filter extends React.Component {
     this.handleChildrenChange = this.handleChildrenChange.bind(this);
     this.handleInfantsChange = this.handleInfantsChange.bind(this);
     this.getDisplayableError = this.getDisplayableError.bind(this);
-    this.toggleFilterOption = this.toggleFilterOption.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.getDisplayableDate = this.getDisplayableDate.bind(this);
   }
 
   onSearch() {
     this.props.getFlights(this.state);
-    this.toggleFilterOption();
   }
 
   handleChange(event, field) {
@@ -93,10 +94,6 @@ class Filter extends React.Component {
   getDisplayableError(errors = [], fieldName) {
     let messageError = this.getFieldError(errors, fieldName);
     return messageError ? <div className="error">{messageError}</div> : false;
-  }
-
-  toggleFilterOption() {
-    this.setState({ filterOptionIsOpen: !this.state.filterOptionIsOpen });
   }
 
   getDisplayableDate(dateToDisplay) {
@@ -156,20 +153,24 @@ class Filter extends React.Component {
               this.state.infants
             )}
           </div>
-          <div className="filter-action" onClick={this.toggleFilterOption}>
-            {this.state.filterOptionIsOpen && (
-              <Icon
-                name="icon-max-communication-circle-close"
-                color="white"
-                size="medium"
-              />
+          <div className="filter-action">
+            {this.props.filter.isOpen && (
+              <div onClick={this.props.closeFilter}>
+                <Icon
+                  name="icon-max-communication-circle-close"
+                  color="white"
+                  size="medium"
+                />
+              </div>
             )}
-            {!this.state.filterOptionIsOpen && (
-              <Icon name="icon-pencil" color="white" size="medium" />
+            {!this.props.filter.isOpen && (
+              <div onClick={this.props.openFilter}>
+                <Icon name="icon-pencil" color="white" size="medium" />
+              </div>
             )}
           </div>
         </div>
-        {this.state.filterOptionIsOpen && (
+        {this.props.filter.isOpen && (
           <div className="filter-options">
             <div className="filter-option">
               <SelectAutocomplete
@@ -254,12 +255,14 @@ class Filter extends React.Component {
 
 const mapStateToProps = state => ({
   filter: state.filter,
-  errors: state.errors,
+  errors: state.filter.errors,
   airports: state.airports
 });
 
 const mapDispatchToProps = {
-  getFlights: filter => getFlightsAction(filter)
+  getFlights: filter => getFlightsAction(filter),
+  openFilter: () => openFilterAction(),
+  closeFilter: () => closeFilterAction()
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

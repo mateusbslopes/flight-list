@@ -1,45 +1,4 @@
 import axios from "axios";
-import * as yup from "yup";
-
-yup.setLocale({
-  mixed: {
-    default: "Nao eh valido",
-    required: "O campo eh obrigatorio"
-  }
-});
-
-const filterSchema = yup.object().shape({
-  from: yup.object().shape({
-    airportCode: yup.string().required()
-  }),
-  to: yup.object().shape({
-    airportCode: yup.string().required()
-  }),
-  outboundDate: yup
-    .date()
-    .min(new Date())
-    .required(),
-  inboundDate: yup
-    .date()
-    .min(new Date())
-    .required(),
-  adults: yup
-    .number()
-    .min(1)
-    .max(9),
-  children: yup
-    .number()
-    .min(0)
-    .max(9),
-  infants: yup
-    .number()
-    .min(0)
-    .max(9)
-});
-
-const schemaOptions = {
-  abortEarly: false
-};
 
 export function getFlights(id, airline) {
   const SEARCH_FLIGHTS_API = "https://flight-price-hmg.maxmilhas.com.br";
@@ -55,8 +14,6 @@ export function getFlights(id, airline) {
 }
 
 export function makeSearchIntention(filter) {
-  filterSchema.validateSync(filterSchema.cast(filter), schemaOptions);
-
   const SEARCH_FLIGHTS_API = "https://flight-price-hmg.maxmilhas.com.br";
   const postData = {
     tripType: "RT",
