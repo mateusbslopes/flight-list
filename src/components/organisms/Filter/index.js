@@ -41,45 +41,12 @@ class Filter extends React.Component {
       infants: 0
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleFromChange = this.handleFromChange.bind(this);
-    this.handleToChange = this.handleToChange.bind(this);
-    this.handleAdultsChange = this.handleAdultsChange.bind(this);
-    this.handleChildrenChange = this.handleChildrenChange.bind(this);
-    this.handleInfantsChange = this.handleInfantsChange.bind(this);
     this.getDisplayableError = this.getDisplayableError.bind(this);
-    this.onSearch = this.onSearch.bind(this);
     this.getDisplayableDate = this.getDisplayableDate.bind(this);
   }
 
-  onSearch() {
-    this.props.getFlights(this.state);
-  }
-
-  handleChange(event, field) {
-    let obj = {};
-    obj[field] = event.target.value;
-    this.setState(obj);
-  }
-
-  // TODO centralize state management
-  handleFromChange(from) {
-    this.setState({ from });
-  }
-
-  handleToChange(to) {
-    this.setState({ to });
-  }
-
-  handleAdultsChange(adults) {
-    this.setState({ adults });
-  }
-
-  handleChildrenChange(children) {
-    this.setState({ children });
-  }
-
-  handleInfantsChange(infants) {
-    this.setState({ infants });
+  handleChange(value, field) {
+    this.setState({ [field]: value });
   }
 
   componentDidMount() {
@@ -178,7 +145,7 @@ class Filter extends React.Component {
                 placeholder="Origem"
                 label="Sair de"
                 value={this.state.from}
-                onChange={this.handleFromChange}
+                onChange={value => this.handleChange(value, "from")}
               />
               {this.getDisplayableError(this.props.errors, "from")}
             </div>
@@ -188,7 +155,7 @@ class Filter extends React.Component {
                 placeholder="Destino"
                 label="Ir para"
                 value={this.state.to}
-                onChange={this.handleToChange}
+                onChange={value => this.handleChange(value, "to")}
               />
               {this.getDisplayableError(this.props.errors, "to")}
             </div>
@@ -198,7 +165,7 @@ class Filter extends React.Component {
                   label="Ida"
                   value={this.state.outboundDate}
                   handleChange={event =>
-                    this.handleChange(event, "outboundDate")
+                    this.handleChange(event.target.value, "outboundDate")
                   }
                 />
                 {this.getDisplayableError(this.props.errors, "outboundDate")}
@@ -208,7 +175,7 @@ class Filter extends React.Component {
                   label="Volta"
                   value={this.state.inboundDate}
                   handleChange={event =>
-                    this.handleChange(event, "inboundDate")
+                    this.handleChange(event.target.value, "inboundDate")
                   }
                 />
                 {this.getDisplayableError(this.props.errors, "inboundDate")}
@@ -218,11 +185,11 @@ class Filter extends React.Component {
             <div className="filter-option">
               <Passengers
                 adults={this.state.adults}
-                onChangeAdults={this.handleAdultsChange}
+                onChangeAdults={value => this.handleChange(value, "adults")}
                 children={this.state.children}
-                onChangeChildren={this.handleChildrenChange}
+                onChangeChildren={value => this.handleChange(value, "children")}
                 infants={this.state.infants}
-                onChangeInfants={this.handleInfantsChange}
+                onChangeInfants={value => this.handleChange(value, "infants")}
               />
               {this.getDisplayableError(this.state.errors, "adults")}
               {this.getDisplayableError(this.state.errors, "children")}
@@ -233,7 +200,7 @@ class Filter extends React.Component {
               <div>
                 <Button
                   backgroundColor="rgb(26, 188, 156)"
-                  onClick={this.onSearch}
+                  onClick={() => this.props.getFlights(this.state)}
                 >
                   <div className="search-buttom-content">
                     <Icon
