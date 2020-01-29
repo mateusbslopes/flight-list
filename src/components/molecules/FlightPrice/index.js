@@ -3,14 +3,15 @@ import Button from "../../atoms/Button";
 import Text from "../../atoms/Text";
 import style from "./style";
 
+//TODO Create a CurrencyComponent
 const l10nBRL = new Intl.NumberFormat("pt-BR", {
   style: "currency",
   currency: "BRL"
 });
 
-class FlightPrice extends React.Component {
+export default function FlightPrice({ pricing }) {
   //When flight os exclive on maxmilhas
-  getExclusiveFlight(pricing) {
+  function getExclusiveFlight(pricing) {
     return (
       <div css={style}>
         <Button
@@ -31,7 +32,7 @@ class FlightPrice extends React.Component {
   }
 
   // When the best price is at airline
-  getBestPriceAtAirline(pricing) {
+  function getBestPriceAtAirline(pricing) {
     return (
       <div css={style}>
         <Button
@@ -51,13 +52,13 @@ class FlightPrice extends React.Component {
     );
   }
   // Sometimes the dicount will be rounded to 0 so do not show the percent is better
-  getDiscount(price) {
+  function getDiscount(price) {
     let discount = Math.trunc(price);
     if (discount == 0) return "";
     else return `${discount}%`;
   }
 
-  getBestPriceAtMaxmilhas(pricing) {
+  function getBestPriceAtMaxmilhas(pricing) {
     return (
       <div css={style}>
         <div className="extra-info">
@@ -78,7 +79,7 @@ class FlightPrice extends React.Component {
         </Button>
         <div className="extra-info warning">
           <Text color="orange">
-            Economize {this.getDiscount(pricing.savingPercentage)} na MaxMilhas!
+            Economize {getDiscount(pricing.savingPercentage)} na MaxMilhas!
           </Text>
         </div>
       </div>
@@ -86,17 +87,12 @@ class FlightPrice extends React.Component {
   }
 
   // Get content to be displayed
-  getDisplayablePrice(pricing) {
+  function getDisplayablePrice(pricing) {
     return pricing.airline == null
-      ? this.getExclusiveFlight(pricing)
+      ? getExclusiveFlight(pricing)
       : pricing.bestPriceAt === "airline"
-      ? this.getBestPriceAtAirline(pricing)
-      : this.getBestPriceAtMaxmilhas(pricing);
+      ? getBestPriceAtAirline(pricing)
+      : getBestPriceAtMaxmilhas(pricing);
   }
-
-  render() {
-    return this.getDisplayablePrice(this.props.pricing);
-  }
+  return getDisplayablePrice(pricing);
 }
-
-export default FlightPrice;

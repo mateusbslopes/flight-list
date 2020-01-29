@@ -8,43 +8,37 @@ import Button from "../../atoms/Button";
 import Text from "../../atoms/Text";
 import style from "./style";
 
-class HeaderNavigation extends React.Component {
-  render() {
-    const { setDisplayedFlights, displayed } = this.props;
-
-    return (
-      <div className="row" css={style}>
-        <div
-          className={
-            "header-navigation-item col-sm-8 header-navigation-item-first" +
-            (displayed == DisplayableFlights.OUTBOUND
-              ? " header-navigation-item-selected"
-              : "")
-          }
+function HeaderNavigation({ setDisplayedFlights, displayed }) {
+  return (
+    <div className="row" css={style}>
+      <div
+        className={
+          "header-navigation-item col-sm-8 header-navigation-item-first" +
+          (displayed == DisplayableFlights.OUTBOUND
+            ? " header-navigation-item-selected"
+            : "")
+        }
+      >
+        <Button
+          onClick={() => setDisplayedFlights(DisplayableFlights.OUTBOUND)}
         >
-          <Button
-            onClick={() => setDisplayedFlights(DisplayableFlights.OUTBOUND)}
-          >
-            <Text>Selecione sua ida</Text>
-          </Button>
-        </div>
-        <div
-          className={
-            "header-navigation-item col-sm-8" +
-            (displayed == DisplayableFlights.INBOUND
-              ? " header-navigation-item-selected"
-              : "")
-          }
-        >
-          <Button
-            onClick={() => setDisplayedFlights(DisplayableFlights.INBOUND)}
-          >
-            <Text>Selecione sua volta</Text>
-          </Button>
-        </div>
+          <Text>Selecione sua ida</Text>
+        </Button>
       </div>
-    );
-  }
+      <div
+        className={
+          "header-navigation-item col-sm-8" +
+          (displayed == DisplayableFlights.INBOUND
+            ? " header-navigation-item-selected"
+            : "")
+        }
+      >
+        <Button onClick={() => setDisplayedFlights(DisplayableFlights.INBOUND)}>
+          <Text>Selecione sua volta</Text>
+        </Button>
+      </div>
+    </div>
+  );
 }
 
 const mapStateToProps = state => ({
