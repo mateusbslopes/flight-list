@@ -5,37 +5,34 @@ import style from "./style";
 import Card from "../../molecules/Card";
 import { connect } from "react-redux";
 
-class FlightList extends React.Component {
-  render() {
-    const { flights } = this.props;
-    if (!flights.length)
-      return (
-        <Text>
-          Opa, nao encontramos voos com esse filtro! Tente deixa-lo mais
-          generico.
-        </Text>
-      );
-
+function FlightList({ flights }) {
+  if (!flights.length)
     return (
-      <div css={style}>
-        <Card
-          header={
-            <div className="flight-list-header">
-              <Text color="white">Companhia</Text>
-              <Text color="white">Partida</Text>
-              <Text color="white">Duracao</Text>
-              <Text color="white">Chegada</Text>
-            </div>
-          }
-        />
-
-        {flights.map(flight => (
-          <FlightRow key={flight.id} {...flight} />
-        ))}
-      </div>
+      <Text>
+        Opa, nao encontramos voos com esse filtro! Tente deixa-lo mais generico.
+      </Text>
     );
-  }
+
+  return (
+    <div css={style}>
+      <Card
+        header={
+          <div className="flight-list-header">
+            <Text color="white">Companhia</Text>
+            <Text color="white">Partida</Text>
+            <Text color="white">Duracao</Text>
+            <Text color="white">Chegada</Text>
+          </div>
+        }
+      />
+
+      {flights.map(flight => (
+        <FlightRow key={flight.id} {...flight} />
+      ))}
+    </div>
+  );
 }
+
 function getFlights(flights, flightsToDisplay, airlines) {
   let flightsToReturn = [];
   flightsToReturn = flights[flightsToDisplay].filter(
