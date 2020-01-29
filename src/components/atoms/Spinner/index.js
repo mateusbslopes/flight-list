@@ -23,7 +23,7 @@ class Spinner extends React.Component {
   }
 
   render() {
-    const { label } = this.props;
+    const { label, value } = this.props;
 
     return (
       <div className="options-item">
@@ -35,7 +35,7 @@ class Spinner extends React.Component {
             color="rgb(26, 188, 156)"
             onClick={() => this.handleChange(this.props.value - 1)}
           />
-          {this.props.value}
+          {value}
           <Icon
             size="big"
             name="icon-max-action-add"
