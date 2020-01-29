@@ -5,21 +5,23 @@ import FlightDetailButton from "../../molecules/FlightDetailButton";
 import FlightPrice from "../../molecules/FlightPrice";
 import Card from "../../molecules/Card";
 
-class FlightRow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...props };
-  }
-
-  componentDidMount() {
-    this.setState(this.state);
-  }
-
-  formatAirline(airline) {
+export default function FlightRow({
+  id,
+  airline,
+  flightNumber,
+  departureDate,
+  from,
+  duration,
+  trips,
+  arrivalDate,
+  to,
+  pricing
+}) {
+  function formatAirline(airline) {
     return airline.toUpperCase();
   }
 
-  formatHour(date) {
+  function formatHour(date) {
     return new Date(date).toLocaleString("en-US", {
       hour: "numeric",
       minute: "numeric",
@@ -27,7 +29,7 @@ class FlightRow extends React.Component {
     });
   }
 
-  formatDuration(duration) {
+  function formatDuration(duration) {
     let hour = Math.trunc(duration / 60);
     let minutes = duration % 60;
     let text = hour ? `${hour}H` : "";
@@ -35,46 +37,33 @@ class FlightRow extends React.Component {
     return text;
   }
 
-  formatStops(stops) {
+  function formatStops(stops) {
     return stops > 1 ? `${stops} paradas` : `${stops} parada`;
   }
 
-  render() {
-    return (
-      <div css={style}>
-        <Card
-          body={
-            <div className="flight-row-content" key={this.state.id}>
-              <div className="flight-row-descriptions">
-                <FlightColumn
-                  text={this.formatAirline(this.state.airline)}
-                  info={this.state.flightNumber}
-                />
-                <FlightColumn
-                  text={this.formatHour(this.state.departureDate)}
-                  info={this.state.from}
-                />
-                <FlightColumn
-                  text={this.formatDuration(this.state.duration)}
-                  info={this.formatStops(this.state.trips.length)}
-                />
-                <FlightColumn
-                  text={this.formatHour(this.state.arrivalDate)}
-                  info={this.state.to}
-                />
-              </div>
-              <div className="flight-row-action">
-                <FlightPrice pricing={this.state.pricing} />
-              </div>
-              <div className="flight-row-action">
-                <FlightDetailButton />
-              </div>
+  return (
+    <div css={style}>
+      <Card
+        body={
+          <div className="flight-row-content" key={id}>
+            <div className="flight-row-descriptions">
+              <FlightColumn text={formatAirline(airline)} info={flightNumber} />
+              <FlightColumn text={formatHour(departureDate)} info={from} />
+              <FlightColumn
+                text={formatDuration(duration)}
+                info={formatStops(trips.length)}
+              />
+              <FlightColumn text={formatHour(arrivalDate)} info={to} />
             </div>
-          }
-        />
-      </div>
-    );
-  }
+            <div className="flight-row-action">
+              <FlightPrice pricing={pricing} />
+            </div>
+            <div className="flight-row-action">
+              <FlightDetailButton />
+            </div>
+          </div>
+        }
+      />
+    </div>
+  );
 }
-
-export default FlightRow;
