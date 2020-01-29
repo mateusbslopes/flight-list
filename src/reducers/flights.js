@@ -1,5 +1,3 @@
-// TODO should be "ClearFlights" or "FILTER"
-
 import {
   CLEAR_FLIGHTS,
   ADD_FLIGHTS,
@@ -32,7 +30,6 @@ export default function flights(state = initialState, { type, payload }) {
       // Order by price
       return addFlights(state, payload);
     case SET_DISPLAYED_FLIGHTS:
-      // TODO see if should make validation of DisplayableFlights
       return {
         ...state,
         displayed: payload.displayed
