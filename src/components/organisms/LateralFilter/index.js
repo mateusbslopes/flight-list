@@ -32,7 +32,6 @@ class LateralFilter extends React.Component {
 
         <div className="body">
           <Text>Selecione a companhia aeria:</Text>
-          {console.log(airlines)}
           {airlines.map(airline => (
             <Checkbox
               key={airline.label}
