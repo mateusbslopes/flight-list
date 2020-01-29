@@ -8,33 +8,29 @@ import style from "./style";
 import Text from "../../atoms/Text";
 import { connect } from "react-redux";
 
-class Body extends React.Component {
-  render() {
-    const { isFetching, hasItems, hasSearched } = this.props;
-
-    return (
-      <div css={style}>
-        <div className="header-info">
-          {isFetching && (
-            <div className="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          )}
-          {!isFetching && !hasItems && hasSearched && (
-            <Text>Opa, nao encontramos voos! Tente para um outro lugar.</Text>
-          )}
-          {!isFetching && !hasItems && !hasSearched && (
-            <Text>Faca uma pesquisa!</Text>
-          )}
-        </div>
-
-        {hasItems && <FlightList />}
+function Body({ isFetching, hasItems, hasSearched }) {
+  return (
+    <div css={style}>
+      <div className="header-info">
+        {isFetching && (
+          <div className="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        )}
+        {!isFetching && !hasItems && hasSearched && (
+          <Text>Opa, nao encontramos voos! Tente para um outro lugar.</Text>
+        )}
+        {!isFetching && !hasItems && !hasSearched && (
+          <Text>Faca uma pesquisa!</Text>
+        )}
       </div>
-    );
-  }
+
+      {hasItems && <FlightList />}
+    </div>
+  );
 }
 
 const mapStateToProps = state => ({
