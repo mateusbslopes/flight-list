@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SelectAutocomplete from "../../molecules/SelectAutocomplete";
 import Passengers from "../Passengers";
 import Text from "../../atoms/Text";
@@ -13,57 +13,48 @@ import {
   closeSearch as closeSearchAction
 } from "../../../actions";
 
-const brazilianMonth = [
-  "JAN",
-  "FEV",
-  "MAR",
-  "ABR",
-  "MAI",
-  "JUN",
-  "JUL",
-  "AGO",
-  "SET",
-  "OUT",
-  "NOV",
-  "DEZ"
-];
+function Search({
+  closeSearch,
+  openSearch,
+  airports,
+  errors,
+  search,
+  getFlights
+}) {
+  const [outboundDate, setOutboundDate] = useState(search.outboundDate);
+  const [inboundDate, setInboundDate] = useState(search.inboundDate);
+  const [from, setFrom] = useState(search.from);
+  const [to, setTo] = useState(search.to);
+  const [adults, setAdults] = useState(search.adults);
+  const [children, setChildren] = useState(search.children);
+  const [infants, setInfants] = useState(search.infants);
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      outboundDate: "2020-08-22",
-      inboundDate: "2020-08-26",
-      from: {},
-      to: {},
-      adults: 1,
-      children: 0,
-      infants: 0
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.getDisplayableError = this.getDisplayableError.bind(this);
-    this.getDisplayableDate = this.getDisplayableDate.bind(this);
-  }
+  const brazilianMonth = [
+    "JAN",
+    "FEV",
+    "MAR",
+    "ABR",
+    "MAI",
+    "JUN",
+    "JUL",
+    "AGO",
+    "SET",
+    "OUT",
+    "NOV",
+    "DEZ"
+  ];
 
-  handleChange(value, field) {
-    this.setState({ [field]: value });
-  }
-
-  componentDidMount() {
-    this.setState(this.state);
-  }
-
-  getFieldError(errors = [], fieldName) {
+  function getFieldError(errors = [], fieldName) {
     let error = errors.find(error => error.path === fieldName);
     return error ? error.message : null;
   }
 
-  getDisplayableError(errors = [], fieldName) {
-    let messageError = this.getFieldError(errors, fieldName);
+  function getDisplayableError(errors = [], fieldName) {
+    let messageError = getFieldError(errors, fieldName);
     return messageError ? <div className="error">{messageError}</div> : false;
   }
 
-  getDisplayableDate(dateToDisplay) {
+  function getDisplayableDate(dateToDisplay) {
     let date = new Date(dateToDisplay);
     if (!isNaN(date.getTime()) && dateToDisplay.length == 10) {
       return (
@@ -82,156 +73,146 @@ class Search extends React.Component {
     }
   }
 
-  getPassengersAmount(adults, children, infants) {
+  function getPassengersAmount(adults, children, infants) {
     return adults + children + infants;
   }
 
-  render() {
-    const {
-      closeSearch,
-      openSearch,
-      airports,
-      errors,
-      search,
-      getFlights
-    } = this.props;
-
-    return (
-      <div css={style}>
-        <div className="filter-value">
-          <div className="filter-locations">
-            <Icon
-              size="medium"
-              name="icon-max-communication-location"
-              color="rgb(26, 188, 156)"
-            />
-            <div className="filter-locations-value">
-              {this.state.from && this.state.from.airportCode}-
-              {this.state.to && this.state.to.airportCode}
-            </div>
-          </div>
-          <div className="filter-date">
-            <Icon
-              color="rgb(26, 188, 156)"
-              size="medium"
-              name="icon-max-action-calendar"
-            />
-            {this.getDisplayableDate(this.state.outboundDate)}
-          </div>
-          <div className="filter-date">
-            <Icon
-              color="rgb(26, 188, 156)"
-              size="medium"
-              name="icon-max-action-calendar"
-            />
-            {this.getDisplayableDate(this.state.inboundDate)}
-          </div>
-          <div className="filter-passengers">
-            <Icon name="icon-users" color="rgb(26, 188, 156)" size="medium" />
-            {this.getPassengersAmount(
-              this.state.adults,
-              this.state.children,
-              this.state.infants
-            )}
-          </div>
-          <div className="filter-action">
-            {search.isOpen && (
-              <div onClick={closeSearch}>
-                <Icon
-                  name="icon-max-communication-circle-close"
-                  color="white"
-                  size="medium"
-                />
-              </div>
-            )}
-            {!search.isOpen && (
-              <div onClick={openSearch}>
-                <Icon name="icon-pencil" color="white" size="medium" />
-              </div>
-            )}
+  return (
+    <div css={style}>
+      <div className="filter-value">
+        <div className="filter-locations">
+          <Icon
+            size="medium"
+            name="icon-max-communication-location"
+            color="rgb(26, 188, 156)"
+          />
+          <div className="filter-locations-value">
+            {from && from.airportCode}-{to && to.airportCode}
           </div>
         </div>
-        {search.isOpen && (
-          <div className="filter-options">
-            <div className="filter-option">
-              <SelectAutocomplete
-                data={airports}
-                placeholder="Origem"
-                label="Sair de"
-                value={this.state.from}
-                onChange={value => this.handleChange(value, "from")}
+        <div className="filter-date">
+          <Icon
+            color="rgb(26, 188, 156)"
+            size="medium"
+            name="icon-max-action-calendar"
+          />
+          {getDisplayableDate(outboundDate)}
+        </div>
+        <div className="filter-date">
+          <Icon
+            color="rgb(26, 188, 156)"
+            size="medium"
+            name="icon-max-action-calendar"
+          />
+          {getDisplayableDate(inboundDate)}
+        </div>
+        <div className="filter-passengers">
+          <Icon name="icon-users" color="rgb(26, 188, 156)" size="medium" />
+          {getPassengersAmount(adults, children, infants)}
+        </div>
+        <div className="filter-action">
+          {search.isOpen && (
+            <div onClick={closeSearch}>
+              <Icon
+                name="icon-max-communication-circle-close"
+                color="white"
+                size="medium"
               />
-              {this.getDisplayableError(errors, "from")}
             </div>
-            <div className="filter-option">
-              <SelectAutocomplete
-                data={airports}
-                placeholder="Destino"
-                label="Ir para"
-                value={this.state.to}
-                onChange={value => this.handleChange(value, "to")}
+          )}
+          {!search.isOpen && (
+            <div onClick={openSearch}>
+              <Icon name="icon-pencil" color="white" size="medium" />
+            </div>
+          )}
+        </div>
+      </div>
+      {search.isOpen && (
+        <div className="filter-options">
+          <div className="filter-option">
+            <SelectAutocomplete
+              data={airports}
+              placeholder="Origem"
+              label="Sair de"
+              value={from}
+              onChange={value => setFrom(value)}
+            />
+            {getDisplayableError(errors, "from")}
+          </div>
+          <div className="filter-option">
+            <SelectAutocomplete
+              data={airports}
+              placeholder="Destino"
+              label="Ir para"
+              value={to}
+              onChange={value => setTo(value)}
+            />
+            {getDisplayableError(errors, "to")}
+          </div>
+          <div className="flight-dates">
+            <div className="filter-option col-sm-8">
+              <Calendar
+                label="Ida"
+                value={outboundDate}
+                handleChange={event => setOutboundDate(event.target.value)}
               />
-              {this.getDisplayableError(errors, "to")}
+              {getDisplayableError(errors, "outboundDate")}
             </div>
-            <div className="flight-dates">
-              <div className="filter-option col-sm-8">
-                <Calendar
-                  label="Ida"
-                  value={this.state.outboundDate}
-                  handleChange={event =>
-                    this.handleChange(event.target.value, "outboundDate")
-                  }
-                />
-                {this.getDisplayableError(errors, "outboundDate")}
-              </div>
-              <div className="filter-option col-sm-8">
-                <Calendar
-                  label="Volta"
-                  value={this.state.inboundDate}
-                  handleChange={event =>
-                    this.handleChange(event.target.value, "inboundDate")
-                  }
-                />
-                {this.getDisplayableError(errors, "inboundDate")}
-              </div>
-            </div>
-
-            <div className="filter-option">
-              <Passengers
-                adults={this.state.adults}
-                onChangeAdults={value => this.handleChange(value, "adults")}
-                children={this.state.children}
-                onChangeChildren={value => this.handleChange(value, "children")}
-                infants={this.state.infants}
-                onChangeInfants={value => this.handleChange(value, "infants")}
+            <div className="filter-option col-sm-8">
+              <Calendar
+                label="Volta"
+                value={inboundDate}
+                handleChange={event => setInboundDate(event.target.value)}
               />
-              {this.getDisplayableError(this.state.errors, "adults")}
-              {this.getDisplayableError(this.state.errors, "children")}
-              {this.getDisplayableError(this.state.errors, "infants")}
-            </div>
-            <div className="w-100"></div>
-            <div className="row">
-              <div>
-                <Button
-                  backgroundColor="rgb(26, 188, 156)"
-                  onClick={() => getFlights(this.state)}
-                >
-                  <div className="search-buttom-content">
-                    <Icon
-                      name="icon-max-action-search"
-                      size="big"
-                      color="white"
-                    />
-                    <Text color="white">Pesquisar</Text>
-                  </div>
-                </Button>
-              </div>
+              {getDisplayableError(errors, "inboundDate")}
             </div>
           </div>
-        )}
-      </div>
-    );
-  }
+
+          <div className="filter-option">
+            <Passengers
+              adults={adults}
+              onChangeAdults={value => setAdults(value)}
+              children={children}
+              onChangeChildren={value => setChildren(value)}
+              infants={infants}
+              onChangeInfants={value => setInfants(value)}
+            />
+            {getDisplayableError(errors, "adults")}
+            {getDisplayableError(errors, "children")}
+            {getDisplayableError(errors, "infants")}
+          </div>
+          <div className="w-100"></div>
+          <div className="row">
+            <div>
+              <Button
+                backgroundColor="rgb(26, 188, 156)"
+                onClick={() =>
+                  getFlights({
+                    outboundDate,
+                    inboundDate,
+                    from,
+                    to,
+                    adults,
+                    children,
+                    infants
+                  })
+                }
+              >
+                <div className="search-buttom-content">
+                  <Icon
+                    name="icon-max-action-search"
+                    size="big"
+                    color="white"
+                  />
+                  <Text color="white">Pesquisar</Text>
+                </div>
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 const mapStateToProps = state => ({
