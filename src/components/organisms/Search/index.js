@@ -28,7 +28,7 @@ const brazilianMonth = [
   "DEZ"
 ];
 
-class Filter extends React.Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -241,4 +241,4 @@ const mapDispatchToProps = {
   closeSearch: () => closeSearchAction()
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

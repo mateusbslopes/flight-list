@@ -1,5 +1,5 @@
 import React from "react";
-import Filter from "../Filter";
+import Search from "../Search";
 import style from "./style";
 import HeaderTitle from "../../atoms/HeaderTitle";
 import HeaderNavigation from "../../molecules/HeaderNavigation";
@@ -10,7 +10,7 @@ class Header extends React.Component {
       <div css={style}>
         <div className="header-content">
           <HeaderTitle />
-          <Filter />
+          <Search />
           <HeaderNavigation />
         </div>
       </div>

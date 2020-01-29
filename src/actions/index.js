@@ -148,7 +148,7 @@ export const getFlights = search => async dispach => {
     searchSchema.validateSync(searchSchema.cast(search), schemaOptions);
     makeSearchIntention(search).then(response => {
       dispach({ type: START_FETCHING });
-      dispach(closeFilter());
+      dispach(closeSearch());
       let promises = [];
       response.data.airlines.forEach(airline => {
         promises.push(
