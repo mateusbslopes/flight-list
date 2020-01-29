@@ -22,6 +22,8 @@ export const TOGGLE_AIRLINE = "TOGGLE_AIRLINE";
 export const FILTER_ERROR = "FILTER_ERROR";
 export const OPEN_FILTER = "OPEN_FILTER";
 export const CLOSE_FILTER = "CLOSE_FILTER";
+export const OPEN_SEARCH = "OPEN_SEARCH";
+export const CLOSE_SEARCH = "CLOSE_SEARCH";
 
 // Project conts
 export const DisplayableFlights = {
@@ -56,6 +58,14 @@ export const openFilter = () => ({
 
 export const closeFilter = () => ({
   type: CLOSE_FILTER
+});
+
+export const openSearch = () => ({
+  type: OPEN_SEARCH
+});
+
+export const closeSearch = () => ({
+  type: CLOSE_SEARCH
 });
 
 export const getAirports = () => async dispach => {

@@ -2,86 +2,23 @@ import React from "react";
 import { connect } from "react-redux";
 import style from "./style";
 import Text from "../../atoms/Text";
-import Icon from "../../atoms/Icon";
-import { toggleAirline as toggleAirlineAction } from "../../../actions";
+
+import { openSearch as openSearchAction } from "../../../actions";
 
 class Footer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isFilterOpen: false
-    };
-
-    this.openFilter = this.openFilter.bind(this);
-    this.closeFilter = this.closeFilter.bind(this);
-  }
-
-  openFilter() {
-    this.setState({ isFilterOpen: true });
-  }
-
-  closeFilter() {
-    this.setState({ isFilterOpen: false });
-  }
-
   render() {
-    const { airlines, toggleAirline, displayedFlights } = this.props;
-
     return (
       <div css={style}>
-        <div className="action action-first" onClick={this.openFilter}>
+        <div className="action action-first" onClick={this.props.openSearch}>
           <Text>FILTRAR VOOS</Text>
         </div>
-        {this.state.isFilterOpen && (
-          <div className="filter">
-            <div className="header">
-              <div className="title">
-                <Text color="white">Filtre seus resultados por</Text>
-              </div>
-              <div onClick={this.closeFilter}>
-                <Icon
-                  name="icon-max-navigation-close"
-                  size="big"
-                  color="rgb(26,188,156)"
-                />
-              </div>
-            </div>
-
-            <div className="body">
-              <Text>Selecione a companhia aeria:</Text>
-              {airlines.map(airline => (
-                <div key={airline.label} className="airline">
-                  {/* TODO transform in atom/molecule */}
-                  <div
-                    className="airline-checkbox"
-                    onClick={() => toggleAirline(airline.label)}
-                  >
-                    {airline.checked && (
-                      <Icon
-                        name="icon-check"
-                        color="rgb(26,188,156)"
-                        size="small"
-                      />
-                    )}
-                  </div>
-                  <div className="airline-label">{`${airline.label} (${airline[displayedFlights]} VOOS)`}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  airlines: state.airlines,
-  displayedFlights: state.flights.displayed
-});
-
 const mapDispatchToProps = {
-  toggleAirline: airlineLabel => toggleAirlineAction(airlineLabel)
+  openSearch: () => openSearchAction()
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default connect(null, mapDispatchToProps)(Footer);

@@ -4,6 +4,7 @@ import airlines from "./airlines";
 import airports from "./airports";
 import filter from "./filter";
 import flights from "./flights";
+import search from "./search";
 
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -11,6 +12,6 @@ const composeEnhancers =
     : compose;
 
 export default createStore(
-  combineReducers({ airlines, airports, filter, flights }),
+  combineReducers({ airlines, airports, filter, flights, search }),
   composeEnhancers(applyMiddleware(thunkMiddleware))
 );
