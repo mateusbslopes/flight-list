@@ -171,11 +171,11 @@ function Search({
           <div className="filter-option">
             <Passengers
               adults={adults}
-              onChangeAdults={value => setAdults(value)}
+              onChangeAdults={setAdults}
               children={children}
-              onChangeChildren={value => setChildren(value)}
+              onChangeChildren={setChildren}
               infants={infants}
-              onChangeInfants={value => setInfants(value)}
+              onChangeInfants={setInfants}
             />
             {getDisplayableError(errors, "adults")}
             {getDisplayableError(errors, "children")}
