@@ -1,4 +1,4 @@
-const style = (size = "normal", weight = "normal", color = "normal") => {
+const style = (size = "medium", weight = "normal", color = "normal") => {
   const getColor = () => {
     switch (color) {
       case "light":
@@ -30,7 +30,9 @@ const style = (size = "normal", weight = "normal", color = "normal") => {
     switch (size) {
       case "small":
         return "10px";
-      case "normal":
+      case "medium-small":
+        return "25px";
+      case "medium":
         return "30px";
       case "big":
         return "60px";

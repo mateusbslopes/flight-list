@@ -3,9 +3,8 @@ export default () => `
     flex-direction: row;
     align-items: center;
 
-    .label {
-        font-size: 25px;
-        color: rgb(135,147,149);
+    .checkbox-label {
+        margin-left: 5px;
         text-transform: capitalize;
     }
 

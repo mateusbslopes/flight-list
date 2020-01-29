@@ -1,5 +1,6 @@
 import React from "react";
-import Icon from "../../atoms/Icon";
+import Icon from "../Icon";
+import Text from "../Text";
 import style from "./style";
 
 class Checkbox extends React.Component {
@@ -13,7 +14,11 @@ class Checkbox extends React.Component {
             <Icon name="icon-check" color="rgb(26,188,156)" size="small" />
           )}
         </div>
-        <div className="label">{label}</div>
+        <div className="checkbox-label">
+          <Text weight="light" size="medium-small">
+            {label}
+          </Text>
+        </div>
       </div>
     );
   }
