@@ -7,7 +7,8 @@ import { connect } from "react-redux";
 
 class FlightList extends React.Component {
   render() {
-    if (!this.props.flights.length)
+    const { flights } = this.props;
+    if (!flights.length)
       return (
         <Text>
           Opa, nao encontramos voos com esse filtro! Tente deixa-lo mais
@@ -28,7 +29,7 @@ class FlightList extends React.Component {
           }
         />
 
-        {this.props.flights.map(flight => (
+        {flights.map(flight => (
           <FlightRow key={flight.id} {...flight} />
         ))}
       </div>

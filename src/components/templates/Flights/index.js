@@ -23,7 +23,7 @@ class Flights extends React.Component {
               displayedFlights={this.props.displayedFlights}
             />
           </div> */}
-        <Body flights={this.props.flights} />
+        <Body />
         <Footer />
       </div>
     );

@@ -3,16 +3,14 @@ import style from "./style";
 
 class Card extends React.Component {
   render() {
-    return (
-      <div css={() => style(this.props.margin)}>
-        <div className="content">
-          {this.props.header && (
-            <div className="header">{this.props.header}</div>
-          )}
+    const { margin, header, body } = this.props;
 
-          {this.props.body && (
-            <div className="card-body">{this.props.body}</div>
-          )}
+    return (
+      <div css={() => style(margin)}>
+        <div className="content">
+          {header && <div className="header">{header}</div>}
+
+          {body && <div className="card-body">{body}</div>}
         </div>
       </div>
     );

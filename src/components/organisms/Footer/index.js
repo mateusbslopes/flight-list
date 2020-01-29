@@ -25,6 +25,8 @@ class Footer extends React.Component {
   }
 
   render() {
+    const { airlines, toggleAirline, displayedFlights } = this.props;
+
     return (
       <div css={style}>
         <div className="action action-first" onClick={this.openFilter}>
@@ -47,12 +49,12 @@ class Footer extends React.Component {
 
             <div className="body">
               <Text>Selecione a companhia aeria:</Text>
-              {this.props.airlines.map(airline => (
+              {airlines.map(airline => (
                 <div key={airline.label} className="airline">
                   {/* TODO transform in atom/molecule */}
                   <div
                     className="airline-checkbox"
-                    onClick={() => this.props.toggleAirline(airline.label)}
+                    onClick={() => toggleAirline(airline.label)}
                   >
                     {airline.checked && (
                       <Icon
@@ -62,9 +64,7 @@ class Footer extends React.Component {
                       />
                     )}
                   </div>
-                  <div className="airline-label">{`${airline.label} (${
-                    airline[this.props.displayedFlights]
-                  } VOOS)`}</div>
+                  <div className="airline-label">{`${airline.label} (${airline[displayedFlights]} VOOS)`}</div>
                 </div>
               ))}
             </div>

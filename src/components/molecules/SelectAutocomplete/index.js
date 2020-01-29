@@ -93,11 +93,12 @@ class SelectAutocomplete extends React.Component {
   }
 
   render() {
+    const { value, data } = this.props;
     return (
       <div css={style}>
         <div
           className="autocomplete-content"
-          onBlur={() => this.handleBlur(this.props.value)}
+          onBlur={() => this.handleBlur(value)}
         >
           <div className="label">{this.state.label}</div>
           <div className="autocomplete-config">
@@ -105,21 +106,18 @@ class SelectAutocomplete extends React.Component {
               <input
                 className="input-value col-sm-8"
                 type="text"
-                value={`${this.getDisplayedValue(this.props.value)}`}
+                value={`${this.getDisplayedValue(value)}`}
                 onChange={this.handleChange}
                 onClick={this.handleClick}
               />
               <div className="autocomplete-value-desc">
                 <div>
-                  {this.state.state === "fulfilled" &&
-                    this.props.value.airportCode}
+                  {this.state.state === "fulfilled" && value.airportCode}
                 </div>
               </div>
             </div>
             {this.state.state === "searching" && (
-              <div className="col-sm-8 list">
-                {this.getDataToDisplay(this.props.data)}
-              </div>
+              <div className="col-sm-8 list">{this.getDataToDisplay(data)}</div>
             )}
           </div>
         </div>
