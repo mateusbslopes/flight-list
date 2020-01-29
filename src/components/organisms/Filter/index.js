@@ -9,7 +9,7 @@ import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Checkbox from "../../atoms/Checkbox";
 
-class LateralFilter extends React.Component {
+class Filter extends React.Component {
   render() {
     const { airlines, toggleAirline, filter, closeFilter } = this.props;
 
@@ -57,4 +57,4 @@ const mapDispatchToProps = {
   closeFilter: () => closeFilterAction()
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LateralFilter);
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

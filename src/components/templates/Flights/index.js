@@ -4,7 +4,7 @@ import Body from "../../organisms/Body";
 import { getAirports as getAirportsAction } from "../../../actions/index";
 import { connect } from "react-redux";
 import Footer from "../../organisms/Footer";
-import LateralFilter from "../../organisms/LateralFilter";
+import Filter from "../../organisms/Filter";
 
 class Flights extends React.Component {
   componentDidMount() {
@@ -16,7 +16,7 @@ class Flights extends React.Component {
     return (
       <div className="container-flex">
         <Header />
-        <LateralFilter />
+        <Filter />
         <Body />
         <Footer />
       </div>
