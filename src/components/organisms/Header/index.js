@@ -1,6 +1,5 @@
 import React from "react";
 import Text from "../../atoms/Text";
-import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
 import Filter from "../Filter";
 import style from "./style";
@@ -9,6 +8,7 @@ import {
   setDisplayedFlights as setDisplayedFlightsAction,
   DisplayableFlights
 } from "../../../actions";
+import HeaderTitle from "../../atoms/HeaderTitle";
 
 class Header extends React.Component {
   render() {
@@ -16,54 +16,7 @@ class Header extends React.Component {
     return (
       <div css={style}>
         <div className="header-content">
-          <div className="title row">
-            <Icon
-              name="icon-max-navigation-menu"
-              size="big"
-              color="rgb(26, 188, 156)"
-            />
-            <Text size="big">Teste Front</Text>
-            <div className="links">
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center"
-                }}
-              >
-                <Icon
-                  name="finance-coin"
-                  size="big"
-                  color="rgb(26, 188, 156)"
-                />
-                <Text weight="light">Venda suas milhas</Text>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center"
-                }}
-              >
-                <Icon
-                  name="communication-question"
-                  size="big"
-                  color="rgb(26, 188, 156)"
-                />
-                <Text weight="light">Tire suas duvidas</Text>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center"
-                }}
-              >
-                <Icon name="action-user" size="big" color="rgb(26, 188, 156)" />
-                <Text weight="light">Login ou cadastro</Text>
-              </div>
-            </div>
-          </div>
+          <HeaderTitle />
           <Filter />
           <div className="row header-navigation">
             <div

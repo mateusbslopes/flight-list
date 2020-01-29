@@ -3,7 +3,6 @@ import Header from "../../organisms/Header";
 import Body from "../../organisms/Body";
 import { getAirports as getAirportsAction } from "../../../actions/index";
 import { connect } from "react-redux";
-import style from "./style";
 import Footer from "../../organisms/Footer";
 
 class Flights extends React.Component {
@@ -14,15 +13,8 @@ class Flights extends React.Component {
 
   render() {
     return (
-      <div css={style} className="container-flex">
+      <div className="container-flex">
         <Header />
-        {/* <div className="extraInfo">
-            <ExtraInfo
-              airlines={this.props.filterableAirlines || []}
-              setAirlines={this.onChangeFilterableAirlines}
-              displayedFlights={this.props.displayedFlights}
-            />
-          </div> */}
         <Body />
         <Footer />
       </div>
