@@ -1,65 +1,21 @@
 import React from "react";
-import Text from "../../atoms/Text";
-import Button from "../../atoms/Button";
 import Filter from "../Filter";
 import style from "./style";
-import { connect } from "react-redux";
-import {
-  setDisplayedFlights as setDisplayedFlightsAction,
-  DisplayableFlights
-} from "../../../actions";
 import HeaderTitle from "../../atoms/HeaderTitle";
+import HeaderNavigation from "../../molecules/HeaderNavigation";
 
 class Header extends React.Component {
   render() {
-    const { setDisplayedFlights, displayed } = this.props;
     return (
       <div css={style}>
         <div className="header-content">
           <HeaderTitle />
           <Filter />
-          <div className="row header-navigation">
-            <div
-              className={
-                "header-navigation-item col-sm-8 header-navigation-item-first" +
-                (displayed == DisplayableFlights.OUTBOUND
-                  ? " header-navigation-item-selected"
-                  : "")
-              }
-            >
-              <Button
-                onClick={() => setDisplayedFlights(DisplayableFlights.OUTBOUND)}
-              >
-                <Text>Selecione sua ida</Text>
-              </Button>
-            </div>
-            <div
-              className={
-                "header-navigation-item col-sm-8" +
-                (displayed == DisplayableFlights.INBOUND
-                  ? " header-navigation-item-selected"
-                  : "")
-              }
-            >
-              <Button
-                onClick={() => setDisplayedFlights(DisplayableFlights.INBOUND)}
-              >
-                <Text>Selecione sua volta</Text>
-              </Button>
-            </div>
-          </div>
+          <HeaderNavigation />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  displayed: state.flights.displayed
-});
-
-const mapDispachToProps = {
-  setDisplayedFlights: displayed => setDisplayedFlightsAction(displayed)
-};
-
-export default connect(mapStateToProps, mapDispachToProps)(Header);
+export default Header;
