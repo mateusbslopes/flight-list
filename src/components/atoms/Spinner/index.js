@@ -23,9 +23,11 @@ class Spinner extends React.Component {
   }
 
   render() {
+    const { label } = this.props;
+
     return (
       <div className="options-item">
-        {this.props.label}
+        {label}
         <div className="options-item-config">
           <Icon
             size="big"

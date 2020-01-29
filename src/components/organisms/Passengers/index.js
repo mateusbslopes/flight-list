@@ -1,5 +1,4 @@
 import React from "react";
-import Icon from "../../atoms/Icon";
 import style from "./style";
 import Spinner from "../../atoms/Spinner";
 
@@ -30,6 +29,15 @@ class Passengers extends React.Component {
   }
 
   render() {
+    const {
+      adults,
+      onChangeAdults,
+      children,
+      onChangeChildren,
+      infants,
+      onChangeInfants
+    } = this.props;
+
     return (
       <div onTouchEnd={this.onTouchEnd} onBlur={this.handleOnBlur} css={style}>
         {this.state.optionsIsVisible && (
@@ -37,23 +45,23 @@ class Passengers extends React.Component {
             <div className="options-item">
               <Spinner
                 label="Adultos"
-                value={this.props.adults}
-                onChange={this.props.onChangeAdults}
+                value={adults}
+                onChange={onChangeAdults}
                 min={1}
               />
             </div>
             <div className="options-item">
               <Spinner
                 label="Criancas"
-                value={this.props.children}
-                onChange={this.props.onChangeChildren}
+                value={children}
+                onChange={onChangeChildren}
               />
             </div>
             <div className="options-item">
               <Spinner
                 label="Bebe"
-                value={this.props.infants}
-                onChange={this.props.onChangeInfants}
+                value={infants}
+                onChange={onChangeInfants}
               />
             </div>
           </div>
