@@ -21,10 +21,10 @@ export function makeSearchIntention(filter) {
     to: filter.to.airportCode,
     outboundDate: filter.outboundDate,
     inboundDate: filter.inboundDate,
-    cabin: "EC", //classe econômica (EC) ou executiva (EX)
+    cabin: "EC",
     adults: Number(filter.adults),
     children: Number(filter.children),
-    infants: 0
+    infants: Number(filter.infants)
   };
 
   return axios.post(

@@ -6,7 +6,6 @@ export default () => `
     .label {
         font-size: 25px;
         color: rgb(135,147,149);
-        margin-left: 5px;
         text-transform: capitalize;
     }
 
