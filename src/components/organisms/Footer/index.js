@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import style from "./style";
 import Text from "../../atoms/Text";
 
-import { openSearch as openSearchAction } from "../../../actions";
+import { openFilter as openFilterAction } from "../../../actions";
 
 class Footer extends React.Component {
   render() {
     return (
       <div css={style}>
-        <div className="action action-first" onClick={this.props.openSearch}>
+        <div className="action action-first" onClick={this.props.openFilter}>
           <Text>FILTRAR VOOS</Text>
         </div>
       </div>
@@ -18,7 +18,7 @@ class Footer extends React.Component {
 }
 
 const mapDispatchToProps = {
-  openSearch: () => openSearchAction()
+  openFilter: () => openFilterAction()
 };
 
 export default connect(null, mapDispatchToProps)(Footer);

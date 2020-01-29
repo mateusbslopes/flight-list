@@ -9,8 +9,8 @@ import Calendar from "../../molecules/Calendar";
 import { connect } from "react-redux";
 import {
   getFlights as getFlightsAction,
-  openFilter as openFilterAction,
-  closeFilter as closeFilterAction
+  openSearch as openSearchAction,
+  closeSearch as closeSearchAction
 } from "../../../actions";
 
 const brazilianMonth = [
@@ -83,11 +83,11 @@ class Filter extends React.Component {
 
   render() {
     const {
-      closeFilter,
-      openFilter,
+      closeSearch,
+      openSearch,
       airports,
       errors,
-      filter,
+      search,
       getFlights
     } = this.props;
 
@@ -130,8 +130,8 @@ class Filter extends React.Component {
             )}
           </div>
           <div className="filter-action">
-            {filter.isOpen && (
-              <div onClick={closeFilter}>
+            {search.isOpen && (
+              <div onClick={closeSearch}>
                 <Icon
                   name="icon-max-communication-circle-close"
                   color="white"
@@ -139,14 +139,14 @@ class Filter extends React.Component {
                 />
               </div>
             )}
-            {!filter.isOpen && (
-              <div onClick={openFilter}>
+            {!search.isOpen && (
+              <div onClick={openSearch}>
                 <Icon name="icon-pencil" color="white" size="medium" />
               </div>
             )}
           </div>
         </div>
-        {filter.isOpen && (
+        {search.isOpen && (
           <div className="filter-options">
             <div className="filter-option">
               <SelectAutocomplete
@@ -230,15 +230,15 @@ class Filter extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  filter: state.filter,
-  errors: state.filter.errors,
+  search: state.search,
+  errors: state.search.errors,
   airports: state.airports
 });
 
 const mapDispatchToProps = {
-  getFlights: filter => getFlightsAction(filter),
-  openFilter: () => openFilterAction(),
-  closeFilter: () => closeFilterAction()
+  getFlights: search => getFlightsAction(search),
+  openSearch: () => openSearchAction(),
+  closeSearch: () => closeSearchAction()
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

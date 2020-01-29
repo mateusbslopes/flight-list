@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import style from "./style";
 import {
-  closeSearch as closeSearchAction,
+  closeFilter as closeFilterAction,
   toggleAirline as toggleAirlineAction
 } from "../../../actions";
 import Text from "../../atoms/Text";
@@ -11,15 +11,9 @@ import Checkbox from "../../atoms/Checkbox";
 
 class LateralFilter extends React.Component {
   render() {
-    const {
-      airlines,
-      toggleAirline,
-      displayedFlights,
-      search,
-      closeSearch
-    } = this.props;
+    const { airlines, toggleAirline, filter, closeFilter } = this.props;
 
-    if (!search.isOpen) return null;
+    if (!filter.isOpen) return null;
 
     return (
       <div css={style}>
@@ -27,7 +21,7 @@ class LateralFilter extends React.Component {
           <div className="title">
             <Text color="white">Filtre seus resultados por</Text>
           </div>
-          <div onClick={closeSearch}>
+          <div onClick={closeFilter}>
             <Icon
               name="icon-max-navigation-close"
               size="big"
@@ -56,13 +50,12 @@ class LateralFilter extends React.Component {
 
 const mapStateToProps = state => ({
   airlines: state.airlines,
-  displayedFlights: state.flights.displayed,
-  search: state.search
+  filter: state.filter
 });
 
 const mapDispatchToProps = {
   toggleAirline: airlineLabel => toggleAirlineAction(airlineLabel),
-  closeSearch: () => closeSearchAction()
+  closeFilter: () => closeFilterAction()
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LateralFilter);
