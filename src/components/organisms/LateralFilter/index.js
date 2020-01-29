@@ -7,6 +7,7 @@ import {
 } from "../../../actions";
 import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
+import Checkbox from "../../atoms/Checkbox";
 
 class LateralFilter extends React.Component {
   render() {
@@ -37,23 +38,15 @@ class LateralFilter extends React.Component {
 
         <div className="body">
           <Text>Selecione a companhia aeria:</Text>
+          {console.log(airlines)}
           {airlines.map(airline => (
-            <div key={airline.label} className="airline">
-              {/* TODO transform in atom/molecule */}
-              <div
-                className="airline-checkbox"
-                onClick={() => toggleAirline(airline.label)}
-              >
-                {airline.checked && (
-                  <Icon
-                    name="icon-check"
-                    color="rgb(26,188,156)"
-                    size="small"
-                  />
-                )}
-              </div>
-              <div className="airline-label">{`${airline.label} (${airline[displayedFlights]} VOOS)`}</div>
-            </div>
+            <Checkbox
+              key={airline.label}
+              id={airline.label}
+              label={airline.label}
+              toggle={toggleAirline}
+              checked={airline.checked}
+            />
           ))}
         </div>
       </div>

@@ -31,24 +31,4 @@ export default () => `
         position: unset;
         widht: 100%;
     }
-
-    .airline {
-        display: flex;
-        align-items: center;
-    }
-
-    .airline-label {
-        font-size: 25px;
-    }
-
-    .airline-checkbox {
-        display: flex;
-        height: 25px;
-        width: 25px;
-        background-color: white;
-        border: solid 1px rgb(26,188,156);
-        border-radius: 5px;
-        align-items: center;
-        justify-content: center;
-    }
 `;
