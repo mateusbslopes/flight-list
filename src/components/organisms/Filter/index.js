@@ -9,44 +9,39 @@ import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Checkbox from "../../atoms/Checkbox";
 
-class Filter extends React.Component {
-  render() {
-    const { airlines, toggleAirline, filter, closeFilter } = this.props;
+function Filter({ airlines, toggleAirline, filter, closeFilter }) {
+  if (!filter.isOpen) return null;
 
-    if (!filter.isOpen) return null;
-
-    return (
-      <div css={style}>
-        <div className="header">
-          <div className="title">
-            <Text color="white">Filtre seus resultados por</Text>
-          </div>
-          <div onClick={closeFilter}>
-            <Icon
-              name="icon-max-navigation-close"
-              size="big"
-              color="rgb(26,188,156)"
-            />
-          </div>
+  return (
+    <div css={style}>
+      <div className="header">
+        <div className="title">
+          <Text color="white">Filtre seus resultados por</Text>
         </div>
-
-        <div className="body">
-          <Text>Selecione a companhia aeria:</Text>
-          {airlines.map(airline => (
-            <Checkbox
-              key={airline.label}
-              id={airline.label}
-              label={airline.label}
-              toggle={toggleAirline}
-              checked={airline.checked}
-            />
-          ))}
+        <div onClick={closeFilter}>
+          <Icon
+            name="icon-max-navigation-close"
+            size="big"
+            color="rgb(26,188,156)"
+          />
         </div>
       </div>
-    );
-  }
-}
 
+      <div className="body">
+        <Text>Selecione a companhia aeria:</Text>
+        {airlines.map(airline => (
+          <Checkbox
+            key={airline.label}
+            id={airline.label}
+            label={airline.label}
+            toggle={toggleAirline}
+            checked={airline.checked}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 const mapStateToProps = state => ({
   airlines: state.airlines,
   filter: state.filter
