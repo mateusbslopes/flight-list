@@ -5,16 +5,14 @@ import Text from "../../atoms/Text";
 
 import { openFilter as openFilterAction } from "../../../actions";
 
-class Footer extends React.Component {
-  render() {
-    return (
-      <div css={style}>
-        <div className="action action-first" onClick={this.props.openFilter}>
-          <Text>FILTRAR VOOS</Text>
-        </div>
+function Footer({ openFilter }) {
+  return (
+    <div css={style}>
+      <div className="action action-first" onClick={openFilter}>
+        <Text>FILTRAR VOOS</Text>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 const mapDispatchToProps = {
