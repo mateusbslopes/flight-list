@@ -1,5 +1,6 @@
 import React from "react";
 import Icon from "../Icon";
+import Text from "../Text";
 
 class Spinner extends React.Component {
   constructor(props) {
@@ -27,7 +28,9 @@ class Spinner extends React.Component {
 
     return (
       <div className="options-item">
-        {label}
+        <Text weight="light" size="medium-small">
+          {label}
+        </Text>
         <div className="options-item-config">
           <Icon
             size="big"
@@ -35,7 +38,7 @@ class Spinner extends React.Component {
             color="rgb(26, 188, 156)"
             onClick={() => this.handleChange(this.props.value - 1)}
           />
-          {value}
+          <Text>{value}</Text>
           <Icon
             size="big"
             name="icon-max-action-add"

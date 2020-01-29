@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./style";
 import Text from "../../atoms/Text/index";
-import Info from "../../atoms/Info/index";
 
 class FlightColumn extends React.Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class FlightColumn extends React.Component {
     return (
       <div css={style}>
         <Text>{this.state.text}</Text>
-        <Info>{this.state.info}</Info>
+        <Text weight="light">{this.state.info}</Text>
       </div>
     );
   }

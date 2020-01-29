@@ -68,8 +68,13 @@ class Search extends React.Component {
     if (!isNaN(date.getTime()) && dateToDisplay.length == 10) {
       return (
         <div className="filter-date">
-          <div className="filter-date-day">{date.getDate()}</div>
-          {brazilianMonth[date.getMonth()]} {date.getFullYear()}
+          <div className="filter-date-day">
+            <Text>{date.getDate()}</Text>
+          </div>
+          <div className="filter-date-day">
+            <Text weight="light">{brazilianMonth[date.getMonth()]}</Text>
+          </div>
+          <Text weight="light">{date.getFullYear()}</Text>
         </div>
       );
     } else {

@@ -100,7 +100,9 @@ class SelectAutocomplete extends React.Component {
           className="autocomplete-content"
           onBlur={() => this.handleBlur(value)}
         >
-          <div className="label">{this.state.label}</div>
+          <Text size="medium-small" weight="light">
+            {this.state.label}
+          </Text>
           <div className="autocomplete-config">
             <div className="autocomplete-value col-sm-16">
               <input
@@ -112,12 +114,16 @@ class SelectAutocomplete extends React.Component {
               />
               <div className="autocomplete-value-desc">
                 <div>
-                  {this.state.state === "fulfilled" && value.airportCode}
+                  {this.state.state === "fulfilled" && (
+                    <Text>{value.airportCode}</Text>
+                  )}
                 </div>
               </div>
             </div>
             {this.state.state === "searching" && (
-              <div className="col-sm-8 list">{this.getDataToDisplay(data)}</div>
+              <div className="col-sm-8 list">
+                <Text>{this.getDataToDisplay(data)}</Text>
+              </div>
             )}
           </div>
         </div>

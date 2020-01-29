@@ -30,14 +30,6 @@ export default () => `
         outline: none;
     }
 
-    .label {
-        align-self: start;
-        font-style: italic;
-        font-size: 25px;
-        color: rgb(135, 147, 149);
-        font-weight: 20;
-    }
-
     .list {
         position: absolute;
         margin-top: 45px;
