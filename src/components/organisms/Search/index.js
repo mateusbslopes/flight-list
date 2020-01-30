@@ -190,15 +190,19 @@ function Search({
               <Button
                 backgroundColor="rgb(26, 188, 156)"
                 onClick={() =>
-                  getFlights({
-                    outboundDate,
-                    inboundDate,
-                    from,
-                    to,
-                    adults,
-                    children,
-                    infants
-                  })
+                  getFlights(
+                    {
+                      ...search,
+                      outboundDate,
+                      inboundDate,
+                      from,
+                      to,
+                      adults,
+                      children,
+                      infants
+                    },
+                    search
+                  )
                 }
               >
                 <div className="search-buttom-content">
@@ -225,7 +229,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  getFlights: search => getFlightsAction(search),
+  getFlights: (search, lastSearch) => getFlightsAction(search, lastSearch),
   openSearch: () => openSearchAction(),
   closeSearch: () => closeSearchAction()
 };

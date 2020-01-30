@@ -92,7 +92,7 @@ export const closeFilter = () => ({
 
 export const setSearch = search => ({
   type: SET_SEARCH,
-  payload: search
+  payload: { search }
 });
 
 export const openSearch = () => ({
@@ -143,7 +143,10 @@ const schemaOptions = {
   abortEarly: false
 };
 
-export const getFlights = search => async dispach => {
+export const getFlights = (search, lastSearch) => async dispach => {
+  if (JSON.stringify(search) === JSON.stringify(lastSearch)) return;
+
+  dispach(setSearch(search));
   try {
     searchSchema.validateSync(searchSchema.cast(search), schemaOptions);
     makeSearchIntention(search).then(response => {
