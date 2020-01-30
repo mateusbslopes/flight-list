@@ -9,7 +9,13 @@ import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Checkbox from "../../atoms/Checkbox";
 
-function Filter({ airlines, toggleAirline, filter, closeFilter }) {
+function Filter({
+  airlines,
+  toggleAirline,
+  filter,
+  closeFilter,
+  displayedFlights
+}) {
   if (!filter.isOpen) return null;
 
   return (
@@ -33,7 +39,8 @@ function Filter({ airlines, toggleAirline, filter, closeFilter }) {
           <Checkbox
             key={airline.label}
             id={airline.label}
-            label={airline.label}
+            label={`${airline.label.charAt(0).toUpperCase() +
+              airline.label.slice(1)} (${airline[displayedFlights]} voos)`}
             toggle={toggleAirline}
             checked={airline.checked}
           />
@@ -44,7 +51,8 @@ function Filter({ airlines, toggleAirline, filter, closeFilter }) {
 }
 const mapStateToProps = state => ({
   airlines: state.airlines,
-  filter: state.filter
+  filter: state.filter,
+  displayedFlights: state.flights.displayed
 });
 
 const mapDispatchToProps = {

@@ -5,7 +5,6 @@ export default () => `
 
     .checkbox-label {
         margin-left: 5px;
-        text-transform: capitalize;
     }
 
     .checkbox {
