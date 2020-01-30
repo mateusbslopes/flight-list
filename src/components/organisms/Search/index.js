@@ -55,7 +55,8 @@ function Search({
   }
 
   function getDisplayableDate(dateToDisplay) {
-    let date = new Date(dateToDisplay);
+    const [year, month, day] = dateToDisplay.split("-");
+    let date = new Date(year, month - 1, day);
     if (!isNaN(date.getTime()) && dateToDisplay.length == 10) {
       return (
         <div className="filter-date">
