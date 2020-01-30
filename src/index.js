@@ -14,4 +14,5 @@ function App() {
   );
 }
 
+export { store };
 ReactDOM.render(<App />, document.querySelector("#root"));

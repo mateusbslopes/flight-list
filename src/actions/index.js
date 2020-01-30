@@ -3,7 +3,7 @@ import {
   makeSearchIntention,
   getFlights as requestFlights
 } from "../api/flights";
-
+import { store } from "../index";
 import * as yup from "yup";
 
 // Action types
@@ -77,9 +77,9 @@ export const setDisplayedFlights = displayed => ({
   payload: { displayed }
 });
 
-export const addFlights = flights => ({
+export const addFlights = (flights, intentionId, lastIntentionId) => ({
   type: ADD_FLIGHTS,
-  payload: { flights }
+  payload: { flights, intentionId, lastIntentionId }
 });
 
 export const openFilter = () => ({
@@ -105,8 +105,8 @@ export const closeSearch = () => ({
 
 yup.setLocale({
   mixed: {
-    default: "Nao eh valido",
-    required: "O campo eh obrigatorio"
+    default: "Não é válido",
+    required: "O campo é obrigatório"
   }
 });
 
@@ -143,22 +143,29 @@ const schemaOptions = {
   abortEarly: false
 };
 
-export const getFlights = (search, lastSearch) => async dispach => {
-  if (JSON.stringify(search) === JSON.stringify(lastSearch)) return;
+export const getFlights = (search, currentSearch) => async dispach => {
+  if (JSON.stringify(search) === JSON.stringify(currentSearch)) return;
 
-  dispach(setSearch(search));
   try {
     searchSchema.validateSync(searchSchema.cast(search), schemaOptions);
     makeSearchIntention(search).then(response => {
+      dispach(setSearch({ ...search, intentionId: response.data.id }));
       dispach({ type: START_FETCHING });
       dispach(closeSearch());
+
       let promises = [];
       response.data.airlines.forEach(airline => {
         promises.push(
           requestFlights(response.data.id, airline.label).then(
-            response => {
-              dispach(addFlights(response.data));
-              dispach(addAirline(airline, response.data));
+            flights => {
+              dispach(
+                addFlights(
+                  flights.data,
+                  response.data.id,
+                  store.getState().search.intentionId
+                )
+              );
+              dispach(addAirline(airline, flights.data));
             },
             err => {
               // 404 should not be displayed

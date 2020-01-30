@@ -31,7 +31,7 @@ const searchError = (state, errors) => {
 export default function search(state = initialState, { type, payload }) {
   switch (type) {
     case SET_SEARCH:
-      return { ...payload.search, errors: [] };
+      return { ...state, ...payload.search, errors: [] };
     case OPEN_SEARCH:
       return { ...state, isOpen: true };
     case CLOSE_SEARCH:
