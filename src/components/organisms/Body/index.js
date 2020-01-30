@@ -24,7 +24,7 @@ function Body({ isFetching, hasItems, hasSearched }) {
           <Text>Opa, nao encontramos voos! Tente para um outro lugar.</Text>
         )}
         {!isFetching && !hasItems && !hasSearched && (
-          <Text>Faca uma pesquisa!</Text>
+          <Text>Faça uma pesquisa!</Text>
         )}
       </div>
 
