@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SelectAutocomplete from "../../molecules/SelectAutocomplete";
 import Passengers from "../Passengers";
 import Text from "../../atoms/Text";
@@ -10,7 +10,8 @@ import { connect } from "react-redux";
 import {
   getFlights as getFlightsAction,
   openSearch as openSearchAction,
-  closeSearch as closeSearchAction
+  closeSearch as closeSearchAction,
+  setField as setFieldAction
 } from "../../../actions";
 
 function Search({
@@ -19,7 +20,8 @@ function Search({
   airports,
   errors,
   search,
-  getFlights
+  getFlights,
+  setField
 }) {
   const [outboundDate, setOutboundDate] = useState(search.outboundDate);
   const [inboundDate, setInboundDate] = useState(search.inboundDate);
@@ -28,6 +30,14 @@ function Search({
   const [adults, setAdults] = useState(search.adults);
   const [children, setChildren] = useState(search.children);
   const [infants, setInfants] = useState(search.infants);
+
+  useEffect(() => {
+    setField("from");
+  }, [from]);
+
+  useEffect(() => {
+    setField("to");
+  }, [to]);
 
   const brazilianMonth = [
     "JAN",
@@ -231,7 +241,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   getFlights: (search, lastSearch) => getFlightsAction(search, lastSearch),
   openSearch: () => openSearchAction(),
-  closeSearch: () => closeSearchAction()
+  closeSearch: () => closeSearchAction(),
+  setField: fieldName => setFieldAction(fieldName)
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

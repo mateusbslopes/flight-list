@@ -30,6 +30,7 @@ export const SET_SEARCH = "SET_SEARCH";
 export const OPEN_SEARCH = "OPEN_SEARCH";
 export const CLOSE_SEARCH = "CLOSE_SEARCH";
 export const SEARCH_ERROR = "SEARCH_ERROR";
+export const SET_FIELD = "SET_FIELD";
 
 // Project conts
 export const DisplayableFlights = {
@@ -103,6 +104,11 @@ export const closeSearch = () => ({
   type: CLOSE_SEARCH
 });
 
+export const setField = fieldName => ({
+  type: SET_FIELD,
+  payload: { fieldName }
+});
+
 yup.setLocale({
   mixed: {
     default: "Não é válido",
@@ -144,7 +150,11 @@ const schemaOptions = {
 };
 
 export const getFlights = (search, currentSearch) => async dispach => {
-  if (JSON.stringify(search) === JSON.stringify(currentSearch)) return;
+  if (
+    JSON.stringify(search) === JSON.stringify(currentSearch) &&
+    store.getState().flights.hasSearched
+  )
+    return;
 
   try {
     searchSchema.validateSync(searchSchema.cast(search), schemaOptions);

@@ -2,7 +2,8 @@ import {
   SET_SEARCH,
   SEARCH_ERROR,
   OPEN_SEARCH,
-  CLOSE_SEARCH
+  CLOSE_SEARCH,
+  SET_FIELD
 } from "../actions";
 
 const initialState = {
@@ -28,6 +29,16 @@ const searchError = (state, errors) => {
   };
 };
 
+const removeFieldError = (state, fieldName) => {
+  state.errors.splice(
+    state.errors.findIndex(error => error.path === fieldName),
+    1
+  );
+  return {
+    ...state
+  };
+};
+
 export default function search(state = initialState, { type, payload }) {
   switch (type) {
     case SET_SEARCH:
@@ -38,6 +49,8 @@ export default function search(state = initialState, { type, payload }) {
       return { ...state, isOpen: false };
     case SEARCH_ERROR:
       return searchError(state, payload.errors);
+    case SET_FIELD:
+      return removeFieldError(state, payload.fieldName);
     default:
       return state;
   }
