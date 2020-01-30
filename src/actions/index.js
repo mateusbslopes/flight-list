@@ -158,13 +158,9 @@ export const getFlights = (search, currentSearch) => async dispach => {
         promises.push(
           requestFlights(response.data.id, airline.label).then(
             flights => {
-              dispach(
-                addFlights(
-                  flights.data,
-                  response.data.id,
-                  store.getState().search.intentionId
-                )
-              );
+              if (response.data.id !== store.getState().search.intentionId)
+                return;
+              dispach(addFlights(flights.data, response.data.id));
               dispach(addAirline(airline, flights.data));
             },
             err => {

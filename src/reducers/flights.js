@@ -27,10 +27,7 @@ export default function flights(state = initialState, { type, payload }) {
     case CLEAR_FLIGHTS:
       return initialState;
     case ADD_FLIGHTS:
-      return payload.lastIntentionId === null ||
-        payload.intentionId === payload.lastIntentionId
-        ? addFlights(state, payload)
-        : state;
+      return addFlights(state, payload);
     case SET_DISPLAYED_FLIGHTS:
       return {
         ...state,
