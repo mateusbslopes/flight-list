@@ -1,135 +1,117 @@
-import React from "react";
+import React, { useState } from "react";
 import String from "../../../Utils/String";
 import Text from "../../atoms/Text";
 import style from "./style";
 
-class SelectAutocomplete extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      search: "",
-      isListOpen: false,
-      selectedItem: null,
-      // Using Finite State machine concept. see more at https://github.com/jakesgordon/javascript-state-machine
-      state: this.isEmpty(props.value) ? "empty" : "fulfilled",
-      label: props.label,
-      placeholder: props.placeholder,
-      onChange: props.onChange
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.filterData = this.filterData.bind(this);
-    this.selectItem = this.selectItem.bind(this);
-    this.getDisplayableRow = this.getDisplayableRow.bind(this);
-  }
-
-  isEmpty(value) {
+export default function SelectAutocomplete({
+  value,
+  placeholder,
+  label,
+  onChange,
+  data
+}) {
+  function isEmpty(value) {
     return Object.entries(value).length === 0;
   }
 
-  handleChange(evt) {
-    this.setState({
-      search: evt.target.value
-    });
+  const [search, setSearch] = useState("");
+  const [isListOpen, setIsListOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [state, setState] = useState(isEmpty(value) ? "empty" : "fulfilled");
+
+  function handleChange(evt) {
+    setSearch(evt.target.value);
   }
 
-  handleClick() {
-    this.setState({ isListOpen: true, state: "searching" });
+  function handleClick() {
+    setIsListOpen(true);
+    setState("searching");
   }
 
-  handleBlur(value) {
-    let state = this.isEmpty(value) ? "empty" : "fulfilled";
-    this.setState({ isListOpen: false, state });
+  function handleBlur(value) {
+    let state = isEmpty(value) ? "empty" : "fulfilled";
+    setState(state);
+    setIsListOpen(false);
   }
 
-  filterData([label, airportCode]) {
-    if (!this.state.search) return [];
+  function filterData([label, airportCode]) {
+    if (!search) return [];
 
-    let search = String.prepareToCompare(this.state.search);
+    let preparedSearch = String.prepareToCompare(search);
     return (
-      String.prepareToCompare(label).search(search) >= 0 ||
-      String.prepareToCompare(airportCode).search(search) >= 0
+      String.prepareToCompare(label).search(preparedSearch) >= 0 ||
+      String.prepareToCompare(airportCode).search(preparedSearch) >= 0
     );
   }
 
-  selectItem(evt, label, airportCode) {
-    this.setState({ state: "fulfilled" });
-    this.state.onChange({ label, airportCode });
+  function selectItem(evt, label, airportCode) {
+    setState("fulfilled");
+    onChange({ label, airportCode });
   }
 
-  handleOnMouseDown(evnt) {
+  function handleOnMouseDown(evnt) {
     // Prevent blur on input to happen, allowing to click on list-item to be triggered
     evnt.preventDefault();
   }
 
-  getDisplayableRow([label, airportCode, country]) {
+  // TODO Transform in component (declared in this same file)
+  function getDisplayableRow([label, airportCode, country]) {
     return (
       <div
         className="list-item"
         key={airportCode}
-        onClick={evt => this.selectItem(evt, label, airportCode)}
-        onMouseDown={this.handleOnMouseDown}
+        onClick={evt => selectItem(evt, label, airportCode)}
+        onMouseDown={handleOnMouseDown}
       >
         {`${airportCode} ${label}, ${country}`}{" "}
       </div>
     );
   }
 
-  getDisplayedValue(value) {
-    switch (this.state.state) {
+  // TODO Transform in component?
+  function getDisplayedValue(value) {
+    switch (state) {
       case "searching":
-        return this.state.search;
+        return search;
       case "empty":
-        return this.state.placeholder;
+        return placeholder;
       case "fulfilled":
         return value.label;
     }
   }
 
-  getDataToDisplay(data) {
-    return data.filter(this.filterData).map(this.getDisplayableRow);
+  function getDataToDisplay(data) {
+    return data.filter(filterData).map(getDisplayableRow);
   }
 
-  render() {
-    const { value, data } = this.props;
-    return (
-      <div css={style}>
-        <div
-          className="autocomplete-content"
-          onBlur={() => this.handleBlur(value)}
-        >
-          <Text size="medium-small" weight="light">
-            {this.state.label}
-          </Text>
-          <div className="autocomplete-config">
-            <div className="autocomplete-value col-sm-16">
-              <input
-                className="input-value col-sm-8"
-                type="text"
-                value={`${this.getDisplayedValue(value)}`}
-                onChange={this.handleChange}
-                onClick={this.handleClick}
-              />
-              <div className="autocomplete-value-desc">
-                <div>
-                  {this.state.state === "fulfilled" && (
-                    <Text>{value.airportCode}</Text>
-                  )}
-                </div>
+  return (
+    <div css={style}>
+      <div className="autocomplete-content" onBlur={() => handleBlur(value)}>
+        <Text size="medium-small" weight="light">
+          {label}
+        </Text>
+        <div className="autocomplete-config">
+          <div className="autocomplete-value col-sm-16">
+            <input
+              className="input-value col-sm-8"
+              type="text"
+              value={`${getDisplayedValue(value)}`}
+              onChange={handleChange}
+              onClick={handleClick}
+            />
+            <div className="autocomplete-value-desc">
+              <div>
+                {state === "fulfilled" && <Text>{value.airportCode}</Text>}
               </div>
             </div>
-            {this.state.state === "searching" && (
-              <div className="col-sm-8 list">
-                <Text>{this.getDataToDisplay(data)}</Text>
-              </div>
-            )}
           </div>
+          {state === "searching" && (
+            <div className="col-sm-8 list">
+              <Text>{getDataToDisplay(data)}</Text>
+            </div>
+          )}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default SelectAutocomplete;
