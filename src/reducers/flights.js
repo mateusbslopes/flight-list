@@ -10,7 +10,6 @@ import {
 const initialState = {
   outbound: [],
   inbound: [],
-  // TODO Make displayed w/ intention and flights inside
   displayed: DisplayableFlights.OUTBOUND,
   isFetching: false,
   hasSearched: false
@@ -28,7 +27,6 @@ export default function flights(state = initialState, { type, payload }) {
     case CLEAR_FLIGHTS:
       return initialState;
     case ADD_FLIGHTS:
-      console.log(payload);
       return payload.lastIntentionId === null ||
         payload.intentionId === payload.lastIntentionId
         ? addFlights(state, payload)
