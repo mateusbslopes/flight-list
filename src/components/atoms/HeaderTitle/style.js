@@ -1,6 +1,6 @@
-export default () => `
+export default theme => `
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid rgb(136, 140, 142);
+    border-bottom: 1px solid ${theme.colors.secundary[400]};
 `;

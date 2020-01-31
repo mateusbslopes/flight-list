@@ -1,5 +1,3 @@
-import { getNested } from "../../../utils/ObjectUtils";
-
 export default theme => `
     display: flex;
     flex-direction: row;
