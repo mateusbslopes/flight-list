@@ -1,12 +1,11 @@
-export default () => `
-    .options-item {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-size: 25px;
-        font-style: italic;
-        font-weight: 20;
-    }
+export default theme => `
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: ${theme.sizes[300]};
+    font-style: italic;
+    font-weight: ${theme.weights[300]};
 
     .options-item-config {
         display: flex;

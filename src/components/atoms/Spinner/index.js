@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Icon from "../Icon";
 import Text from "../Text";
+import style from "./style";
 
 export default function Spinner({ label, onChange, value }) {
   return (
-    <div className="options-item">
+    <div css={theme => style(theme)}>
       <Text weight={500} size={300}>
         {label}
       </Text>
