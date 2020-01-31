@@ -2,7 +2,7 @@
 // LICENSE: CC0 License
 // 01/2020
 
-export default () => `
+export default theme => `
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,7 +25,7 @@ export default () => `
         width: 13px;
         height: 13px;
         border-radius: 50%;
-        background: rgb(26,188,156);
+        background: ${theme.colors.primary[500]};
         animation-timing-function: cubic-bezier(0, 1, 1, 0);
       }
       .lds-ellipsis div:nth-child(1) {

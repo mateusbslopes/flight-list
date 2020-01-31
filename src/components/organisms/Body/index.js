@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 
 function Body({ isFetching, hasItems, hasSearched }) {
   return (
-    <div css={style}>
+    <div css={theme => style(theme)}>
       <div className="header-info">
         {isFetching && (
           <div className="lds-ellipsis">
