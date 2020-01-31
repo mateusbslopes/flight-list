@@ -11,7 +11,7 @@ export default function Passengers({
   onChangeInfants
 }) {
   return (
-    <div css={style}>
+    <div css={theme => style(theme)}>
       <div className="options col-sm-6">
         <div className="options-item">
           <Spinner

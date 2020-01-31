@@ -1,4 +1,4 @@
-export default () => `
+export default theme => `
     .options {
         display: flex;
         flex-direction: column;
@@ -8,9 +8,9 @@ export default () => `
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        font-size: 25px;
+        font-size: ${theme.sizes[300]};
         font-style: italic;
-        font-weight: 20;
+        font-weight: ${theme.weights[500]};
     }
 
     .options-item-config {
