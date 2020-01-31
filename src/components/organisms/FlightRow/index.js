@@ -42,7 +42,7 @@ export default function FlightRow({
   }
 
   return (
-    <div css={style}>
+    <div css={theme => style(theme)}>
       <Card
         body={
           <div className="flight-row-content" key={id}>

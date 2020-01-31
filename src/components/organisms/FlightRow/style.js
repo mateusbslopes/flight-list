@@ -1,4 +1,4 @@
-const style = () => `
+const style = theme => `
     
     margin-bottom: 10px;
     background-color: white;
@@ -19,7 +19,7 @@ const style = () => `
 
     .flight-row-action {
         padding: 30px 0px 30px 0px; 
-        border-top: 1px dashed rgb(136,140,142);
+        border-top: 1px dashed ${theme.colors.secundary[400]};
     }
 `;
 
