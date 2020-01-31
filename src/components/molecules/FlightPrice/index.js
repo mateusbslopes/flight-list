@@ -16,13 +16,13 @@ export default function FlightPrice({ pricing }) {
       <div css={style}>
         <Button border={{ botton: "2px solid rgb(77,164,139)" }}>
           <div className="flight-price-content">
-            <Text color="white">
+            <Text color={"ternary"}>
               {l10nBRL.format(pricing[pricing.bestPriceAt].saleTotal)}
             </Text>
           </div>
         </Button>
         <div className="extra-info">
-          <Text weight="light">Voo exclusivo na MaxMilhas</Text>
+          <Text weight={500}>Voo exclusivo na MaxMilhas</Text>
         </div>
       </div>
     );
@@ -34,13 +34,13 @@ export default function FlightPrice({ pricing }) {
       <div css={style}>
         <Button border={{ botton: "2px solid rgb(77,164,139)" }}>
           <div className="flight-price-content">
-            <Text color="white">
+            <Text color="ternary">
               {l10nBRL.format(pricing.airline.saleTotal)}
             </Text>
           </div>
         </Button>
         <div className="extra-info">
-          <Text weight="light">Menor preco na Companhia</Text>
+          <Text weight={500}>Menor preco na Companhia</Text>
         </div>
       </div>
     );
@@ -56,20 +56,20 @@ export default function FlightPrice({ pricing }) {
     return (
       <div css={style}>
         <div className="extra-info">
-          <Text weight="light">{pricing.airlineName.toUpperCase()}</Text>
+          <Text weight={500}>{pricing.airlineName.toUpperCase()}</Text>
           <div className="line-through">
             <Text>{l10nBRL.format(pricing.airline.saleTotal)}</Text>
           </div>
         </div>
         <Button border={{ botton: "2px solid rgb(77,164,139)" }}>
           <div className="flight-price-content">
-            <Text color="white">
+            <Text color="ternary">
               {l10nBRL.format(pricing[pricing.bestPriceAt].saleTotal)}
             </Text>
           </div>
         </Button>
         <div className="extra-info warning">
-          <Text color="orange">
+          <Text color="alert">
             Economize {getDiscount(pricing.savingPercentage)} na MaxMilhas!
           </Text>
         </div>

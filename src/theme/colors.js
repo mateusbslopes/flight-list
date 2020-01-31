@@ -14,6 +14,7 @@ export default {
     background: "rgb(255, 0, 0)",
     text: "rgb(255, 255, 255)"
   },
+  alert: "rgb(230, 173, 59)",
   app: "rgb(135, 147, 149)",
   card: {
     body: "rgb(255, 255, 255)",

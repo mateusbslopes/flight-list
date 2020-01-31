@@ -18,10 +18,10 @@ function FlightList({ flights }) {
       <Card
         header={
           <div className="flight-list-header">
-            <Text color="white">Companhia</Text>
-            <Text color="white">Partida</Text>
-            <Text color="white">Duracao</Text>
-            <Text color="white">Chegada</Text>
+            <Text color="ternary">Companhia</Text>
+            <Text color="ternary">Partida</Text>
+            <Text color="ternary">Duracao</Text>
+            <Text color="ternary">Chegada</Text>
           </div>
         }
       />

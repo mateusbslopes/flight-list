@@ -76,9 +76,9 @@ function Search({
             <Text>{date.getDate()}</Text>
           </div>
           <div className="filter-date-day">
-            <Text weight="light">{brazilianMonth[date.getMonth()]}</Text>
+            <Text weight={500}>{brazilianMonth[date.getMonth()]}</Text>
           </div>
-          <Text weight="light">{date.getFullYear()}</Text>
+          <Text weight={500}>{date.getFullYear()}</Text>
         </div>
       );
     } else {
@@ -205,7 +205,7 @@ function Search({
               >
                 <div className="search-buttom-content">
                   <Icon name="icon-max-action-search" color="ternary" />
-                  <Text color="white">Pesquisar</Text>
+                  <Text color="ternary">Pesquisar</Text>
                 </div>
               </Button>
             </div>

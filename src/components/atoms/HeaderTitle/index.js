@@ -7,7 +7,7 @@ export default function HeaderTitle() {
   return (
     <div css={theme => style(theme)} className="row">
       <Icon name="icon-max-navigation-menu" />
-      <Text size="big">Teste Front</Text>
+      <Text size={600}>Teste Front</Text>
     </div>
   );
 }

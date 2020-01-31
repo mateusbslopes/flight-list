@@ -22,7 +22,7 @@ function Filter({
     <div css={style}>
       <div className="header">
         <div className="title">
-          <Text color="white">Filtre seus resultados por</Text>
+          <Text color="ternary">Filtre seus resultados por</Text>
         </div>
         <div onClick={closeFilter}>
           <Icon name="icon-max-navigation-close" />

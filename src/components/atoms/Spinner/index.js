@@ -5,7 +5,7 @@ import Text from "../Text";
 export default function Spinner({ label, onChange, value }) {
   return (
     <div className="options-item">
-      <Text weight="light" size="medium-small">
+      <Text weight={500} size={300}>
         {label}
       </Text>
       <div className="options-item-config">

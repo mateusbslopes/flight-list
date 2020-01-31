@@ -1,4 +1,6 @@
-const style = (size = "medium", weight = "normal", color = "normal") => {
+import { getNested } from "../../../utils/ObjectUtils";
+
+const style = (theme, size = "medium", weight = "normal", color = "normal") => {
   const getColor = () => {
     switch (color) {
       case "light":
@@ -42,9 +44,10 @@ const style = (size = "medium", weight = "normal", color = "normal") => {
   return `
         justify-content: center;
         font-family: Montserrat, arial, sans-serif;
-        color: ${getColor()};
-        font-weight: ${getWeight(weight)};
-        font-size: ${getFontSize(size)};
+        color: ${getNested(theme.colors, color, 500) ||
+          theme.colors.secundary[500]};
+        font-weight: ${theme.weights[weight] || theme.weights[600]};
+        font-size: ${theme.sizes[size] || theme.sizes[400]};
     `;
 };
 
