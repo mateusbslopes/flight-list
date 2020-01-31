@@ -6,7 +6,7 @@ import HeaderNavigation from "../../molecules/HeaderNavigation";
 
 export default function Header() {
   return (
-    <div css={style}>
+    <div css={theme => style(theme)}>
       <div className="header-content">
         <HeaderTitle />
         <Search />
