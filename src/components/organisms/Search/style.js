@@ -1,10 +1,10 @@
-export default () => `
+export default theme => `
 
     .filter-options {
         display: flex;
         flex-direction: column;
         z-index: 10;
-        background-color: white;
+        background-color: ${theme.colors.ternary[500]};
     }
 
     .filter-value {
@@ -12,18 +12,18 @@ export default () => `
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
-        border-bottom: 1px solid rgb(136, 140, 142);
+        border-bottom: 1px solid ${theme.colors.secundary[400]};
         padding: 15px;
     }
 
     .filter-action {
         display: flex;
         align-items: center;
-        background-color: rgb(26, 188, 156);
+        background-color: ${theme.colors.primary[500]};
         height: 45px;
         padding: 18px;
         border-radius: 5px;
-        border-bottom: 2px solid rgb(77, 164, 139);
+        border-bottom: 2px solid ${theme.colors.primary[600]};
     }
 
     .filter-option {
@@ -38,7 +38,7 @@ export default () => `
 
     .filter-locations-value {
         font-size: 30px;
-        color: rgb(135, 147, 149);
+        color: ${theme.colors.secundary[500]};
         font-weight: 20;
     }
 
@@ -46,26 +46,26 @@ export default () => `
         display: flex;
         flex-direction: row;
         align-items: center;
-        font-size: 30px;
+        font-size: ${theme.sizes[400]};
     }
 
     .filter-date-day {
-        font-weight: 20;
+        font-weight: ${theme.weights[500]};
         margin-right: 10px;
         margin-left: 10px;
     }
 
     .filter-passengers {
-        font-size: 40px;
+        font-size: ${theme.sizes[500]};
     }
 
     .error {
-        background-color: red;
+        background-color: ${theme.colors.error.background};
         border-radius: 5px;
-        color: white;
+        color: ${theme.colors.error.text};
         padding: 2px;
         position: absolute;
-        font-size: 18px;
+        font-size: ${theme.sizes[300]};
         z-index: 20;
     }
 

@@ -91,7 +91,7 @@ function Search({
   }
 
   return (
-    <div css={style}>
+    <div css={theme => style(theme)}>
       <div className="filter-value">
         <div className="filter-locations">
           <Icon size={400} name="icon-max-communication-location" />
