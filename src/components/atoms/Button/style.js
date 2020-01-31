@@ -1,7 +1,13 @@
-const style = (borderColor, bgColor, borderBottomColor) => `
-    background-color: ${bgColor || "white"};
-    border-color: ${borderColor || "white"};
-    border-bottom: ${borderBottomColor || "none"};
+import { getNested } from "../../../utils/ObjectUtils";
+const style = (theme, background = {}, border = {}) => `
+    background-color: ${getNested(
+      theme.colors,
+      background.color,
+      background.strength
+    ) || theme.colors.ternary[500]};
+    border-color: ${getNested(theme.colors, border.color, border.strength) ||
+      theme.colors.ternary[500]};
+    border-bottom: ${theme.colors[border.bottom] || "none"};
     border-radius: 9px;
     border-width: 1px;
     height: 48px;

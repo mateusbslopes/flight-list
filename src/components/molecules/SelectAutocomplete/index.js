@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import String from "../../../utils/String";
+import StringUtils from "../../../utils/StringUtils";
 import Text from "../../atoms/Text";
 import style from "./style";
 
@@ -37,10 +37,10 @@ export default function SelectAutocomplete({
   function filterData([label, airportCode]) {
     if (!search) return [];
 
-    let preparedSearch = String.prepareToCompare(search);
+    let preparedSearch = StringUtils.prepareToCompare(search);
     return (
-      String.prepareToCompare(label).search(preparedSearch) >= 0 ||
-      String.prepareToCompare(airportCode).search(preparedSearch) >= 0
+      StringUtils.prepareToCompare(label).search(preparedSearch) >= 0 ||
+      StringUtils.prepareToCompare(airportCode).search(preparedSearch) >= 0
     );
   }
 

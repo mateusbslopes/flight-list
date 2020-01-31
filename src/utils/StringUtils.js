@@ -1,4 +1,4 @@
-class String {
+class StringUtils {
   static removeAccents(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
@@ -8,4 +8,4 @@ class String {
   }
 }
 
-export default String;
+export default StringUtils;

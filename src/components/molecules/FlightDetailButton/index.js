@@ -6,7 +6,7 @@ import style from "./style";
 
 export default function FlightDetailButton() {
   return (
-    <Button borderColor="rgb(135, 147, 149)">
+    <Button border={{ color: "secundary", strength: 600 }}>
       <div css={style}>
         <Icon
           name="icon-max-action-add"
