@@ -1,4 +1,4 @@
-export default () => `
+export default theme => `
 
     .autocomplete-content {
         display: flex;
@@ -17,16 +17,16 @@ export default () => `
     .autocomplete-value-desc {
         display: flex;
         align-self: flex-end;
-        font-weight: bold;
-        font-size: 20px;
+        font-weight: ${theme.weights[600]};
+        font-size: ${theme.sizes[300]};
     }
 
     .input-value{
-        color: rgb(26, 188, 156);
+        color: ${theme.colors.primary[500]};
         background: none;
         border: none;
-        border-bottom: 1px solid rgb(135, 147, 149);
-        font-size: 30px;
+        border-bottom: 1px solid ${theme.colors.secundary[500]};
+        font-size: ${theme.sizes[400]};
         outline: none;
     }
 
@@ -35,16 +35,16 @@ export default () => `
         margin-top: 45px;
         max-height: 400px;
         overflow-y: auto;
-        background-color: white;
+        background-color: ${theme.colors.ternary[500]};
         z-index: 40;
-        border: solid 1px rgb(135, 147, 149);
+        border: solid 1px ${theme.colors.secundary[500]};
     }
 
     .list-item {
-        font-size: 30px;
+        font-size: ${theme.sizes[400]};
     }
     
     .list-item:hover{
-        color: rgb(26, 188, 156);
+        color: ${theme.colors.primary[300]};
     }
 `;

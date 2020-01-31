@@ -85,7 +85,7 @@ export default function SelectAutocomplete({
   }
 
   return (
-    <div css={style}>
+    <div css={theme => style(theme)}>
       <div className="autocomplete-content" onBlur={() => handleBlur(value)}>
         <Text size={300} weight={500}>
           {label}
