@@ -9,6 +9,7 @@
     "babel-loader": "^8.0.6",
     "babel-preset-es2015": "^6.24.1",
     "core-js": "^3.6.4",
+    "emotion-theming": "^10.0.27",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",
