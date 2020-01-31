@@ -1,4 +1,4 @@
-export default () => `
+export default theme => `
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,11 +12,11 @@ export default () => `
     }
 
     .header-navigation-item-first {
-        border-right: 1px solid rgb(136, 140, 142);
+        border-right: 1px solid ${theme.colors.secundary[400]};
     }
 
     .header-navigation-item-selected {
-        border-bottom: 3px solid rgb(26, 188, 156);
+        border-bottom: 3px solid ${theme.colors.primary[500]};
     }
 
 `;

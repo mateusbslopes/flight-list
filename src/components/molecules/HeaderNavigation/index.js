@@ -10,7 +10,7 @@ import style from "./style";
 
 function HeaderNavigation({ setDisplayedFlights, displayed }) {
   return (
-    <div className="row" css={style}>
+    <div className="row" css={theme => style(theme)}>
       <div
         className={
           "header-navigation-item col-sm-8 header-navigation-item-first" +
