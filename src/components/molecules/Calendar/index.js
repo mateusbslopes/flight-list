@@ -4,7 +4,7 @@ import Icon from "../../atoms/Icon";
 
 export default function Calendar({ label, value, handleChange }) {
   return (
-    <div css={style}>
+    <div css={theme => style(theme)}>
       <div>
         <div className="calendar-label">{label}</div>
         <div className="col-sm-16">
