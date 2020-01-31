@@ -10,18 +10,11 @@ export default function Spinner({ label, onChange, value }) {
       </Text>
       <div className="options-item-config">
         <Icon
-          size="big"
           name="icon-max-action-remove"
-          color="rgb(26, 188, 156)"
           onClick={() => onChange(value - 1)}
         />
         <Text>{value}</Text>
-        <Icon
-          size="big"
-          name="icon-max-action-add"
-          color="rgb(26, 188, 156)"
-          onClick={() => onChange(value + 1)}
-        />
+        <Icon name="icon-max-action-add" onClick={() => onChange(value + 1)} />
       </div>
     </div>
   );

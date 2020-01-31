@@ -6,13 +6,12 @@ import style from "./style";
 
 export default function FlightDetailButton() {
   return (
-    <Button border={{ color: "secundary", strength: 600 }}>
+    <Button
+      background={{ color: "ternary", strength: 500 }}
+      border={{ color: "secundary", strength: 600 }}
+    >
       <div css={style}>
-        <Icon
-          name="icon-max-action-add"
-          size="small"
-          color="rgb(26, 188, 156)"
-        />
+        <Icon name="icon-max-action-add" />
         <Text>DETALHES DO VOO</Text>
       </div>
     </Button>

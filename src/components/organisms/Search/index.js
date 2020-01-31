@@ -94,33 +94,21 @@ function Search({
     <div css={style}>
       <div className="filter-value">
         <div className="filter-locations">
-          <Icon
-            size="medium"
-            name="icon-max-communication-location"
-            color="rgb(26, 188, 156)"
-          />
+          <Icon size={400} name="icon-max-communication-location" />
           <div className="filter-locations-value">
             {from && from.airportCode}-{to && to.airportCode}
           </div>
         </div>
         <div className="filter-date">
-          <Icon
-            color="rgb(26, 188, 156)"
-            size="medium"
-            name="icon-max-action-calendar"
-          />
+          <Icon size={400} name="icon-max-action-calendar" />
           {getDisplayableDate(outboundDate)}
         </div>
         <div className="filter-date">
-          <Icon
-            color="rgb(26, 188, 156)"
-            size="medium"
-            name="icon-max-action-calendar"
-          />
+          <Icon size={400} name="icon-max-action-calendar" />
           {getDisplayableDate(inboundDate)}
         </div>
         <div className="filter-passengers">
-          <Icon name="icon-users" color="rgb(26, 188, 156)" size="medium" />
+          <Icon name="icon-users" size={400} />
           {getPassengersAmount(adults, children, infants)}
         </div>
         <div className="filter-action">
@@ -128,14 +116,14 @@ function Search({
             <div onClick={closeSearch}>
               <Icon
                 name="icon-max-communication-circle-close"
-                color="white"
-                size="medium"
+                color="ternary"
+                size={400}
               />
             </div>
           )}
           {!search.isOpen && (
             <div onClick={openSearch}>
-              <Icon name="icon-pencil" color="white" size="medium" />
+              <Icon name="icon-pencil" color="ternary" size={400} />
             </div>
           )}
         </div>
@@ -216,11 +204,7 @@ function Search({
                 }
               >
                 <div className="search-buttom-content">
-                  <Icon
-                    name="icon-max-action-search"
-                    size="big"
-                    color="white"
-                  />
+                  <Icon name="icon-max-action-search" color="ternary" />
                   <Text color="white">Pesquisar</Text>
                 </div>
               </Button>

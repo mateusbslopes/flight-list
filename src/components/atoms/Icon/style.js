@@ -1,21 +1,9 @@
-// Size can be small (+ detalhes do voo) normal (calendar) or big (venda suas milhas)
-const style = (color, size) => {
-  let getIconSize = size => {
-    switch (size) {
-      case "small":
-        return "15px";
-      case "medium":
-        return "30px";
-      case "big":
-        return "40px";
-      default:
-        throw new Error(`Invalid size ${size} given to component Icon`);
-    }
-  };
+import { getNested } from "../../../utils/ObjectUtils";
 
+const style = (theme, color, size) => {
   return `
-    color: ${color};
-    font-size: ${getIconSize(size)};
+    color: ${getNested(theme.colors, color, 500) || theme.colors.primary[500]};
+    font-size: ${getNested(theme.sizes[size] || theme.sizes[500])};
   `;
 };
 

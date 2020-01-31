@@ -14,11 +14,7 @@ export default function Calendar({ label, value, handleChange }) {
             value={value}
             onChange={handleChange}
           />
-          <Icon
-            color="rgb(26, 188, 156)"
-            size="big"
-            name="max-icon-action-calendar"
-          />
+          <Icon name="max-icon-action-calendar" />
         </div>
       </div>
     </div>

@@ -25,11 +25,7 @@ function Filter({
           <Text color="white">Filtre seus resultados por</Text>
         </div>
         <div onClick={closeFilter}>
-          <Icon
-            name="icon-max-navigation-close"
-            size="big"
-            color="rgb(26,188,156)"
-          />
+          <Icon name="icon-max-navigation-close" />
         </div>
       </div>
 

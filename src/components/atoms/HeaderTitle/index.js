@@ -6,11 +6,7 @@ import Text from "../../atoms/Text";
 export default function HeaderTitle() {
   return (
     <div css={theme => style(theme)} className="row">
-      <Icon
-        name="icon-max-navigation-menu"
-        size="big"
-        color="rgb(26, 188, 156)"
-      />
+      <Icon name="icon-max-navigation-menu" />
       <Text size="big">Teste Front</Text>
     </div>
   );
