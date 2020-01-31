@@ -19,7 +19,7 @@ function Filter({
   if (!filter.isOpen) return null;
 
   return (
-    <div css={style}>
+    <div css={theme => style(theme)}>
       <div className="header">
         <div className="title">
           <Text color="ternary">Filtre seus resultados por</Text>

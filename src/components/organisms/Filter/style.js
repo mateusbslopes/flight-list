@@ -1,4 +1,4 @@
-export default () => `
+export default theme => `
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -20,7 +20,7 @@ export default () => `
     }
 
     .title {
-        background: rgb(137,147,149);
+        background: ${theme.colors.secundary[600]};
         padding: 10px;
     }
 
