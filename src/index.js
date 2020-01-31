@@ -11,7 +11,7 @@ import { ThemeProvider } from "emotion-theming";
 function App() {
   return (
     // TODO Switch theme imported when change the device
-    // TODO Create scripts that can select the theme running
+    // TODO Save style name used on storage to change that w/ a button
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <Flights />

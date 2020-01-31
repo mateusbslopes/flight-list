@@ -1,4 +1,4 @@
-export default () => `
+export default theme => `
     display: flex;
     flex-direction: row;
     position: fixed;
@@ -7,10 +7,10 @@ export default () => `
     width: 100%;
     height: 90px;
     background: white;
-    border-top: solid 1px rgb(136,140,142);
+    border-top: solid 1px ${theme.colors.secundary[400]};
 
     .action-first {
-        border-right: solid 1px rgb(136,140,142);
+        border-right: solid 1px ${theme.colors.secundary[400]};
     }
 
     .action {

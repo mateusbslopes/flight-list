@@ -7,7 +7,7 @@ import { openFilter as openFilterAction } from "../../../actions";
 
 function Footer({ openFilter }) {
   return (
-    <div css={style}>
+    <div css={theme => style(theme)}>
       <div className="action action-first" onClick={openFilter}>
         <Text>FILTRAR VOOS</Text>
       </div>
