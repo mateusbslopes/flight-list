@@ -1,9 +1,9 @@
 export default {
-  primary: {
+  secundary: {
     500: "rgb(135, 147, 149)",
     600: "rgb(135, 147, 149)"
   },
-  secundary: {
+  primary: {
     500: "rgb(26, 188, 156)"
   },
   ternary: {

@@ -15,7 +15,7 @@ export default function FlightPrice({ pricing }) {
     return (
       <div css={style}>
         <Button
-          background={{ color: "secundary", strength: 500 }}
+          background={{ color: "primary", strength: 500 }}
           border={{ botton: "2px solid rgb(77,164,139)" }}
         >
           <div className="flight-price-content">
@@ -36,8 +36,8 @@ export default function FlightPrice({ pricing }) {
     return (
       <div css={style}>
         <Button
-          backgroundColor="rgb(26, 188, 156)"
-          borderBottomColor="2px solid rgb(77,164,139)"
+          background={{ color: "primary", strength: 500 }}
+          border={{ botton: "2px solid rgb(77,164,139)" }}
         >
           <div className="flight-price-content">
             <Text color="white">
@@ -68,8 +68,8 @@ export default function FlightPrice({ pricing }) {
           </div>
         </div>
         <Button
-          backgroundColor="rgb(26, 188, 156)"
-          borderBottomColor="2px solid rgb(77,164,139)"
+          background={{ color: "primary", strength: 500 }}
+          border={{ botton: "2px solid rgb(77,164,139)" }}
         >
           <div className="flight-price-content">
             <Text color="white">

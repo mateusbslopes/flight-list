@@ -198,7 +198,7 @@ function Search({
           <div className="row">
             <div>
               <Button
-                background={{ color: "secundary", strength: 500 }}
+                background={{ color: "primary", strength: 500 }}
                 onClick={() =>
                   getFlights(
                     {
