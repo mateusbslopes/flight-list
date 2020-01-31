@@ -1,4 +1,6 @@
-export default () => `
+import { getNested } from "../../../utils/ObjectUtils";
+
+export default theme => `
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -11,8 +13,8 @@ export default () => `
         display: flex;
         height: 25px;
         width: 25px;
-        background-color: white;
-        border: solid 1px rgb(26,188,156);
+        background-color: ${theme.colors.ternary[500]};
+        border: solid 1px ${theme.colors.primary[500]};
         border-radius: 5px;
         align-items: center;
         justify-content: center;
