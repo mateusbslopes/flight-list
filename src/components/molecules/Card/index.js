@@ -3,7 +3,7 @@ import style from "./style";
 
 export default function Card({ margin, header, body }) {
   return (
-    <div css={() => style(margin)}>
+    <div css={theme => style(theme, margin)}>
       <div className="content">
         {header && <div className="header">{header}</div>}
 

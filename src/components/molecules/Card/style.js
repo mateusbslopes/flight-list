@@ -1,4 +1,4 @@
-export default (margin = 0) => `
+export default (theme, margin = 0) => `
     .content {
         display: flex;
         -webkit-box-shadow: 1px 1px 4px 0px rgba(158,158,158,1);
@@ -9,7 +9,7 @@ export default (margin = 0) => `
     .header {
         display: flex;
         width: 100%;
-        background-color: rgb(137, 147, 149);
+        background-color: ${theme.colors.secundary[600]};
         border-radius: 5px 5px 0px 0px;
         height: 80px;
         align-items: center;
