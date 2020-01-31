@@ -45,6 +45,6 @@ export default theme => `
     }
     
     .list-item:hover{
-        color: ${theme.colors.primary[300]};
+        color: ${theme.colors.primary[500]};
     }
 `;
