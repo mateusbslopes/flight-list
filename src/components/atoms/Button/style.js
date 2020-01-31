@@ -4,9 +4,9 @@ const style = (theme, background = {}, border = {}) => `
       theme.colors,
       background.color,
       background.strength
-    ) || theme.colors.ternary[500]};
+    ) || theme.colors.primary[500]};
     border-color: ${getNested(theme.colors, border.color, border.strength) ||
-      theme.colors.ternary[500]};
+      theme.colors.primary[500]};
     border-bottom: ${theme.colors[border.bottom] || "none"};
     border-radius: 9px;
     border-width: 1px;

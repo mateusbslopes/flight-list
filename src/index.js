@@ -8,10 +8,9 @@ import store from "./reducers";
 import theme from "./theme";
 import { ThemeProvider } from "emotion-theming";
 
-console.log(theme);
-
 function App() {
   return (
+    // Switch theme imported when change the device
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <Flights />
