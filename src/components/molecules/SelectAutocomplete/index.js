@@ -54,7 +54,6 @@ export default function SelectAutocomplete({
     evnt.preventDefault();
   }
 
-  // TODO Transform in component (declared in this same file)
   function getDisplayableRow([label, airportCode, country]) {
     return (
       <div
@@ -63,12 +62,11 @@ export default function SelectAutocomplete({
         onClick={evt => selectItem(evt, label, airportCode)}
         onMouseDown={handleOnMouseDown}
       >
-        {`${airportCode} ${label}, ${country}`}{" "}
+        <Text weight={500}>{`${airportCode} ${label}, ${country}`} </Text>
       </div>
     );
   }
 
-  // TODO Transform in component?
   function getDisplayedValue(value) {
     switch (state) {
       case "searching":
