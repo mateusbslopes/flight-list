@@ -113,6 +113,9 @@ yup.setLocale({
   mixed: {
     default: "Não é válido",
     required: "O campo é obrigatório"
+  },
+  string: {
+    matches: "Data inválida"
   }
 });
 
@@ -124,13 +127,13 @@ const searchSchema = yup.object().shape({
     airportCode: yup.string().required()
   }),
   outboundDate: yup
-    .date()
-    .min(new Date())
-    .required(),
+    .string()
+    .required()
+    .matches(/\d{4}-[01]\d-[0-3]\d/),
   inboundDate: yup
-    .date()
-    .min(new Date())
-    .required(),
+    .string()
+    .required()
+    .matches(/\d{4}-[01]\d-[0-3]\d/),
   adults: yup
     .number()
     .min(1)

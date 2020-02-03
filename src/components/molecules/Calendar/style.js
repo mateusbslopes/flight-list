@@ -1,4 +1,9 @@
 export default theme => `
+    .calendar-content {
+        display: flex;
+        flex-direction: column;
+    }
+
     .calendar-label {
         align-self: start;
         font-style: italic;
