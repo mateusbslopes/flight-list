@@ -25,6 +25,8 @@ export const ADD_FLIGHTS = "ADD_FLIGHTS";
 
 export const OPEN_FILTER = "OPEN_FILTER";
 export const CLOSE_FILTER = "CLOSE_FILTER";
+export const TOGGLE_OUTBOUND_HOUR = "TOGGLE_OUTBOUND_HOUR";
+export const ADD_TO_OUTBOUND_HOUR = "ADD_TO_OUTBOUND_HOUR";
 
 export const SET_SEARCH = "SET_SEARCH";
 export const OPEN_SEARCH = "OPEN_SEARCH";
@@ -89,6 +91,16 @@ export const openFilter = () => ({
 
 export const closeFilter = () => ({
   type: CLOSE_FILTER
+});
+
+export const toggleOutboundHour = time => ({
+  type: TOGGLE_OUTBOUND_HOUR,
+  payload: { time }
+});
+
+export const addOutboundHour = (time, flights) => ({
+  type: TOGGLE_OUTBOUND_HOUR,
+  payload: { time, flights }
 });
 
 export const setSearch = search => ({

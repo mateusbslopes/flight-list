@@ -1,15 +1,54 @@
-import { OPEN_FILTER, CLOSE_FILTER } from "../actions";
+import {
+  OPEN_FILTER,
+  CLOSE_FILTER,
+  ADD_TO_OUTBOUND_HOUR,
+  TOGGLE_OUTBOUND_HOUR
+} from "../actions";
 
 const initialState = {
-  isOpen: false
+  isOpen: false,
+  outboundHour: {
+    morning: {
+      checked: true,
+      outbound: null,
+      inbound: null
+    },
+    afternoon: {
+      checked: true,
+      outbound: null,
+      inbound: null
+    },
+    night: {
+      checked: true,
+      outbound: null,
+      inbound: null
+    },
+    dawn: {
+      checked: true,
+      outbound: null,
+      inbound: null
+    }
+  }
 };
 
-export default function filter(state = initialState, { type }) {
+function toggleOutboundHour(state, payload) {
+  let newOutboundHour = state.outboundHour;
+  newOutboundHour[payload.time].checked = !newOutboundHour[payload.time]
+    .checked;
+  return { ...state, newOutboundHour };
+}
+
+export default function filter(state = initialState, { type, payload }) {
   switch (type) {
     case OPEN_FILTER:
-      return { isOpen: true };
+      return { ...state, isOpen: true };
     case CLOSE_FILTER:
-      return { isOpen: false };
+      return { ...state, isOpen: false };
+    case "CLEAR_FILTER":
+      return initialState;
+    case ADD_TO_OUTBOUND_HOUR:
+    case TOGGLE_OUTBOUND_HOUR:
+      return toggleOutboundHour(state, payload);
     default:
       return state;
   }
