@@ -13,6 +13,7 @@ import {
   closeSearch as closeSearchAction,
   setField as setFieldAction
 } from "../../../actions";
+import RadioList from "../../molecules/RadioList";
 
 function Search({
   closeSearch,
@@ -30,6 +31,7 @@ function Search({
   const [adults, setAdults] = useState(search.adults);
   const [children, setChildren] = useState(search.children);
   const [infants, setInfants] = useState(search.infants);
+  const [cabin, setCabin] = useState(search.cabin);
 
   useEffect(() => {
     setField("from");
@@ -52,6 +54,11 @@ function Search({
     "OUT",
     "NOV",
     "DEZ"
+  ];
+
+  const cabins = [
+    { value: "EC", label: "Econômica" },
+    { value: "EX", label: "Executiva" }
   ];
 
   function getFieldError(errors = [], fieldName) {
@@ -169,19 +176,30 @@ function Search({
             </div>
           </div>
 
-          <div className="filter-option">
-            <Passengers
-              adults={adults}
-              onChangeAdults={setAdults}
-              children={children}
-              onChangeChildren={setChildren}
-              infants={infants}
-              onChangeInfants={setInfants}
-            />
-            {getDisplayableError(errors, "adults")}
-            {getDisplayableError(errors, "children")}
-            {getDisplayableError(errors, "infants")}
+          <div className="row filter-option">
+            <div className="col-sm-8">
+              <Passengers
+                adults={adults}
+                onChangeAdults={setAdults}
+                children={children}
+                onChangeChildren={setChildren}
+                infants={infants}
+                onChangeInfants={setInfants}
+              />
+              {getDisplayableError(errors, "infants")}
+            </div>
+            <div className="col-sm-8">
+              <RadioList
+                label="Cabine"
+                data={cabins}
+                value={cabin}
+                onChange={cabin => setCabin(cabin)}
+                valueKey="value"
+                displayKey="label"
+              />
+            </div>
           </div>
+
           <div className="w-100"></div>
           <div className="row">
             <div>
@@ -197,7 +215,8 @@ function Search({
                       to,
                       adults,
                       children,
-                      infants
+                      infants,
+                      cabin
                     },
                     search
                   )

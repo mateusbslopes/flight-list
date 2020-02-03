@@ -9,7 +9,7 @@ function FlightList({ flights }) {
   if (!flights.length)
     return (
       <Text>
-        Opa, nao encontramos voos com esse filtro! Tente deixa-lo mais generico.
+        Opa, nao encontramos voos com esse filtro! Tente deixa-lo mais genérico.
       </Text>
     );
 
@@ -54,7 +54,7 @@ function getFlights(flights, flightsToDisplay, airlines, filter) {
   flightsToReturn = flights[flightsToDisplay].filter(
     flight =>
       !!airlines.some(
-        airline => airline.label === flight.airline && airline.checked
+        airline => airline.label === flight.airlineTarget && airline.checked
       ) &&
       ((filter.outboundHour.morning.checked &&
         filterByTime(flight, "morning")) ||

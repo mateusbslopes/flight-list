@@ -21,7 +21,7 @@ export function makeSearchIntention(filter) {
     to: filter.to.airportCode,
     outboundDate: filter.outboundDate,
     inboundDate: filter.inboundDate,
-    cabin: "EC",
+    cabin: filter.cabin.value,
     adults: Number(filter.adults),
     children: Number(filter.children),
     infants: Number(filter.infants)

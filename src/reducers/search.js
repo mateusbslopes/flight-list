@@ -16,6 +16,7 @@ const initialState = {
   adults: 1,
   children: 0,
   infants: 0,
+  cabin: { value: "EC" },
   errors: []
 };
 
