@@ -59,11 +59,26 @@ export default theme => `
         font-size: ${theme.sizes[500]};
     }
 
+    .passengers {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .warning {
+        padding: 5px;
+        display: flex;
+        border-radius: 5px;
+        background-color: ${theme.colors.alert};
+        color: ${theme.colors.ternary[500]};
+        font-size: ${theme.sizes[300]};
+        z-index: 20;
+    }
+
     .error {
         background-color: ${theme.colors.error.background};
         border-radius: 5px;
         color: ${theme.colors.error.text};
-        padding: 2px;
+        padding: 5px;
         position: absolute;
         font-size: ${theme.sizes[300]};
         z-index: 20;

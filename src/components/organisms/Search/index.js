@@ -32,6 +32,10 @@ function Search({
   const [children, setChildren] = useState(search.children);
   const [infants, setInfants] = useState(search.infants);
   const [cabin, setCabin] = useState(search.cabin);
+  const [warningIsVisible, setWarningIsVisible] = useState(false);
+  const [warningMessage, setWarningMessage] = useState("");
+
+  let cancelTimeout = () => {};
 
   useEffect(() => {
     setField("from");
@@ -55,6 +59,36 @@ function Search({
     "NOV",
     "DEZ"
   ];
+
+  function displayWarningMessage(message) {
+    cancelTimeout();
+    setWarningMessage(message);
+    setWarningIsVisible(true);
+    cancelTimeout = setTimeout(() => {
+      setWarningIsVisible(false);
+    }, 3000);
+  }
+
+  function onChangeAdults(value) {
+    if (value < 1) displayWarningMessage("Deve haver ao menos 1 adulto no voo");
+    else if (value + children + infants > 9)
+      displayWarningMessage("O máximo de passageiros é 9");
+    else setAdults(value);
+  }
+
+  function onChangeChildren(value) {
+    if (value + adults + infants > 9)
+      displayWarningMessage("O máximo de passageiros é 9");
+    else if (value < 9) setChildren(value);
+  }
+
+  function onChangeInfants(value) {
+    if (value + children + adults > 9)
+      displayWarningMessage("O máximo de passageiros é 9");
+    else if (value > adults)
+      displayWarningMessage("O número máximo de bebês é de 1 para cada adulto");
+    else if (value >= 0) setInfants(value);
+  }
 
   const cabins = [
     { value: "EC", label: "Econômica" },
@@ -177,16 +211,22 @@ function Search({
           </div>
 
           <div className="row filter-option">
-            <div className="col-sm-8">
+            <div className="col-sm-8 passengers">
               <Passengers
                 adults={adults}
-                onChangeAdults={setAdults}
+                onChangeAdults={onChangeAdults}
                 children={children}
-                onChangeChildren={setChildren}
+                onChangeChildren={onChangeChildren}
                 infants={infants}
-                onChangeInfants={setInfants}
+                onChangeInfants={onChangeInfants}
               />
-              {getDisplayableError(errors, "infants")}
+              {warningIsVisible && (
+                <div className="warning">
+                  <Text size={300} color="ternary">
+                    {warningMessage}
+                  </Text>
+                </div>
+              )}
             </div>
             <div className="col-sm-8">
               <RadioList
