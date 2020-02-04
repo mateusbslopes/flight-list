@@ -1,4 +1,7 @@
 export default {
+  // Debug purposes
+  AAA: "AAAAAAAAAAAA",
+
   // Header
   appTitle: "Test Front",
 
@@ -38,6 +41,12 @@ export default {
   duration: "Duração",
   inboundHour: "Chegada",
 
+  // -- Row
+
+  // --- Price
+  exclusiveFlight: "Voo exclusivo na MaxMilhas",
+  lowestPriceCompany: "Menor preco na Companhia",
+
   // Footer
   filterFlights: "FILTRAR VOOS",
 
@@ -47,8 +56,8 @@ export default {
   // - Outbound Hour
   outboundHourExtended: "Horário de partida:",
   filterHeader: "Filtre seus resultados por:",
-  morningFilter: "Manhã - {{startHour}} às {{endHour}}",
-  afternoonFilter: "Tarde - {{startHour}} às {{endHour}}",
-  nightFilter: "Noite - {{startHour}} às {{endHour}}",
-  dawnFilter: "Madrugada - {{startHour}} às {{endHour}}"
+  morningFilter: "Manhã - {startHour} às {endHour}",
+  afternoonFilter: "Tarde - {startHour} às {endHour}",
+  nightFilter: "Noite - {startHour} às {endHour}",
+  dawnFilter: "Madrugada - {startHour} às {endHour}"
 };

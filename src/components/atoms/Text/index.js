@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./style";
-import i18next from "i18next";
+import { FormattedMessage } from "react-intl";
 
 export default function Text({ children, size, color, weight, values }) {
   return (
     <div css={theme => style(theme, size, weight, color)}>
-      {i18next.t(children, { ...values })}
+      <FormattedMessage id={String(children)} values={values} />
     </div>
   );
 }

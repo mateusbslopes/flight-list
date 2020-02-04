@@ -22,7 +22,7 @@ export default function FlightPrice({ pricing }) {
           </div>
         </Button>
         <div className="extra-info">
-          <Text weight={500}>Voo exclusivo na MaxMilhas</Text>
+          <Text weight={500}>exclusiveFlight</Text>
         </div>
       </div>
     );
@@ -40,7 +40,7 @@ export default function FlightPrice({ pricing }) {
           </div>
         </Button>
         <div className="extra-info">
-          <Text weight={500}>Menor preco na Companhia</Text>
+          <Text weight={500}>lowestPriceCompany</Text>
         </div>
       </div>
     );
