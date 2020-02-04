@@ -14,17 +14,17 @@ export default function Passengers({
     <div css={theme => style(theme)}>
       <div className="options col-sm-6">
         <div className="options-item">
-          <Spinner label="Adultos" value={adults} onChange={onChangeAdults} />
+          <Spinner label="adults" value={adults} onChange={onChangeAdults} />
         </div>
         <div className="options-item">
           <Spinner
-            label="Criancas"
+            label="children"
             value={children}
             onChange={onChangeChildren}
           />
         </div>
         <div className="options-item">
-          <Spinner label="Bebe" value={infants} onChange={onChangeInfants} />
+          <Spinner label="infants" value={infants} onChange={onChangeInfants} />
         </div>
       </div>
     </div>

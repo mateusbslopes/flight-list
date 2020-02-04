@@ -91,8 +91,8 @@ function Search({
   }
 
   const cabins = [
-    { value: "EC", label: "Econômica" },
-    { value: "EX", label: "Executiva" }
+    { value: "EC", label: "economic" },
+    { value: "EX", label: "executive" }
   ];
 
   function getFieldError(errors = [], fieldName) {
@@ -174,8 +174,8 @@ function Search({
           <div className="filter-option">
             <SelectAutocomplete
               data={airports}
-              placeholder="Origem"
-              label="Sair de"
+              placeholder="fromPlaceholder"
+              label="fromLabel"
               value={from}
               onChange={value => setFrom(value)}
             />
@@ -184,8 +184,8 @@ function Search({
           <div className="filter-option">
             <SelectAutocomplete
               data={airports}
-              placeholder="Destino"
-              label="Ir para"
+              placeholder="toPlaceholder"
+              label="toLabel"
               value={to}
               onChange={value => setTo(value)}
             />
@@ -194,7 +194,7 @@ function Search({
           <div className="flight-dates">
             <div className="filter-option col-sm-8">
               <Calendar
-                label="Ida"
+                label="outbound"
                 value={outboundDate}
                 handleChange={event => setOutboundDate(event.target.value)}
               />
@@ -202,7 +202,7 @@ function Search({
             </div>
             <div className="filter-option col-sm-8">
               <Calendar
-                label="Volta"
+                label="inbound"
                 value={inboundDate}
                 handleChange={event => setInboundDate(event.target.value)}
               />
@@ -230,7 +230,7 @@ function Search({
             </div>
             <div className="col-sm-8">
               <RadioList
-                label="Cabine"
+                label="cabin"
                 data={cabins}
                 value={cabin}
                 onChange={cabin => setCabin(cabin)}
@@ -264,7 +264,7 @@ function Search({
               >
                 <div className="search-buttom-content">
                   <Icon name="icon-max-action-search" color="ternary" />
-                  <Text color="ternary">Pesquisar</Text>
+                  <Text color="ternary">search</Text>
                 </div>
               </Button>
             </div>

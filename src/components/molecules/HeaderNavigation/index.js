@@ -23,7 +23,7 @@ function HeaderNavigation({ setDisplayedFlights, displayed }) {
           background={{ color: "ternary", strength: 500 }}
           onClick={() => setDisplayedFlights(DisplayableFlights.OUTBOUND)}
         >
-          <Text>Selecione sua ida</Text>
+          <Text>outboundNavigation</Text>
         </Button>
       </div>
       <div
@@ -38,7 +38,7 @@ function HeaderNavigation({ setDisplayedFlights, displayed }) {
           background={{ color: "ternary", strength: 500 }}
           onClick={() => setDisplayedFlights(DisplayableFlights.INBOUND)}
         >
-          <Text>Selecione sua volta</Text>
+          <Text>inboundNavigation</Text>
         </Button>
       </div>
     </div>

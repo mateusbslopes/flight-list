@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from "./reducers";
 import theme from "./theme";
 import { ThemeProvider } from "emotion-theming";
+import loadTranslations from "./translations";
 
 function App() {
   return (
@@ -21,4 +22,6 @@ function App() {
 }
 
 export { store };
-ReactDOM.render(<App />, document.querySelector("#root"));
+loadTranslations().then(function() {
+  ReactDOM.render(<App />, document.querySelector("#root"));
+});

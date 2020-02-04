@@ -9,7 +9,7 @@ function Footer({ openFilter }) {
   return (
     <div css={theme => style(theme)}>
       <div className="action action-first" onClick={openFilter}>
-        <Text>FILTRAR VOOS</Text>
+        <Text>filterFlights</Text>
       </div>
     </div>
   );

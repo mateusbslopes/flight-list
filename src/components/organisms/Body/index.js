@@ -21,10 +21,10 @@ function Body({ isFetching, hasItems, hasSearched }) {
           </div>
         )}
         {!isFetching && !hasItems && hasSearched && (
-          <Text>Opa, nao encontramos voos! Tente para um outro lugar.</Text>
+          <Text>noSearchResultMessage</Text>
         )}
         {!isFetching && !hasItems && !hasSearched && (
-          <Text>Faça uma pesquisa!</Text>
+          <Text>neverSearchedMessage</Text>
         )}
       </div>
 
