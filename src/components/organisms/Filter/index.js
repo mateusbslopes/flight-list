@@ -24,7 +24,7 @@ function Filter({
     <div css={theme => style(theme)}>
       <div className="header">
         <div className="title">
-          <Text color="ternary">Filtre seus resultados por: </Text>
+          <Text color="ternary">filterHeader</Text>
         </div>
         <div onClick={closeFilter}>
           <Icon name="icon-max-navigation-close" />
@@ -32,7 +32,7 @@ function Filter({
       </div>
 
       <div className="body">
-        <Text>Companhia aeria:</Text>
+        <Text>airline</Text>
         {airlines.map(airline => (
           <Checkbox
             key={airline.label}
@@ -43,31 +43,60 @@ function Filter({
             checked={airline.checked}
           />
         ))}
-        <Text>Horário de partida:</Text>
+        <Text>outboundHour</Text>
         <Checkbox
           id={"morning"}
-          label={`Manhã - 06:00 às 11:59`}
           toggle={() => toggleOutboundHour("morning")}
           checked={filter.outboundHour.morning.checked}
-        />
+        >
+          <Text
+            weight={100}
+            size={300}
+            values={{ startHour: "06:00", endHour: "11:59" }}
+          >
+            morningFilter
+          </Text>
+        </Checkbox>
+
         <Checkbox
           id={"afternoon"}
-          label={`Tarde - 12:00 às 17:59`}
           toggle={() => toggleOutboundHour("afternoon")}
           checked={filter.outboundHour.afternoon.checked}
-        />
+        >
+          <Text
+            weight={100}
+            size={300}
+            values={{ startHour: "12:00", endHour: "17:59" }}
+          >
+            afternoonFilter
+          </Text>
+        </Checkbox>
         <Checkbox
           id={"night"}
-          label={`Noite - 18:00 às 23:59`}
           toggle={() => toggleOutboundHour("night")}
           checked={filter.outboundHour.night.checked}
-        />
+        >
+          <Text
+            weight={100}
+            size={300}
+            values={{ startHour: "18:00", endHour: "23:59" }}
+          >
+            nightFilter
+          </Text>
+        </Checkbox>
         <Checkbox
           id={"dawn"}
-          label={`Madrugada - 00:00 às 05:59`}
           toggle={() => toggleOutboundHour("dawn")}
           checked={filter.outboundHour.dawn.checked}
-        />
+        >
+          <Text
+            weight={100}
+            size={300}
+            values={{ startHour: "00:00", endHour: "05:59" }}
+          >
+            dawnFilter
+          </Text>
+        </Checkbox>
       </div>
     </div>
   );

@@ -11,12 +11,12 @@ export default {
   inbound: "Volta",
   search: "Pesquisar",
 
-  // Passengers
+  // --Passengers
   adults: "Adultos",
   children: "Crianças",
   infants: "Bebês",
 
-  // Cabins
+  // --Cabins
   cabin: "Cabine",
   executive: "Executiva",
   economic: "Econômica",
@@ -32,5 +32,16 @@ export default {
     "Opa, nao encontramos voos! Tente para um outro lugar.",
 
   // Footer
-  filterFlights: "FILTRAR VOOS"
+  filterFlights: "FILTRAR VOOS",
+
+  // Filter
+  // - Airline
+  airline: "Companhia aeria:",
+  // - Outbound Hour
+  outboundHour: "Horário de partida:",
+  filterHeader: "Filtre seus resultados por:",
+  morningFilter: "Manhã - {{startHour}} às {{endHour}}",
+  afternoonFilter: "Tarde - {{startHour}} às {{endHour}}",
+  nightFilter: "Noite - {{startHour}} às {{endHour}}",
+  dawnFilter: "Madrugada - {{startHour}} às {{endHour}}"
 };
