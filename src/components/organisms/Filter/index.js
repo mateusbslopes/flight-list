@@ -32,7 +32,7 @@ function Filter({
       </div>
 
       <div className="body">
-        <Text>airline</Text>
+        <Text>airlineFilter</Text>
         {airlines.map(airline => (
           <Checkbox
             key={airline.label}
@@ -43,7 +43,7 @@ function Filter({
             checked={airline.checked}
           />
         ))}
-        <Text>outboundHour</Text>
+        <Text>outboundHourExtended</Text>
         <Checkbox
           id={"morning"}
           toggle={() => toggleOutboundHour("morning")}

@@ -31,14 +31,21 @@ export default {
   noSearchResultMessage:
     "Opa, nao encontramos voos! Tente para um outro lugar.",
 
+  // - Flight List
+  // -- Header
+  airline: "Companhia",
+  outboundHour: "Partida",
+  duration: "Duração",
+  inboundHour: "Chegada",
+
   // Footer
   filterFlights: "FILTRAR VOOS",
 
   // Filter
   // - Airline
-  airline: "Companhia aeria:",
+  airlineFilter: "Companhia aeria:",
   // - Outbound Hour
-  outboundHour: "Horário de partida:",
+  outboundHourExtended: "Horário de partida:",
   filterHeader: "Filtre seus resultados por:",
   morningFilter: "Manhã - {{startHour}} às {{endHour}}",
   afternoonFilter: "Tarde - {{startHour}} às {{endHour}}",

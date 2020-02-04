@@ -62,7 +62,7 @@ export default function SelectAutocomplete({
         onClick={evt => selectItem(evt, label, airportCode)}
         onMouseDown={handleOnMouseDown}
       >
-        <Text weight={500}>{`${airportCode} ${label}, ${country}`} </Text>
+        <Text weight={500}>{`${airportCode} ${label}, ${country}`}</Text>
       </div>
     );
   }
@@ -105,7 +105,7 @@ export default function SelectAutocomplete({
           </div>
           {state === "searching" && (
             <div className="col-sm-8 list">
-              <Text>{getDataToDisplay(data)}</Text>
+              <div>{getDataToDisplay(data)}</div>
             </div>
           )}
         </div>
