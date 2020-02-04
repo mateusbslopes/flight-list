@@ -6,12 +6,7 @@ import Card from "../../molecules/Card";
 import { connect } from "react-redux";
 
 function FlightList({ flights }) {
-  if (!flights.length)
-    return (
-      <Text>
-        Opa, nao encontramos voos com esse filtro! Tente deixa-lo mais genérico.
-      </Text>
-    );
+  if (!flights.length) return <Text>noFilterhResultMessage</Text>;
 
   return (
     <div css={style}>

@@ -35,6 +35,8 @@ export default {
     "Opa, nao encontramos voos! Tente para um outro lugar.",
 
   // - Flight List
+  noFilterhResultMessage:
+    "Opa, nao encontramos voos com esse filtro! Tente deixa-lo mais genérico.",
   // -- Header
   airline: "Companhia",
   outboundHour: "Partida",
@@ -42,10 +44,12 @@ export default {
   inboundHour: "Chegada",
 
   // -- Row
-
   // --- Price
   exclusiveFlight: "Voo exclusivo na MaxMilhas",
   lowestPriceCompany: "Menor preco na Companhia",
+  lowestPriceMaxMilhas: "Economize {percentage} na Maxmilhas!",
+
+  flightDetails: "DETALHES DO VOO",
 
   // Footer
   filterFlights: "FILTRAR VOOS",

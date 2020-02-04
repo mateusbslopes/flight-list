@@ -37,11 +37,14 @@ function Filter({
           <Checkbox
             key={airline.label}
             id={airline.label}
-            label={`${airline.label.charAt(0).toUpperCase() +
-              airline.label.slice(1)} (${airline[displayedFlights]} voos)`}
             toggle={toggleAirline}
             checked={airline.checked}
-          />
+          >
+            <Text weight={100} size={300}>{`${airline.label
+              .charAt(0)
+              .toUpperCase() + airline.label.slice(1)}
+            (${airline[displayedFlights]} voos)`}</Text>
+          </Checkbox>
         ))}
         <Text>outboundHourExtended</Text>
         <Checkbox

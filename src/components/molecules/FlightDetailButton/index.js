@@ -12,7 +12,7 @@ export default function FlightDetailButton() {
     >
       <div css={style}>
         <Icon name="icon-max-action-add" />
-        <Text>DETALHES DO VOO</Text>
+        <Text>flightDetails</Text>
       </div>
     </Button>
   );
