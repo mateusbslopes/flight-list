@@ -67,7 +67,7 @@ export default theme => `
         padding: 5px;
         display: flex;
         border-radius: 5px;
-        background-color: ${theme.colors.alert};
+        background-color: ${theme.colors.alert[500]};
         color: ${theme.colors.ternary[500]};
         font-size: ${theme.sizes[300]};
         z-index: 20;

@@ -79,7 +79,7 @@ function Search({
   function onChangeChildren(value) {
     if (value + adults + infants > 9)
       displayWarningMessage("O máximo de passageiros é 9");
-    else if (value < 9) setChildren(value);
+    else if (value >= 0) setChildren(value);
   }
 
   function onChangeInfants(value) {
