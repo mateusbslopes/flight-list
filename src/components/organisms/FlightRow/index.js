@@ -4,6 +4,7 @@ import style from "./style";
 import FlightDetailButton from "../../molecules/FlightDetailButton";
 import FlightPrice from "../../molecules/FlightPrice";
 import Card from "../../molecules/Card";
+import { useIntl, FormattedMessage } from "react-intl";
 
 export default function FlightRow({
   id,
@@ -17,6 +18,8 @@ export default function FlightRow({
   to,
   pricing
 }) {
+  const intl = useIntl();
+
   function formatAirline(airline) {
     return airline.toUpperCase();
   }
@@ -51,7 +54,12 @@ export default function FlightRow({
               <FlightColumn text={formatHour(departureDate)} info={from} />
               <FlightColumn
                 text={formatDuration(duration)}
-                info={formatStops(trips.length)}
+                info={
+                  <FormattedMessage
+                    id="stopAmount"
+                    values={{ stopCount: trips.length }}
+                  />
+                }
               />
               <FlightColumn text={formatHour(arrivalDate)} info={to} />
             </div>

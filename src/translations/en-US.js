@@ -46,6 +46,7 @@ export default {
   outboundHour: "Outbound Hour",
   duration: "Duration",
   inboundHour: "Inbound Hour",
+  stopAmount: "{stopCount, plural, one {# stop} other {# stops}}",
 
   // -- Row
   // --- Price

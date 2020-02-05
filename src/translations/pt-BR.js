@@ -45,6 +45,7 @@ export default {
   outboundHour: "Partida",
   duration: "Duração",
   inboundHour: "Chegada",
+  stopAmount: "{stopCount, plural, one {# parada} other {# paradas}}",
 
   // -- Row
   // --- Price
