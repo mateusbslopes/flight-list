@@ -114,12 +114,12 @@ function Search({
       return (
         <div className="filter-date">
           <div className="filter-date-day">
-            <Text>{date.getDate()}</Text>
+            <strong>{date.getDate()}</strong>
           </div>
           <div className="filter-date-day">
-            <Text weight={500}>{brazilianMonth[date.getMonth()]}</Text>
+            <p weight={500}>{brazilianMonth[date.getMonth()]}</p>
           </div>
-          <Text weight={500}>{date.getFullYear()}</Text>
+          <p weight={500}>{date.getFullYear()}</p>
         </div>
       );
     } else {
