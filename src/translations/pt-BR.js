@@ -66,5 +66,12 @@ export default {
   morningFilter: "Manhã - {startHour} às {endHour}",
   afternoonFilter: "Tarde - {startHour} às {endHour}",
   nightFilter: "Noite - {startHour} às {endHour}",
-  dawnFilter: "Madrugada - {startHour} às {endHour}"
+  dawnFilter: "Madrugada - {startHour} às {endHour}",
+
+  flightAmount:
+    "{flightsCount, plural, =0 {nenhum voo} one {# voo} other {# voos}}",
+
+  noFlight: "Nenhum voo encontrado",
+  flight: "voo",
+  flights: "voos"
 };

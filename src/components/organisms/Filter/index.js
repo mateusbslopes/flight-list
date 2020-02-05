@@ -8,7 +8,12 @@ import {
 } from "../../../actions";
 import Icon from "../../atoms/Icon";
 import Checkbox from "../../atoms/Checkbox";
-import { FormattedMessage } from "react-intl";
+import {
+  FormattedMessage,
+  FormattedPlural,
+  useIntl,
+  formatPlural
+} from "react-intl";
 import Card from "../../molecules/Card";
 
 function Filter({
@@ -20,6 +25,8 @@ function Filter({
   toggleOutboundHour
 }) {
   if (!filter.isOpen) return null;
+
+  const intl = useIntl();
 
   return (
     <div css={theme => style(theme)}>
@@ -50,9 +57,12 @@ function Filter({
                     {airline.label.charAt(0).toUpperCase() +
                       airline.label.slice(1)}
                   </p>
+                  {"("}
                   <FormattedMessage
-                    id={`(${airline[displayedFlights]} voos)`}
+                    id="flightAmount"
+                    values={{ flightsCount: airline[displayedFlights] }}
                   />
+                  {")"}
                 </div>
               </Checkbox>
             </div>
