@@ -33,20 +33,29 @@ function Filter({
       </div>
 
       <div className="body">
-        <FormattedMessage id="airlineFilter" />
-        {airlines.map(airline => (
-          <Checkbox
-            key={airline.label}
-            id={airline.label}
-            toggle={toggleAirline}
-            checked={airline.checked}
-          >
-            <p>
-              {airline.label.charAt(0).toUpperCase() + airline.label.slice(1)}
-            </p>
-            <FormattedMessage id={`${airline[displayedFlights]} voos)`} />
-          </Checkbox>
-        ))}
+        <section className="flex-column">
+          <FormattedMessage id="airlineFilter" />
+          {airlines.map(airline => (
+            <div className="flex-row">
+              <Checkbox
+                key={airline.label}
+                id={airline.label}
+                toggle={toggleAirline}
+                checked={airline.checked}
+              >
+                <div className="flex-row">
+                  <p>
+                    {airline.label.charAt(0).toUpperCase() +
+                      airline.label.slice(1)}
+                  </p>
+                  <FormattedMessage
+                    id={`(${airline[displayedFlights]} voos)`}
+                  />
+                </div>
+              </Checkbox>
+            </div>
+          ))}
+        </section>
         <FormattedMessage id="outboundHourExtended" />
         <Checkbox
           id={"morning"}

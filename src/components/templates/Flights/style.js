@@ -22,10 +22,16 @@ export default theme => `
     }
 
     .flex-row {
+        display: flex;
         flex-flow: row wrap;
     }
 
     .flex-row--centered {
         justify-content: center;
+    }
+
+    .flex-column {
+        display: flex;
+        flex-flow: column nowrap;
     }
 `;
