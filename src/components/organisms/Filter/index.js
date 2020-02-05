@@ -27,9 +27,7 @@ function Filter({
       <Card
         header={
           <div className="header">
-            <div className="title">
-              <Text color="ternary">filterHeader</Text>
-            </div>
+            <FormattedMessage id="filterHeader" />
             <div onClick={closeFilter}>
               <Icon name="icon-max-navigation-close" />
             </div>

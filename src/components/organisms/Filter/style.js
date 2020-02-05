@@ -1,4 +1,4 @@
-export default theme => `
+export default () => `
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -15,7 +15,6 @@ export default theme => `
     .header {
         display: flex;
         flex-direction: row;
-        background: ${theme.colors.secundary[400]};
         padding: 20px;
         justify-content: space-between;
     }

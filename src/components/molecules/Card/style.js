@@ -12,6 +12,8 @@ export default (theme, margin = 0) => `
         border-radius: 5px 5px 0px 0px;
         height: 80px;
         align-items: center;
+        background-color: ${theme.colors.secundary[500]};
+        color: ${theme.colors.ternary[500]};
     }
 
     .card-body {
