@@ -1,4 +1,4 @@
-export default () => `
+export default theme => `
 
     .flight-price-content {
         display: flex;
@@ -13,5 +13,9 @@ export default () => `
 
     .line-through {
         text-decoration: line-through;
+    }
+
+    .warning {
+        color: ${theme.colors.alert[500]}
     }
 `;

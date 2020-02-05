@@ -4,9 +4,10 @@ import Text from "../../atoms/Text";
 import style from "./style";
 import Card from "../../molecules/Card";
 import { connect } from "react-redux";
+import { FormattedMessage } from "react-intl";
 
 function FlightList({ flights }) {
-  if (!flights.length) return <Text>noFilterhResultMessage</Text>;
+  if (!flights.length) return <FormattedMessage id="noFilterhResultMessage" />;
 
   return (
     <div css={style}>

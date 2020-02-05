@@ -70,12 +70,11 @@ export default function FlightPrice({ pricing }) {
           </div>
         </Button>
         <div className="extra-info warning">
-          <Text
+          <FormattedMessage
+            id="lowestPriceMaxMilhas"
             color="alert"
             values={{ percentage: getDiscount(pricing.savingPercentage) }}
-          >
-            lowestPriceMaxMilhas
-          </Text>
+          />
         </div>
       </div>
     );
