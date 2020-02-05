@@ -18,6 +18,9 @@ export default {
   adults: "Adultos",
   children: "Crianças",
   infants: "Bebês",
+  infantsMaxWarning: "O número máximo de bebês é de 1 para cada adulto",
+  adultsMinWarning: "Deve haver ao menos 1 adulto no voo",
+  maxPassengersWarning: "O máximo de passageiros é 9",
 
   // --Cabins
   cabin: "Cabine",

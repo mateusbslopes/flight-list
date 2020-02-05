@@ -70,23 +70,22 @@ function Search({
   }
 
   function onChangeAdults(value) {
-    if (value < 1) displayWarningMessage("Deve haver ao menos 1 adulto no voo");
+    if (value < 1) displayWarningMessage("adultsMinWarning");
     else if (value + children + infants > 9)
-      displayWarningMessage("O máximo de passageiros é 9");
+      displayWarningMessage("maxPassengersWarning");
     else setAdults(value);
   }
 
   function onChangeChildren(value) {
     if (value + adults + infants > 9)
-      displayWarningMessage("O máximo de passageiros é 9");
+      displayWarningMessage("maxPassengersWarning");
     else if (value >= 0) setChildren(value);
   }
 
   function onChangeInfants(value) {
     if (value + children + adults > 9)
-      displayWarningMessage("O máximo de passageiros é 9");
-    else if (value > adults)
-      displayWarningMessage("O número máximo de bebês é de 1 para cada adulto");
+      displayWarningMessage("maxPassengersWarning");
+    else if (value > adults) displayWarningMessage("infantsMaxWarning");
     else if (value >= 0) setInfants(value);
   }
 
