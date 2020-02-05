@@ -9,7 +9,6 @@ export default (theme, margin = 0) => `
     .header {
         display: flex;
         width: 100%;
-        background-color: ${theme.colors.secundary[600]};
         border-radius: 5px 5px 0px 0px;
         height: 80px;
         align-items: center;

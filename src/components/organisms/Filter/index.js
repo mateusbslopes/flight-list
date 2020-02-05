@@ -10,6 +10,7 @@ import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Checkbox from "../../atoms/Checkbox";
 import { FormattedMessage } from "react-intl";
+import Card from "../../molecules/Card";
 
 function Filter({
   airlines,
@@ -23,14 +24,18 @@ function Filter({
 
   return (
     <div css={theme => style(theme)}>
-      <div className="header">
-        <div className="title">
-          <Text color="ternary">filterHeader</Text>
-        </div>
-        <div onClick={closeFilter}>
-          <Icon name="icon-max-navigation-close" />
-        </div>
-      </div>
+      <Card
+        header={
+          <div className="header">
+            <div className="title">
+              <Text color="ternary">filterHeader</Text>
+            </div>
+            <div onClick={closeFilter}>
+              <Icon name="icon-max-navigation-close" />
+            </div>
+          </div>
+        }
+      />
 
       <div className="body">
         <section className="flex-column">

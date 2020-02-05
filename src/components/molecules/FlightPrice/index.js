@@ -17,9 +17,7 @@ export default function FlightPrice({ pricing }) {
       <div css={style}>
         <Button border={{ botton: "2px solid rgb(77,164,139)" }}>
           <div className="flight-price-content">
-            <Text color={"ternary"}>
-              {l10nBRL.format(pricing[pricing.bestPriceAt].saleTotal)}
-            </Text>
+            {l10nBRL.format(pricing[pricing.bestPriceAt].saleTotal)}
           </div>
         </Button>
         <div className="extra-info">
@@ -35,9 +33,7 @@ export default function FlightPrice({ pricing }) {
       <div css={style}>
         <Button border={{ botton: "2px solid rgb(77,164,139)" }}>
           <div className="flight-price-content">
-            <Text color="ternary">
-              {l10nBRL.format(pricing.airline.saleTotal)}
-            </Text>
+            {l10nBRL.format(pricing.airline.saleTotal)}
           </div>
         </Button>
         <div className="extra-info">
@@ -64,9 +60,7 @@ export default function FlightPrice({ pricing }) {
         </div>
         <Button border={{ botton: "2px solid rgb(77,164,139)" }}>
           <div className="flight-price-content">
-            <Text color="ternary">
-              {l10nBRL.format(pricing[pricing.bestPriceAt].saleTotal)}
-            </Text>
+            {l10nBRL.format(pricing[pricing.bestPriceAt].saleTotal)}
           </div>
         </Button>
         <div className="extra-info warning">

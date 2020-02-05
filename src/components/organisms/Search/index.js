@@ -14,6 +14,7 @@ import {
   setField as setFieldAction
 } from "../../../actions";
 import RadioList from "../../molecules/RadioList";
+import { FormattedMessage } from "react-intl";
 
 function Search({
   closeSearch,
@@ -221,9 +222,7 @@ function Search({
               />
               {warningIsVisible && (
                 <div className="warning">
-                  <Text size={300} color="ternary">
-                    {warningMessage}
-                  </Text>
+                  <FormattedMessage id={warningMessage} />
                 </div>
               )}
             </div>
