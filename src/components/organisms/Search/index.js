@@ -22,7 +22,8 @@ function Search({
   errors,
   search,
   getFlights,
-  setField
+  setField,
+  locale
 }) {
   const [outboundDate, setOutboundDate] = useState(search.outboundDate);
   const [inboundDate, setInboundDate] = useState(search.inboundDate);
@@ -104,6 +105,11 @@ function Search({
     return messageError ? <div className="error">{messageError}</div> : false;
   }
 
+  function getMonth(date) {
+    let formatter = Intl.DateTimeFormat(locale, { month: "short" });
+    return formatter.format(date).toUpperCase();
+  }
+
   function getDisplayableDate(dateToDisplay) {
     if (dateToDisplay.length != 10) return "-";
 
@@ -116,7 +122,7 @@ function Search({
             <strong>{date.getDate()}</strong>
           </div>
           <div className="filter-date-day">
-            <p weight={500}>{brazilianMonth[date.getMonth()]}</p>
+            <p weight={500}>{getMonth(date)}</p>
           </div>
           <p weight={500}>{date.getFullYear()}</p>
         </div>
@@ -278,7 +284,8 @@ function Search({
 const mapStateToProps = state => ({
   search: state.search,
   errors: state.search.errors,
-  airports: state.airports
+  airports: state.airports,
+  locale: state.localization.locale
 });
 
 const mapDispatchToProps = {

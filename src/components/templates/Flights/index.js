@@ -9,11 +9,11 @@ import { IntlProvider } from "react-intl";
 import loadTranslations from "../../../translations";
 import style from "./style";
 
-function Flights({ getAirports, language }) {
+function Flights({ getAirports, locale }) {
   getAirports();
 
   return (
-    <IntlProvider messages={loadTranslations(language)}>
+    <IntlProvider locale={locale} messages={loadTranslations(locale)}>
       <div css={style}>
         <Header />
         <Filter />
@@ -25,7 +25,7 @@ function Flights({ getAirports, language }) {
 }
 
 const mapStateToProps = state => ({
-  language: state.localization.language
+  locale: state.localization.locale
 });
 
 const mapDispatchToProps = {

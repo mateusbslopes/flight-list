@@ -1,5 +1,5 @@
 const defaultState = {
-  language: "pt-BR"
+  locale: "en-US"
 };
 
 export default function(state = defaultState, { type, payload }) {
