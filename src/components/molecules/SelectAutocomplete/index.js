@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import StringUtils from "../../../utils/StringUtils";
-import Text from "../../atoms/Text";
 import style from "./style";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export default function SelectAutocomplete({
   value,
@@ -18,6 +18,7 @@ export default function SelectAutocomplete({
   const [isListOpen, setIsListOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [state, setState] = useState(isEmpty(value) ? "empty" : "fulfilled");
+  const intl = useIntl();
 
   function handleChange(evt) {
     setSearch(evt.target.value);
@@ -54,16 +55,19 @@ export default function SelectAutocomplete({
     evnt.preventDefault();
   }
 
+  // TODO Split label to remove "Todos" and translate it
   function getDisplayableRow([label, airportCode, country]) {
     return (
-      <div
+      <li
         className="list-item"
         key={airportCode}
         onClick={evt => selectItem(evt, label, airportCode)}
         onMouseDown={handleOnMouseDown}
       >
-        <Text weight={500}>{`${airportCode} ${label}, ${country}`}</Text>
-      </div>
+        {airportCode}
+        {", "}
+        {label} {country}
+      </li>
     );
   }
 
@@ -72,7 +76,7 @@ export default function SelectAutocomplete({
       case "searching":
         return search;
       case "empty":
-        return placeholder;
+        return intl.formatMessage({ id: placeholder });
       case "fulfilled":
         return value.label;
     }
@@ -85,27 +89,25 @@ export default function SelectAutocomplete({
   return (
     <div css={theme => style(theme)}>
       <div className="autocomplete-content" onBlur={() => handleBlur(value)}>
-        <Text size={300} weight={500}>
-          {label}
-        </Text>
+        <label>
+          <FormattedMessage id={label} />
+        </label>
         <div className="autocomplete-config">
           <div className="autocomplete-value col-sm-16">
             <input
               className="input-value col-sm-8"
               type="text"
-              value={`${getDisplayedValue(value)}`}
+              value={getDisplayedValue(value)}
               onChange={handleChange}
               onClick={handleClick}
             />
             <div className="autocomplete-value-desc">
-              <div>
-                {state === "fulfilled" && <Text>{value.airportCode}</Text>}
-              </div>
+              <div>{state === "fulfilled" && value.airportCode}</div>
             </div>
           </div>
           {state === "searching" && (
             <div className="col-sm-8 list">
-              <div>{getDataToDisplay(data)}</div>
+              <ol>{getDataToDisplay(data)}</ol>
             </div>
           )}
         </div>

@@ -5,7 +5,6 @@ export default theme => `
     justify-content: space-between;
     font-size: ${theme.sizes[300]};
     font-style: italic;
-    font-weight: ${theme.weights[300]};
 
     .options-item-config {
         display: flex;

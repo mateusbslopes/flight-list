@@ -10,7 +10,6 @@ export default theme => `
         justify-content: space-between;
         font-size: ${theme.sizes[300]};
         font-style: italic;
-        font-weight: ${theme.weights[500]};
     }
 
     .options-item-config {

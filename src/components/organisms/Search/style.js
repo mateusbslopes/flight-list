@@ -50,7 +50,6 @@ export default theme => `
     }
 
     .filter-date-day {
-        font-weight: ${theme.weights[500]};
         margin-right: 10px;
         margin-left: 10px;
     }

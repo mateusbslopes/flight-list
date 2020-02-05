@@ -17,7 +17,6 @@ export default theme => `
     .autocomplete-value-desc {
         display: flex;
         align-self: flex-end;
-        font-weight: ${theme.weights[600]};
         font-size: ${theme.sizes[300]};
     }
 

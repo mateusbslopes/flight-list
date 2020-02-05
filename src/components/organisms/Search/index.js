@@ -132,8 +132,8 @@ function Search({
   }
 
   return (
-    <div css={theme => style(theme)}>
-      <div className="filter-value">
+    <section css={theme => style(theme)}>
+      <section className="filter-value">
         <div className="filter-locations">
           <Icon size={400} name="icon-max-communication-location" />
           <div className="filter-locations-value">
@@ -168,7 +168,7 @@ function Search({
             </div>
           )}
         </div>
-      </div>
+      </section>
       {search.isOpen && (
         <div className="filter-options">
           <div className="filter-option">
@@ -271,7 +271,7 @@ function Search({
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 

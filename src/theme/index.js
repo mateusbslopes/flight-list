@@ -1,9 +1,10 @@
 import colors from "./colors";
 import sizes from "./sizes";
-import weights from "./weights";
+
+import font from "./font";
 
 export default {
   colors,
   sizes,
-  weights
+  font
 };

@@ -7,13 +7,14 @@ import Footer from "../../organisms/Footer";
 import Filter from "../../organisms/Filter";
 import { IntlProvider } from "react-intl";
 import loadTranslations from "../../../translations";
+import style from "./style";
 
 function Flights({ getAirports, language }) {
   getAirports();
 
   return (
     <IntlProvider messages={loadTranslations(language)}>
-      <div className="container-flex">
+      <div css={style}>
         <Header />
         <Filter />
         <Body />
