@@ -6,7 +6,6 @@ import {
   toggleAirline as toggleAirlineAction,
   toggleOutboundHour as toggleOutboundHourAction
 } from "../../../actions";
-import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Checkbox from "../../atoms/Checkbox";
 import { FormattedMessage } from "react-intl";

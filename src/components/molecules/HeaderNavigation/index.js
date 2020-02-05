@@ -5,7 +5,6 @@ import {
   DisplayableFlights
 } from "../../../actions";
 import Button from "../../atoms/Button";
-import Text from "../../atoms/Text";
 import style from "./style";
 import { FormattedMessage } from "react-intl";
 

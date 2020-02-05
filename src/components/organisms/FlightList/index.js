@@ -1,6 +1,5 @@
 import React from "react";
 import FlightRow from "../FlightRow";
-import Text from "../../atoms/Text";
 import style from "./style";
 import Card from "../../molecules/Card";
 import { connect } from "react-redux";
@@ -14,10 +13,18 @@ function FlightList({ flights }) {
       <Card
         header={
           <div className="flight-list-header">
-            <Text color="ternary">airline</Text>
-            <Text color="ternary">outboundHour</Text>
-            <Text color="ternary">duration</Text>
-            <Text color="ternary">inboundHour</Text>
+            <p>
+              <FormattedMessage id="airline" />
+            </p>
+            <p>
+              <FormattedMessage id="outboundHour" />
+            </p>
+            <p>
+              <FormattedMessage id="duration" />
+            </p>
+            <p>
+              <FormattedMessage id="inboundHour" />
+            </p>
           </div>
         }
       />

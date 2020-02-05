@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SelectAutocomplete from "../../molecules/SelectAutocomplete";
 import Passengers from "../Passengers";
-import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
 import style from "./style";
@@ -261,8 +260,12 @@ function Search({
                 }
               >
                 <div className="search-buttom-content">
-                  <Icon name="icon-max-action-search" color="ternary" />
-                  <Text color="ternary">search</Text>
+                  <>
+                    <Icon name="icon-max-action-search" color="ternary" />
+                    <p>
+                      <FormattedMessage id="search" />
+                    </p>
+                  </>
                 </div>
               </Button>
             </div>

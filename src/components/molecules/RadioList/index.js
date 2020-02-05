@@ -1,5 +1,4 @@
 import React from "react";
-import Text from "../../atoms/Text";
 import style from "./style";
 import { FormattedMessage } from "react-intl";
 

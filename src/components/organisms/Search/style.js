@@ -90,9 +90,8 @@ export default theme => `
     
     .search-buttom-content {
         display: flex;
-        flex-direction: row;
         align-items: center;
-        align-self: center;
+        justify-content: center;
     }
 
 `;

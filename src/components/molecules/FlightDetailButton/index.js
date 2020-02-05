@@ -1,6 +1,5 @@
 import React from "react";
 import Icon from "../../atoms/Icon";
-import Text from "../../atoms/Text";
 import Button from "../../atoms/Button";
 import style from "./style";
 import { FormattedMessage } from "react-intl";

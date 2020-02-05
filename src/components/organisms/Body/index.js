@@ -5,7 +5,6 @@
 import React from "react";
 import FlightList from "../FlightList";
 import style from "./style";
-import Text from "../../atoms/Text";
 import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 
