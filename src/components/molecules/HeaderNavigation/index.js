@@ -20,7 +20,7 @@ function HeaderNavigation({ setDisplayedFlights, displayed }) {
         }
       >
         <Button
-          background={{ color: "ternary", strength: 500 }}
+          invertColors={true}
           onClick={() => setDisplayedFlights(DisplayableFlights.OUTBOUND)}
         >
           <FormattedMessage id="outboundNavigation" />
@@ -35,7 +35,7 @@ function HeaderNavigation({ setDisplayedFlights, displayed }) {
         }
       >
         <Button
-          background={{ color: "ternary", strength: 500 }}
+          invertColors={true}
           onClick={() => setDisplayedFlights(DisplayableFlights.INBOUND)}
         >
           <FormattedMessage id="inboundNavigation" />

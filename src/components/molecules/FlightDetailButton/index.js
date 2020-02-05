@@ -6,10 +6,7 @@ import { FormattedMessage } from "react-intl";
 
 export default function FlightDetailButton() {
   return (
-    <Button
-      background={{ color: "ternary", strength: 500 }}
-      border={{ color: "secundary", strength: 600 }}
-    >
+    <Button invertColors={true}>
       <div css={style}>
         <Icon name="icon-max-action-add" />
         <FormattedMessage id="flightDetails" />

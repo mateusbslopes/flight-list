@@ -14,7 +14,7 @@ export default function FlightPrice({ pricing }) {
   function getExclusiveFlight(pricing) {
     return (
       <div css={style}>
-        <Button border={{ botton: "2px solid rgb(77,164,139)" }}>
+        <Button>
           <div className="flight-price-content">
             {l10nBRL.format(pricing[pricing.bestPriceAt].saleTotal)}
           </div>
@@ -30,7 +30,7 @@ export default function FlightPrice({ pricing }) {
   function getBestPriceAtAirline(pricing) {
     return (
       <div css={style}>
-        <Button border={{ botton: "2px solid rgb(77,164,139)" }}>
+        <Button>
           <div className="flight-price-content">
             {l10nBRL.format(pricing.airline.saleTotal)}
           </div>
@@ -57,7 +57,7 @@ export default function FlightPrice({ pricing }) {
             {l10nBRL.format(pricing.airline.saleTotal)}
           </div>
         </div>
-        <Button border={{ botton: "2px solid rgb(77,164,139)" }}>
+        <Button>
           <div className="flight-price-content">
             {l10nBRL.format(pricing[pricing.bestPriceAt].saleTotal)}
           </div>
