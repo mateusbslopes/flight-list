@@ -3,6 +3,7 @@ import Icon from "../../atoms/Icon";
 import Text from "../../atoms/Text";
 import Button from "../../atoms/Button";
 import style from "./style";
+import { FormattedMessage } from "react-intl";
 
 export default function FlightDetailButton() {
   return (
@@ -12,7 +13,7 @@ export default function FlightDetailButton() {
     >
       <div css={style}>
         <Icon name="icon-max-action-add" />
-        <Text>flightDetails</Text>
+        <FormattedMessage id="flightDetails" />
       </div>
     </Button>
   );

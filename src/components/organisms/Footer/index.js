@@ -1,15 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import style from "./style";
-import Text from "../../atoms/Text";
 
 import { openFilter as openFilterAction } from "../../../actions";
+import { FormattedMessage } from "react-intl";
 
 function Footer({ openFilter }) {
   return (
     <div css={theme => style(theme)}>
       <div className="action action-first" onClick={openFilter}>
-        <Text>filterFlights</Text>
+        <FormattedMessage id="filterFlights" />
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import {
 import Text from "../../atoms/Text";
 import Icon from "../../atoms/Icon";
 import Checkbox from "../../atoms/Checkbox";
+import { FormattedMessage } from "react-intl";
 
 function Filter({
   airlines,
@@ -32,7 +33,7 @@ function Filter({
       </div>
 
       <div className="body">
-        <Text>airlineFilter</Text>
+        <FormattedMessage id="airlineFilter" />
         {airlines.map(airline => (
           <Checkbox
             key={airline.label}
@@ -40,25 +41,22 @@ function Filter({
             toggle={toggleAirline}
             checked={airline.checked}
           >
-            <Text weight={100} size={300}>{`${airline.label
-              .charAt(0)
-              .toUpperCase() + airline.label.slice(1)}
-            (${airline[displayedFlights]} voos)`}</Text>
+            <p>
+              {airline.label.charAt(0).toUpperCase() + airline.label.slice(1)}
+            </p>
+            <FormattedMessage id={`${airline[displayedFlights]} voos)`} />
           </Checkbox>
         ))}
-        <Text>outboundHourExtended</Text>
+        <FormattedMessage id="outboundHourExtended" />
         <Checkbox
           id={"morning"}
           toggle={() => toggleOutboundHour("morning")}
           checked={filter.outboundHour.morning.checked}
         >
-          <Text
-            weight={100}
-            size={300}
+          <FormattedMessage
+            id="morningFilter"
             values={{ startHour: "06:00", endHour: "11:59" }}
-          >
-            morningFilter
-          </Text>
+          />
         </Checkbox>
 
         <Checkbox
@@ -66,39 +64,30 @@ function Filter({
           toggle={() => toggleOutboundHour("afternoon")}
           checked={filter.outboundHour.afternoon.checked}
         >
-          <Text
-            weight={100}
-            size={300}
+          <FormattedMessage
+            id="afternoonFilter"
             values={{ startHour: "12:00", endHour: "17:59" }}
-          >
-            afternoonFilter
-          </Text>
+          />
         </Checkbox>
         <Checkbox
           id={"night"}
           toggle={() => toggleOutboundHour("night")}
           checked={filter.outboundHour.night.checked}
         >
-          <Text
-            weight={100}
-            size={300}
+          <FormattedMessage
+            id="nightFilter"
             values={{ startHour: "18:00", endHour: "23:59" }}
-          >
-            nightFilter
-          </Text>
+          />
         </Checkbox>
         <Checkbox
           id={"dawn"}
           toggle={() => toggleOutboundHour("dawn")}
           checked={filter.outboundHour.dawn.checked}
         >
-          <Text
-            weight={100}
-            size={300}
+          <FormattedMessage
+            id="dawnFilter"
             values={{ startHour: "00:00", endHour: "05:59" }}
-          >
-            dawnFilter
-          </Text>
+          />
         </Checkbox>
       </div>
     </div>

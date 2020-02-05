@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../../atoms/Button";
 import Text from "../../atoms/Text";
 import style from "./style";
+import { FormattedMessage } from "react-intl";
 
 //TODO Create a CurrencyComponent
 const l10nBRL = new Intl.NumberFormat("pt-BR", {
@@ -22,7 +23,7 @@ export default function FlightPrice({ pricing }) {
           </div>
         </Button>
         <div className="extra-info">
-          <Text weight={500}>exclusiveFlight</Text>
+          <FormattedMessage id="exclusiveFlight" />
         </div>
       </div>
     );
@@ -40,7 +41,7 @@ export default function FlightPrice({ pricing }) {
           </div>
         </Button>
         <div className="extra-info">
-          <Text weight={500}>lowestPriceCompany</Text>
+          <FormattedMessage id="lowestPriceCompany" />
         </div>
       </div>
     );
@@ -56,9 +57,9 @@ export default function FlightPrice({ pricing }) {
     return (
       <div css={style}>
         <div className="extra-info">
-          <Text weight={500}>{pricing.airlineName.toUpperCase()}</Text>
+          <p>{pricing.airlineName.toUpperCase()}</p>
           <div className="line-through">
-            <Text>{l10nBRL.format(pricing.airline.saleTotal)}</Text>
+            {l10nBRL.format(pricing.airline.saleTotal)}
           </div>
         </div>
         <Button border={{ botton: "2px solid rgb(77,164,139)" }}>

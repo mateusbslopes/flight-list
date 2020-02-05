@@ -7,6 +7,7 @@ import FlightList from "../FlightList";
 import style from "./style";
 import Text from "../../atoms/Text";
 import { connect } from "react-redux";
+import { FormattedMessage } from "react-intl";
 
 function Body({ isFetching, hasItems, hasSearched }) {
   return (
@@ -21,10 +22,10 @@ function Body({ isFetching, hasItems, hasSearched }) {
           </div>
         )}
         {!isFetching && !hasItems && hasSearched && (
-          <Text>noSearchResultMessage</Text>
+          <FormattedMessage id="noSearchResultMessage" />
         )}
         {!isFetching && !hasItems && !hasSearched && (
-          <Text>neverSearchedMessage</Text>
+          <FormattedMessage id="neverSearchedMessage" />
         )}
       </div>
 

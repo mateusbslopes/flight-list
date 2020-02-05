@@ -7,6 +7,7 @@ import {
 import Button from "../../atoms/Button";
 import Text from "../../atoms/Text";
 import style from "./style";
+import { FormattedMessage } from "react-intl";
 
 function HeaderNavigation({ setDisplayedFlights, displayed }) {
   return (
@@ -23,7 +24,7 @@ function HeaderNavigation({ setDisplayedFlights, displayed }) {
           background={{ color: "ternary", strength: 500 }}
           onClick={() => setDisplayedFlights(DisplayableFlights.OUTBOUND)}
         >
-          <Text>outboundNavigation</Text>
+          <FormattedMessage id="outboundNavigation" />
         </Button>
       </div>
       <div
@@ -38,7 +39,7 @@ function HeaderNavigation({ setDisplayedFlights, displayed }) {
           background={{ color: "ternary", strength: 500 }}
           onClick={() => setDisplayedFlights(DisplayableFlights.INBOUND)}
         >
-          <Text>inboundNavigation</Text>
+          <FormattedMessage id="inboundNavigation" />
         </Button>
       </div>
     </div>

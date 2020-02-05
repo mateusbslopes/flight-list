@@ -1,6 +1,5 @@
 import React from "react";
 import Icon from "../Icon";
-import Text from "../Text";
 import style from "./style";
 
 export default function Checkbox({ toggle, children, checked, id }) {

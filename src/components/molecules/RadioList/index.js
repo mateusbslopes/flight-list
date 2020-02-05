@@ -1,6 +1,7 @@
 import React from "react";
 import Text from "../../atoms/Text";
 import style from "./style";
+import { FormattedMessage } from "react-intl";
 
 export default function RadioList({
   data,
@@ -12,9 +13,9 @@ export default function RadioList({
 }) {
   return (
     <div css={style}>
-      <Text size={300} weight={500}>
-        {label}
-      </Text>
+      <label>
+        <FormattedMessage id={label} />
+      </label>
       {data.map(item => (
         <div
           className="radio-option"
@@ -26,9 +27,7 @@ export default function RadioList({
               <div className="radio-button-icon"></div>
             )}
           </div>
-          <Text size={300} weight={500}>
-            {item[displayKey]}
-          </Text>
+          <FormattedMessage id={item[displayKey]} />
         </div>
       ))}
     </div>
