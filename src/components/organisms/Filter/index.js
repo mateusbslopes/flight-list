@@ -10,7 +10,7 @@ import Icon from "../../atoms/Icon";
 import Checkbox from "../../atoms/Checkbox";
 import {
   FormattedMessage,
-  FormattedPlural,
+  FormattedTime,
   useIntl,
   formatPlural
 } from "react-intl";
@@ -76,7 +76,10 @@ function Filter({
         >
           <FormattedMessage
             id="morningFilter"
-            values={{ startHour: "06:00", endHour: "11:59" }}
+            values={{
+              startHour: <FormattedTime value={new Date(0, 0, 0, 6)} />,
+              endHour: <FormattedTime value={new Date(0, 0, 0, 11, 59)} />
+            }}
           />
         </Checkbox>
 
@@ -87,7 +90,10 @@ function Filter({
         >
           <FormattedMessage
             id="afternoonFilter"
-            values={{ startHour: "12:00", endHour: "17:59" }}
+            values={{
+              startHour: <FormattedTime value={new Date(0, 0, 0, 12)} />,
+              endHour: <FormattedTime value={new Date(0, 0, 0, 17, 59)} />
+            }}
           />
         </Checkbox>
         <Checkbox
@@ -97,7 +103,10 @@ function Filter({
         >
           <FormattedMessage
             id="nightFilter"
-            values={{ startHour: "18:00", endHour: "23:59" }}
+            values={{
+              startHour: <FormattedTime value={new Date(0, 0, 0, 18)} />,
+              endHour: <FormattedTime value={new Date(0, 0, 0, 23, 59)} />
+            }}
           />
         </Checkbox>
         <Checkbox
@@ -107,7 +116,10 @@ function Filter({
         >
           <FormattedMessage
             id="dawnFilter"
-            values={{ startHour: "00:00", endHour: "05:59" }}
+            values={{
+              startHour: <FormattedTime value={new Date(0, 0, 0, 0)} />,
+              endHour: <FormattedTime value={new Date(0, 0, 0, 5, 59)} />
+            }}
           />
         </Checkbox>
       </div>
