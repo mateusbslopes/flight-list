@@ -1,5 +1,6 @@
 import React from "react";
+import style from "./style";
 
 export default function FlagIcon({ name }) {
-  return <img src={`./assets/country-flags/uganda.png`} />;
+  return <img css={style} src={`./assets/icons/flags/${name}.png`} />;
 }

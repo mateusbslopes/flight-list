@@ -4,5 +4,6 @@ export default theme => `
 
     .presentation {
         border-bottom: 1px solid ${theme.colors.secundary[400]};
+        align-items: center;
     }
 `;

@@ -8,29 +8,34 @@ let locales = [
   {
     code: "en-US",
     label: "English (US)",
-    flag: "brazil"
+    flag: "united-states-of-america"
   },
   {
     code: "pt-BR",
     label: "Português (Brasil)",
-    flag: "united-states-of-america"
+    flag: "brazil"
   }
 ];
 
 let LanguageSelector = ({ selectedLocale, setLocale }) => {
+  const flagName = locales.find(locale => locale.code === selectedLocale).flag;
+
   return (
-    <select
-      css={theme => style(theme)}
-      onChange={evt => setLocale(evt.target.value)}
-      value={selectedLocale}
-    >
-      {locales.map(locale => (
-        <option key={locale.code} value={locale.code}>
-          <FlagIcon name={locale.flag} />
-          {locale.label}
-        </option>
-      ))}
-    </select>
+    <div>
+      <FlagIcon name={flagName} htmlFor="locale-select" />
+      <select
+        id="locale-select"
+        css={theme => style(theme)}
+        onChange={evt => setLocale(evt.target.value)}
+        value={selectedLocale}
+      >
+        {locales.map(locale => (
+          <option key={locale.code} value={locale.code}>
+            {locale.label}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };
 
