@@ -14,6 +14,7 @@ import RadioList from "../../molecules/RadioList";
 import SelectAutocomplete from "../../molecules/SelectAutocomplete";
 import Passengers from "../Passengers";
 import style from "./style";
+import StringUtils from "../../../utils/StringUtils";
 
 function Search({
   closeSearch,

@@ -14,11 +14,14 @@ export default function SelectAutocomplete({
     return Object.entries(value).length === 0;
   }
 
-  const [search, setSearch] = useState("");
+  const [search, setSearchUnsafe] = useState("");
   const [isListOpen, setIsListOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [state, setState] = useState(isEmpty(value) ? "empty" : "fulfilled");
   const intl = useIntl();
+
+  const setSearch = value =>
+    setSearchUnsafe(StringUtils.removeDangerousCharacters(value));
 
   function handleChange(evt) {
     setSearch(evt.target.value);
