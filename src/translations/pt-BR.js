@@ -82,5 +82,5 @@ export default {
   menuHeader: "Lista de voos",
   menuBody: "App desenvolvido para estudar o react.",
   iconAttribute:
-    '<div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">Freepik</a> da <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>'
+    '<div>Ícones das bandeiras dos países feito por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">Freepik</a> da <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>'
 };
