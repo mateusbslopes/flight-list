@@ -30,6 +30,10 @@ export default theme => `
         justify-content: center;
     }
 
+    .flex-row--space-between {
+        justify-content: space-between;
+    }
+
     .flex-column {
         display: flex;
         flex-flow: column nowrap;

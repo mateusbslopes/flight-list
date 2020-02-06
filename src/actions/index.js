@@ -34,6 +34,8 @@ export const CLOSE_SEARCH = "CLOSE_SEARCH";
 export const SEARCH_ERROR = "SEARCH_ERROR";
 export const SET_FIELD = "SET_FIELD";
 
+export const SET_LOCALE = "SET_LOCALE";
+
 // Project conts
 export const DisplayableFlights = {
   INBOUND: "inbound",
@@ -121,6 +123,12 @@ export const setField = fieldName => ({
   payload: { fieldName }
 });
 
+export const setLocale = locale => ({
+  type: SET_LOCALE,
+  payload: { locale }
+});
+
+//TODO translate message errors
 yup.setLocale({
   mixed: {
     default: "Não é válido",
