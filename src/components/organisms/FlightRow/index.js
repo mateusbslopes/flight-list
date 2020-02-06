@@ -4,7 +4,7 @@ import style from "./style";
 import FlightDetailButton from "../../molecules/FlightDetailButton";
 import FlightPrice from "../../molecules/FlightPrice";
 import Card from "../../molecules/Card";
-import { useIntl, FormattedMessage } from "react-intl";
+import { useIntl, FormattedMessage, FormattedTime } from "react-intl";
 
 export default function FlightRow({
   id,
@@ -25,23 +25,17 @@ export default function FlightRow({
   }
 
   function formatHour(date) {
-    return new Date(date).toLocaleString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: false
-    });
+    return <FormattedTime value={new Date(date)} />;
   }
 
   function formatDuration(duration) {
     let hour = Math.trunc(duration / 60);
     let minutes = duration % 60;
     let text = hour ? `${hour}H` : "";
-    text += text ? minutes || "" : `${minutes} minutos`;
+    text += text
+      ? minutes || ""
+      : `${minutes} ${intl.formatMessage({ id: "minutes" })}`;
     return text;
-  }
-
-  function formatStops(stops) {
-    return stops > 1 ? `${stops} paradas` : `${stops} parada`;
   }
 
   return (

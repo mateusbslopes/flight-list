@@ -3,7 +3,7 @@ export default {
   AAA: "AAAAAAAAAAAA",
 
   // Header
-  appTitle: "Test Front",
+  appTitle: "Teste Front",
 
   // - Search
   fromLabel: "Sair de",
@@ -53,6 +53,7 @@ export default {
   exclusiveFlight: "Voo exclusivo na MaxMilhas",
   lowestPriceCompany: "Menor preco na Companhia",
   lowestPriceMaxMilhas: "Economize {percentage} na Maxmilhas!",
+  minutes: "minutos",
 
   flightDetails: "DETALHES DO VOO",
 

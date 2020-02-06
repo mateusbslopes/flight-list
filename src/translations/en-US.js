@@ -54,6 +54,7 @@ export default {
   exclusiveFlight: "Exclusive flight on MaxMilhas",
   lowestPriceCompany: "Lower price on the company",
   lowestPriceMaxMilhas: "Save {percentage} on Maxmilhas!",
+  minutes: "minutes",
 
   flightDetails: "FLIGHT DETAILS",
 
