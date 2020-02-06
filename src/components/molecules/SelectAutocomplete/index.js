@@ -66,7 +66,7 @@ export default function SelectAutocomplete({
       >
         {airportCode}
         {", "}
-        {label} {country}
+        {label.replace("Todos", intl.formatMessage({ id: "all" }))} {country}
       </li>
     );
   }

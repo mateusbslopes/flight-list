@@ -11,6 +11,7 @@ export default {
   toLabel: "Ir para",
   toPlaceholder: "Destino",
   outbound: "Ida",
+  all: "Todos",
   inbound: "Volta",
   search: "Pesquisar",
 

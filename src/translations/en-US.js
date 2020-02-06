@@ -11,6 +11,7 @@ export default {
   toLabel: "To",
   toPlaceholder: "Destiny",
   outbound: "Outbound",
+  all: "All",
   inbound: "Inbound",
   search: "Search",
 
