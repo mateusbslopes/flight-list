@@ -1,10 +1,10 @@
+import * as yup from "yup";
 import { fetchAirports } from "../api/airports";
 import {
-  makeSearchIntention,
-  getFlights as requestFlights
+  getFlights as requestFlights,
+  makeSearchIntention
 } from "../api/flights";
 import { store } from "../index";
-import * as yup from "yup";
 
 // Action types
 export const SET_AIRLINES = "SET_AIRLINES";

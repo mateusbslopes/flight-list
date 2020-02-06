@@ -1,8 +1,8 @@
 import React from "react";
-import Icon from "../../atoms/Icon";
-import Button from "../../atoms/Button";
-import style from "./style";
 import { FormattedMessage } from "react-intl";
+import Button from "../../atoms/Button";
+import Icon from "../../atoms/Icon";
+import style from "./style";
 
 export default function FlightDetailButton() {
   return (

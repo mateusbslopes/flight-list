@@ -1,20 +1,15 @@
 import React from "react";
+import { FormattedMessage, FormattedTime, useIntl } from "react-intl";
 import { connect } from "react-redux";
-import style from "./style";
 import {
   closeFilter as closeFilterAction,
   toggleAirline as toggleAirlineAction,
   toggleOutboundHour as toggleOutboundHourAction
 } from "../../../actions";
-import Icon from "../../atoms/Icon";
 import Checkbox from "../../atoms/Checkbox";
-import {
-  FormattedMessage,
-  FormattedTime,
-  useIntl,
-  formatPlural
-} from "react-intl";
+import Icon from "../../atoms/Icon";
 import Card from "../../molecules/Card";
+import style from "./style";
 
 function Filter({
   airlines,

@@ -1,10 +1,10 @@
 import React from "react";
+import { FormattedMessage, FormattedTime, useIntl } from "react-intl";
+import Card from "../../molecules/Card";
 import FlightColumn from "../../molecules/FlightColumn";
-import style from "./style";
 import FlightDetailButton from "../../molecules/FlightDetailButton";
 import FlightPrice from "../../molecules/FlightPrice";
-import Card from "../../molecules/Card";
-import { useIntl, FormattedMessage, FormattedTime } from "react-intl";
+import style from "./style";
 
 export default function FlightRow({
   id,

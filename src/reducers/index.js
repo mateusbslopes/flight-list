@@ -1,11 +1,11 @@
-import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunkMiddleware from "redux-thunk";
 import airlines from "./airlines";
 import airports from "./airports";
 import filter from "./filter";
 import flights from "./flights";
-import search from "./search";
 import localization from "./localization";
+import search from "./search";
 
 let store;
 

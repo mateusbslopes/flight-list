@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setLocale as setLocaleAction } from "../../../actions";
-import style from "./style";
 import FlagIcon from "../../atoms/FlagIcon";
+import style from "./style";
 
 let locales = [
   {

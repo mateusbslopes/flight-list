@@ -1,9 +1,9 @@
 import React from "react";
-import Search from "../Search";
-import style from "./style";
 import HeaderTitle from "../../atoms/HeaderTitle";
 import HeaderNavigation from "../../molecules/HeaderNavigation";
 import LanguageSelector from "../../molecules/LanguageSelector";
+import Search from "../Search";
+import style from "./style";
 
 export default function Header() {
   return (

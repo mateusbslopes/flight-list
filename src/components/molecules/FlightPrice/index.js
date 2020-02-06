@@ -1,7 +1,7 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import Button from "../../atoms/Button";
 import style from "./style";
-import { FormattedMessage } from "react-intl";
 
 //TODO Create a CurrencyComponent
 const l10nBRL = new Intl.NumberFormat("pt-BR", {

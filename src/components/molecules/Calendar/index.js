@@ -1,7 +1,7 @@
 import React from "react";
-import style from "./style";
-import Icon from "../../atoms/Icon";
 import { FormattedMessage } from "react-intl";
+import Icon from "../../atoms/Icon";
+import style from "./style";
 
 export default function Calendar({ label, value, handleChange }) {
   return (

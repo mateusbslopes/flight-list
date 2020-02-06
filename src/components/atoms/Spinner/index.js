@@ -1,7 +1,7 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import Icon from "../Icon";
 import style from "./style";
-import { FormattedMessage } from "react-intl";
 
 export default function Spinner({ label, onChange, value }) {
   return (

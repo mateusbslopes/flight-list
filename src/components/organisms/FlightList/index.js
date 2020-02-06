@@ -1,9 +1,9 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
+import { connect } from "react-redux";
+import Card from "../../molecules/Card";
 import FlightRow from "../FlightRow";
 import style from "./style";
-import Card from "../../molecules/Card";
-import { connect } from "react-redux";
-import { FormattedMessage } from "react-intl";
 
 function FlightList({ flights }) {
   if (!flights.length) return <FormattedMessage id="noFilterhResultMessage" />;

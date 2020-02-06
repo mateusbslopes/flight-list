@@ -3,10 +3,10 @@
 // 01/2020
 
 import React from "react";
+import { FormattedMessage } from "react-intl";
+import { connect } from "react-redux";
 import FlightList from "../FlightList";
 import style from "./style";
-import { connect } from "react-redux";
-import { FormattedMessage } from "react-intl";
 
 function Body({ isFetching, hasItems, hasSearched }) {
   return (

@@ -1,4 +1,5 @@
 import { getNested } from "../../../utils/ObjectUtils";
+
 const style = (theme, border = {}, invertColors = false) => `
     ${
       invertColors

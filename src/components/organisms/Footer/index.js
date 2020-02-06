@@ -1,9 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
-import style from "./style";
-
-import { openFilter as openFilterAction } from "../../../actions";
 import { FormattedMessage } from "react-intl";
+import { connect } from "react-redux";
+import { openFilter as openFilterAction } from "../../../actions";
+import style from "./style";
 
 function Footer({ openFilter }) {
   return (

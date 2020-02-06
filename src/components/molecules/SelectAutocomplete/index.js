@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import StringUtils from "../../../utils/StringUtils";
 import style from "./style";
-import { FormattedMessage, useIntl } from "react-intl";
 
 export default function SelectAutocomplete({
   value,

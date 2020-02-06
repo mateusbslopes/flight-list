@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import SelectAutocomplete from "../../molecules/SelectAutocomplete";
-import Passengers from "../Passengers";
-import Icon from "../../atoms/Icon";
-import Button from "../../atoms/Button";
-import style from "./style";
-import Calendar from "../../molecules/Calendar";
+import React, { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import {
+  closeSearch as closeSearchAction,
   getFlights as getFlightsAction,
   openSearch as openSearchAction,
-  closeSearch as closeSearchAction,
   setField as setFieldAction
 } from "../../../actions";
+import Button from "../../atoms/Button";
+import Icon from "../../atoms/Icon";
+import Calendar from "../../molecules/Calendar";
 import RadioList from "../../molecules/RadioList";
-import { FormattedMessage } from "react-intl";
+import SelectAutocomplete from "../../molecules/SelectAutocomplete";
+import Passengers from "../Passengers";
+import style from "./style";
 
 function Search({
   closeSearch,

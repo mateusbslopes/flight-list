@@ -1,12 +1,12 @@
 import "core-js";
-import "regenerator-runtime/runtime";
+import { ThemeProvider } from "emotion-theming";
 import React from "react";
 import ReactDOM from "react-dom";
-import Flights from "./components/templates/Flights";
 import { Provider } from "react-redux";
+import "regenerator-runtime/runtime";
+import Flights from "./components/templates/Flights";
 import store from "./reducers";
 import theme from "./theme";
-import { ThemeProvider } from "emotion-theming";
 
 function App() {
   return (

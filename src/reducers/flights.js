@@ -1,10 +1,10 @@
 import {
-  CLEAR_FLIGHTS,
   ADD_FLIGHTS,
-  SET_DISPLAYED_FLIGHTS,
-  START_FETCHING,
+  CLEAR_FLIGHTS,
+  DisplayableFlights,
   END_FETCHING,
-  DisplayableFlights
+  SET_DISPLAYED_FLIGHTS,
+  START_FETCHING
 } from "../actions";
 
 const initialState = {

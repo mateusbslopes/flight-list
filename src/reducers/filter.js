@@ -1,7 +1,7 @@
 import {
-  OPEN_FILTER,
-  CLOSE_FILTER,
   ADD_TO_OUTBOUND_HOUR,
+  CLOSE_FILTER,
+  OPEN_FILTER,
   TOGGLE_OUTBOUND_HOUR
 } from "../actions";
 

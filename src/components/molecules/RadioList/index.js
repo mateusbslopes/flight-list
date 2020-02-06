@@ -1,6 +1,6 @@
 import React from "react";
-import style from "./style";
 import { FormattedMessage } from "react-intl";
+import style from "./style";
 
 export default function RadioList({
   data,

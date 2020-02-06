@@ -1,6 +1,6 @@
 import React from "react";
-import style from "./style";
 import Spinner from "../../atoms/Spinner";
+import style from "./style";
 
 export default function Passengers({
   adults,

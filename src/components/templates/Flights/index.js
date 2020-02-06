@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../../organisms/Header";
-import Body from "../../organisms/Body";
-import { getAirports as getAirportsAction } from "../../../actions/index";
-import { connect } from "react-redux";
-import Footer from "../../organisms/Footer";
-import Filter from "../../organisms/Filter";
 import { IntlProvider } from "react-intl";
+import { connect } from "react-redux";
+import { getAirports as getAirportsAction } from "../../../actions/index";
 import loadTranslations from "../../../translations";
+import Body from "../../organisms/Body";
+import Filter from "../../organisms/Filter";
+import Footer from "../../organisms/Footer";
+import Header from "../../organisms/Header";
 import style from "./style";
 
 function Flights({ getAirports, locale }) {

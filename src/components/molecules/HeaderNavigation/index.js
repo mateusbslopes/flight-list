@@ -1,12 +1,12 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import {
-  setDisplayedFlights as setDisplayedFlightsAction,
-  DisplayableFlights
+  DisplayableFlights,
+  setDisplayedFlights as setDisplayedFlightsAction
 } from "../../../actions";
 import Button from "../../atoms/Button";
 import style from "./style";
-import { FormattedMessage } from "react-intl";
 
 function HeaderNavigation({ setDisplayedFlights, displayed }) {
   return (

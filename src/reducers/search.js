@@ -1,9 +1,9 @@
 import {
-  SET_SEARCH,
-  SEARCH_ERROR,
-  OPEN_SEARCH,
   CLOSE_SEARCH,
-  SET_FIELD
+  OPEN_SEARCH,
+  SEARCH_ERROR,
+  SET_FIELD,
+  SET_SEARCH
 } from "../actions";
 
 const initialState = {
