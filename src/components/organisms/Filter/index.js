@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage, FormattedTime, useIntl } from "react-intl";
+import { FormattedMessage, FormattedTime } from "react-intl";
 import { connect } from "react-redux";
 import {
   closeFilter as closeFilterAction,
@@ -21,8 +21,6 @@ function Filter({
 }) {
   if (!filter.isOpen) return null;
 
-  const intl = useIntl();
-
   return (
     <div css={theme => style(theme)}>
       <Card
@@ -40,9 +38,8 @@ function Filter({
         <section className="flex-column">
           <FormattedMessage id="airlineFilter" />
           {airlines.map(airline => (
-            <div className="flex-row">
+            <div className="flex-row" key={airline.label}>
               <Checkbox
-                key={airline.label}
                 id={airline.label}
                 toggle={toggleAirline}
                 checked={airline.checked}
