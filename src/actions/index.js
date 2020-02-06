@@ -36,6 +36,8 @@ export const SET_FIELD = "SET_FIELD";
 
 export const SET_LOCALE = "SET_LOCALE";
 
+export const SET_THEME = "SET_THEME";
+
 // Project conts
 export const DisplayableFlights = {
   INBOUND: "inbound",
@@ -126,6 +128,11 @@ export const setField = fieldName => ({
 export const setLocale = locale => ({
   type: SET_LOCALE,
   payload: { locale }
+});
+
+export const setTheme = theme => ({
+  type: SET_THEME,
+  payload: { theme }
 });
 
 //TODO translate message errors
