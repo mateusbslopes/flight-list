@@ -21,6 +21,11 @@ export default theme => `
         list-style-type: none;
     }
 
+    a {
+        text-decoration: none;
+        color: ${theme.colors.primary[500]};
+    }
+
     .flex-row {
         display: flex;
         flex-flow: row wrap;

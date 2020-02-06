@@ -83,5 +83,5 @@ export default {
   menuHeader: "Flight list",
   menuBody: "App develop to stydy react.",
   iconAttribute:
-    '<div>Flag icons made by <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>'
+    '<div>Flag icons made by <a href="https://www.flaticon.com/br/autores/freepik" target="_blank" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/br/" target="_blank" title="Flaticon">www.flaticon.com</a></div>'
 };
