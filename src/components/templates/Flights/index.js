@@ -11,6 +11,7 @@ import style from "./style";
 import themes from "../../../theme";
 import Menu from "../../organisms/Menu";
 import { ThemeProvider } from "emotion-theming";
+import { Global, css } from "@emotion/core";
 
 function Flights({ getAirports, locale, theme }) {
   getAirports();
@@ -23,6 +24,13 @@ function Flights({ getAirports, locale, theme }) {
     <ThemeProvider theme={themes[theme]}>
       <IntlProvider locale={locale} messages={loadTranslations(locale)}>
         <div css={style}>
+          <Global
+            styles={css`
+              html {
+                background-color: ${themes[theme].colors.ternary[500]};
+              }
+            `}
+          />
           <Header openMenu={openMenu} />
           {menuIsOpen && <Menu close={closeMenu} />}
           <Filter />

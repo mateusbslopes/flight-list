@@ -1,4 +1,4 @@
-export default () => `
+export default theme => `
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -6,7 +6,7 @@ export default () => `
     height: 100%;
     left: 0;
     top: 0;
-    background: white;
+    background: ${theme.colors.ternary[500]};
     -webkit-box-shadow: 1px 1px 4px 0px rgba(158,158,158,1);
     -moz-box-shadow: 1px 1px 4px 0px rgba(158,158,158,1);
     box-shadow: 1px 1px 4px 0px rgba(158,158,158,1);

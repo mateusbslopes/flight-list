@@ -6,6 +6,7 @@ export default theme => `
     font-size: ${theme.sizes[400]};
     color: ${theme.colors.secundary[500]};
     font-weight: 500;
+    background-color: ${theme.colors.ternary[500]};
 
     strong {
         font-weight: 600;

@@ -6,7 +6,7 @@ export default theme => `
     bottom: 0;
     width: 100%;
     height: 90px;
-    background: white;
+    background: ${theme.colors.ternary[500]};
     border-top: solid 1px ${theme.colors.secundary[400]};
 
     .action-first {

@@ -18,5 +18,6 @@ export default (theme, margin = 0) => `
 
     .card-body {
         width: 100%;
+        background-color: ${theme.colors.ternary[500]};
     }
 `;
