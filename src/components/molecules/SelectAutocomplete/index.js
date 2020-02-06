@@ -58,6 +58,26 @@ export default function SelectAutocomplete({
     evnt.preventDefault();
   }
 
+  function getTextWithMatch(text) {
+    let searchToCompare = StringUtils.prepareToCompare(search);
+    let textToCompare = StringUtils.prepareToCompare(text);
+    let matchIndex = textToCompare.indexOf(searchToCompare);
+    let parts = [];
+
+    if (!search || matchIndex === -1) return text;
+
+    parts[0] = text.slice(0, matchIndex);
+    parts[1] = text.slice(matchIndex, matchIndex + searchToCompare.length);
+    parts[2] = text.slice(matchIndex + searchToCompare.length, text.length);
+
+    return (
+      <span>
+        {parts[0]}
+        <span className="match">{parts[1]}</span>
+        {parts[2]}
+      </span>
+    );
+  }
   // TODO Split label to remove "Todos" and translate it
   function getDisplayableRow([label, airportCode, country]) {
     return (
@@ -67,9 +87,12 @@ export default function SelectAutocomplete({
         onClick={evt => selectItem(evt, label, airportCode)}
         onMouseDown={handleOnMouseDown}
       >
-        {airportCode}
+        {getTextWithMatch(airportCode)}
         {", "}
-        {label.replace("Todos", intl.formatMessage({ id: "all" }))} {country}
+        {getTextWithMatch(
+          label.replace("Todos", intl.formatMessage({ id: "all" }))
+        )}{" "}
+        {country}
       </li>
     );
   }

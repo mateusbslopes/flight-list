@@ -46,4 +46,8 @@ export default theme => `
     .list-item:hover{
         color: ${theme.colors.primary[500]};
     }
+
+    .match {
+        color: ${theme.colors.primary[500]};
+    }
 `;
