@@ -203,6 +203,7 @@ export const getFlights = (search, currentSearch) => async dispach => {
         );
       });
       Promise.allSettled(promises).then(() => {
+        if (response.data.id !== store.getState().search.intentionId) return;
         dispach({ type: END_FETCHING });
       });
     });
