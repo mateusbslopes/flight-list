@@ -46,21 +46,6 @@ function Search({
     setField("to");
   }, [to]);
 
-  const brazilianMonth = [
-    "JAN",
-    "FEV",
-    "MAR",
-    "ABR",
-    "MAI",
-    "JUN",
-    "JUL",
-    "AGO",
-    "SET",
-    "OUT",
-    "NOV",
-    "DEZ"
-  ];
-
   function displayWarningMessage(message) {
     cancelTimeout();
     setWarningMessage(message);
@@ -132,6 +117,13 @@ function Search({
     }
   }
 
+  function getInboundAiports() {
+    return airports.filter(airport => airport[1] !== from.airportCode);
+  }
+  function getOutboundAiports() {
+    return airports.filter(airport => airport[1] !== to.airportCode);
+  }
+
   function getPassengersAmount(adults, children, infants) {
     return adults + children + infants;
   }
@@ -178,7 +170,7 @@ function Search({
         <div className="filter-options">
           <div className="filter-option">
             <SelectAutocomplete
-              data={airports}
+              data={getOutboundAiports()}
               placeholder="fromPlaceholder"
               label="fromLabel"
               value={from}
@@ -188,7 +180,7 @@ function Search({
           </div>
           <div className="filter-option">
             <SelectAutocomplete
-              data={airports}
+              data={getInboundAiports()}
               placeholder="toPlaceholder"
               label="toLabel"
               value={to}
