@@ -4,12 +4,16 @@ import HeaderNavigation from "../../molecules/HeaderNavigation";
 import LanguageSelector from "../../molecules/LanguageSelector";
 import Search from "../Search";
 import style from "./style";
+import Icon from "../../atoms/Icon";
 
-export default function Header() {
+export default function Header({ openMenu }) {
   return (
     <header className="header-content" css={theme => style(theme)}>
       <section className="flex-row flex-row--space-between presentation">
-        <HeaderTitle />
+        <div className="flex-row presentation">
+          <Icon name="icon-max-navigation-menu" onClick={openMenu} />
+          <HeaderTitle />
+        </div>
         <LanguageSelector />
       </section>
 

@@ -76,5 +76,11 @@ export default {
 
   noFlight: "Nenhum voo encontrado",
   flight: "voo",
-  flights: "voos"
+  flights: "voos",
+
+  //Menu
+  menuHeader: "Lista de voos",
+  menuBody: "App desenvolvido para estudar o react.",
+  iconAttribute:
+    '<div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">Freepik</a> da <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>'
 };

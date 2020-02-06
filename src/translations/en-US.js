@@ -77,5 +77,11 @@ export default {
 
   noFlight: "No flights founded",
   flight: "flight",
-  flights: "flights"
+  flights: "flights",
+
+  //Menu
+  menuHeader: "Flight list",
+  menuBody: "App develop to stydy react.",
+  iconAttribute:
+    '<div>Icons made by <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>'
 };
