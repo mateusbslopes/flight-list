@@ -8,9 +8,11 @@ import Filter from "../../organisms/Filter";
 import Footer from "../../organisms/Footer";
 import Header from "../../organisms/Header";
 import style from "./style";
+import themes from "../../../theme";
 import Menu from "../../organisms/Menu";
+import { ThemeProvider } from "emotion-theming";
 
-function Flights({ getAirports, locale }) {
+function Flights({ getAirports, locale, theme }) {
   getAirports();
 
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -18,20 +20,23 @@ function Flights({ getAirports, locale }) {
   const openMenu = () => setMenuIsOpen(true);
 
   return (
-    <IntlProvider locale={locale} messages={loadTranslations(locale)}>
-      <div css={style}>
-        <Header openMenu={openMenu} />
-        {menuIsOpen && <Menu close={closeMenu} />}
-        <Filter />
-        <Body />
-        <Footer />
-      </div>
-    </IntlProvider>
+    <ThemeProvider theme={themes[theme]}>
+      <IntlProvider locale={locale} messages={loadTranslations(locale)}>
+        <div css={style}>
+          <Header openMenu={openMenu} />
+          {menuIsOpen && <Menu close={closeMenu} />}
+          <Filter />
+          <Body />
+          <Footer />
+        </div>
+      </IntlProvider>
+    </ThemeProvider>
   );
 }
 
 const mapStateToProps = state => ({
-  locale: state.localization.locale
+  locale: state.localization.locale,
+  theme: state.theme.name
 });
 
 const mapDispatchToProps = {

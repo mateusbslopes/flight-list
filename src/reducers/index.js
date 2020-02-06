@@ -6,6 +6,7 @@ import filter from "./filter";
 import flights from "./flights";
 import localization from "./localization";
 import search from "./search";
+import theme from "./theme";
 
 let store;
 
@@ -21,7 +22,8 @@ store = createStore(
     filter,
     flights,
     search,
-    localization
+    localization,
+    theme
   }),
   composeEnhancers(applyMiddleware(thunkMiddleware))
 );
