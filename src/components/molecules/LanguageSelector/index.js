@@ -2,15 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import { setLocale as setLocaleAction } from "../../../actions";
 import style from "./style";
+import FlagIcon from "../../atoms/FlagIcon";
 
 let locales = [
   {
     code: "en-US",
-    label: "English (US)"
+    label: "English (US)",
+    flag: "brazil"
   },
   {
     code: "pt-BR",
-    label: "Português (Brasil)"
+    label: "Português (Brasil)",
+    flag: "united-states-of-america"
   }
 ];
 
@@ -23,6 +26,7 @@ let LanguageSelector = ({ selectedLocale, setLocale }) => {
     >
       {locales.map(locale => (
         <option key={locale.code} value={locale.code}>
+          <FlagIcon name={locale.flag} />
           {locale.label}
         </option>
       ))}
