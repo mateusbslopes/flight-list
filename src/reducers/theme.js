@@ -1,7 +1,7 @@
 import { SET_THEME } from "../actions";
 
 const defaultState = {
-  name: "base"
+  name: "dark"
 };
 
 export default function(state = defaultState, { type, payload }) {

@@ -1,7 +1,7 @@
 import { SET_LOCALE } from "../actions";
 
 const defaultState = {
-  locale: "pt-BR"
+  locale: "en-US"
 };
 
 export default function(state = defaultState, { type, payload }) {
