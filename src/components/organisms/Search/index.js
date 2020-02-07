@@ -49,7 +49,6 @@ function Search({
   let searchWrapperRef = React.createRef();
 
   let toggleSearch = () => {
-    console.log(searchWrapperRef);
     const wrapper = searchWrapperRef.current;
     wrapper.classList.toggle("is-search-open");
   };
