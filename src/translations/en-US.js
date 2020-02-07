@@ -14,6 +14,9 @@ export default {
   all: "All",
   inbound: "Inbound",
   search: "Search",
+  invalidField: "Invalid",
+  requiredField: "The field is required",
+  invalidDate: "Invalid Date",
 
   // --Passengers
   adults: "Adults",

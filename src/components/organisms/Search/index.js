@@ -114,7 +114,13 @@ function Search({
 
   function getDisplayableError(errors = [], fieldName) {
     let messageError = getFieldError(errors, fieldName);
-    return messageError ? <div className="error">{messageError}</div> : false;
+    return messageError ? (
+      <div className="error">
+        <FormattedMessage id={messageError} />
+      </div>
+    ) : (
+      false
+    );
   }
 
   function getMonth(date) {

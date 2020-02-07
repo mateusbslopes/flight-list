@@ -138,11 +138,11 @@ export const setTheme = theme => ({
 //TODO translate message errors
 yup.setLocale({
   mixed: {
-    default: "Não é válido",
-    required: "O campo é obrigatório"
+    default: "invalidField",
+    required: "requiredField"
   },
   string: {
-    matches: "Data inválida"
+    matches: "invalidDate"
   }
 });
 

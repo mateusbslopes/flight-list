@@ -14,6 +14,9 @@ export default {
   all: "Todos",
   inbound: "Volta",
   search: "Pesquisar",
+  invalidField: "Não é válido",
+  requiredField: "O campo é obrigatório",
+  invalidDate: "Data inválida",
 
   // --Passengers
   adults: "Adultos",
