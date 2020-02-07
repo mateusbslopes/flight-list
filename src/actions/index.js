@@ -179,7 +179,11 @@ const schemaOptions = {
   abortEarly: false
 };
 
-export const getFlights = (search, currentSearch) => async dispach => {
+export const getFlights = (
+  search,
+  currentSearch,
+  closeSearch
+) => async dispach => {
   if (
     JSON.stringify(search) === JSON.stringify(currentSearch) &&
     store.getState().flights.hasSearched
@@ -191,7 +195,7 @@ export const getFlights = (search, currentSearch) => async dispach => {
     makeSearchIntention(search).then(response => {
       dispach(setSearch({ ...search, intentionId: response.data.id }));
       dispach({ type: START_FETCHING });
-      dispach(closeSearch());
+      closeSearch();
 
       let promises = [];
       response.data.airlines.forEach(airline => {

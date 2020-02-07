@@ -48,10 +48,31 @@ function Search({
 
   let searchWrapperRef = React.createRef();
 
-  const toggleSearch = () => {
+  let toggleSearch = () => {
+    console.log(searchWrapperRef);
     const wrapper = searchWrapperRef.current;
     wrapper.classList.toggle("is-search-open");
   };
+
+  toggleSearch = toggleSearch.bind(searchWrapperRef);
+
+  function onSearch() {
+    getFlights(
+      {
+        ...search,
+        outboundDate,
+        inboundDate,
+        from,
+        to,
+        adults,
+        children,
+        infants,
+        cabin
+      },
+      search,
+      toggleSearch
+    );
+  }
 
   function displayWarningMessage(message) {
     cancelTimeout();
@@ -255,24 +276,7 @@ function Search({
         <div className="w-100"></div>
         <div className="row">
           <div>
-            <Button
-              onClick={() =>
-                getFlights(
-                  {
-                    ...search,
-                    outboundDate,
-                    inboundDate,
-                    from,
-                    to,
-                    adults,
-                    children,
-                    infants,
-                    cabin
-                  },
-                  search
-                )
-              }
-            >
+            <Button onClick={onSearch}>
               <div className="search-buttom-content">
                 <>
                   <Icon name="icon-max-action-search" color="ternary" />
@@ -297,7 +301,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  getFlights: (search, lastSearch) => getFlightsAction(search, lastSearch),
+  getFlights: (search, lastSearch, closeSearch) =>
+    getFlightsAction(search, lastSearch, closeSearch),
   openSearch: () => openSearchAction(),
   closeSearch: () => closeSearchAction(),
   setField: fieldName => setFieldAction(fieldName)
