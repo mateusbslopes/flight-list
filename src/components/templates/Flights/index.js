@@ -16,9 +16,18 @@ import { Global, css } from "@emotion/core";
 function Flights({ getAirports, locale, theme }) {
   getAirports();
 
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const closeMenu = () => setMenuIsOpen(false);
-  const openMenu = () => setMenuIsOpen(true);
+  let menuWrapperRef = React.createRef();
+  let filterWrapperRef = React.createRef();
+
+  const toggleMenu = () => {
+    const wrapper = menuWrapperRef.current;
+    wrapper.classList.toggle("is-menu-open");
+  };
+
+  const toggleFilter = () => {
+    const wrapper = filterWrapperRef.current;
+    wrapper.classList.toggle("is-filter-open");
+  };
 
   return (
     <ThemeProvider theme={themes[theme]}>
@@ -31,11 +40,14 @@ function Flights({ getAirports, locale, theme }) {
               }
             `}
           />
-          <Header openMenu={openMenu} />
-          {menuIsOpen && <Menu close={closeMenu} />}
-          <Filter />
+
+          <Header openMenu={toggleMenu} />
+          <Menu bodyRef={menuWrapperRef} close={toggleMenu} />
+
           <Body />
-          <Footer />
+
+          <Filter bodyRef={filterWrapperRef} close={toggleFilter} />
+          <Footer openFilter={toggleFilter} />
         </div>
       </IntlProvider>
     </ThemeProvider>
