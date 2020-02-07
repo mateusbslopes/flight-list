@@ -3,7 +3,8 @@ import { FormattedMessage, FormattedTime } from "react-intl";
 import { connect } from "react-redux";
 import {
   toggleAirline as toggleAirlineAction,
-  toggleOutboundHour as toggleOutboundHourAction
+  toggleOutboundHour as toggleOutboundHourAction,
+  closeFilter as closeFilterAction
 } from "../../../actions";
 import Checkbox from "../../atoms/Checkbox";
 import Icon from "../../atoms/Icon";
@@ -14,14 +15,16 @@ function Filter({
   airlines,
   toggleAirline,
   filter,
-  close,
   displayedFlights,
   toggleOutboundHour,
   bodyRef
 }) {
   return (
     <div css={theme => style(theme)}>
-      <div className="filter-wrapper" ref={bodyRef}>
+      <div
+        className={`filter-wrapper ${filter.isOpen && "filter-is-open"}`}
+        ref={bodyRef}
+      >
         <Card
           header={
             <div className="header">
@@ -126,7 +129,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   toggleAirline: airlineLabel => toggleAirlineAction(airlineLabel),
-  toggleOutboundHour: time => toggleOutboundHourAction(time)
+  toggleOutboundHour: time => toggleOutboundHourAction(time),
+  closeFilter: () => closeFilterAction()
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

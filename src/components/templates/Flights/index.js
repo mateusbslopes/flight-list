@@ -17,16 +17,10 @@ function Flights({ getAirports, locale, theme }) {
   getAirports();
 
   let menuWrapperRef = React.createRef();
-  let filterWrapperRef = React.createRef();
 
   const toggleMenu = () => {
     const wrapper = menuWrapperRef.current;
     wrapper.classList.toggle("is-menu-open");
-  };
-
-  const toggleFilter = () => {
-    const wrapper = filterWrapperRef.current;
-    wrapper.classList.toggle("is-filter-open");
   };
 
   return (
@@ -47,7 +41,7 @@ function Flights({ getAirports, locale, theme }) {
           <Body />
 
           <Filter bodyRef={filterWrapperRef} close={toggleFilter} />
-          <Footer openFilter={toggleFilter} />
+          <Footer />
         </div>
       </IntlProvider>
     </ThemeProvider>

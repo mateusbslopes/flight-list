@@ -89,9 +89,12 @@ export const addFlights = (flights, intentionId, lastIntentionId) => ({
   payload: { flights, intentionId, lastIntentionId }
 });
 
-export const openFilter = () => ({
-  type: OPEN_FILTER
-});
+export const openFilter = () => {
+  console.log("teste");
+  return {
+    type: OPEN_FILTER
+  };
+};
 
 export const closeFilter = () => ({
   type: CLOSE_FILTER

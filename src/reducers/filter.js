@@ -41,6 +41,7 @@ function toggleOutboundHour(state, payload) {
 export default function filter(state = initialState, { type, payload }) {
   switch (type) {
     case OPEN_FILTER:
+      console.log("teste");
       return { ...state, isOpen: true };
     case CLOSE_FILTER:
       return { ...state, isOpen: false };
