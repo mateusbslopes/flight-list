@@ -46,15 +46,6 @@ function Search({
     setField("to");
   }, [to]);
 
-  let searchWrapperRef = React.createRef();
-
-  let toggleSearch = () => {
-    const wrapper = searchWrapperRef.current;
-    wrapper.classList.toggle("is-search-open");
-  };
-
-  toggleSearch = toggleSearch.bind(searchWrapperRef);
-
   function onSearch() {
     getFlights(
       {
@@ -68,8 +59,7 @@ function Search({
         infants,
         cabin
       },
-      search,
-      toggleSearch
+      search
     );
   }
 
@@ -184,12 +174,7 @@ function Search({
         </div>
         <div className="filter-action">
           {search.isOpen && (
-            <div
-              onClick={() => {
-                closeSearch();
-                toggleSearch();
-              }}
-            >
+            <div onClick={closeSearch}>
               <Icon
                 name="icon-max-communication-circle-close"
                 color="ternary"
@@ -198,19 +183,14 @@ function Search({
             </div>
           )}
           {!search.isOpen && (
-            <div
-              onClick={() => {
-                openSearch();
-                toggleSearch();
-              }}
-            >
+            <div onClick={openSearch}>
               <Icon name="icon-pencil" color="ternary" size={400} />
             </div>
           )}
         </div>
       </section>
 
-      <div className="filter-options" ref={searchWrapperRef}>
+      <div className={`filter-options ${search.isOpen && "is-search-open"}`}>
         <div className="filter-option">
           <SelectAutocomplete
             data={getOutboundAiports()}
