@@ -9,7 +9,10 @@ function Footer({ openFilter, flights }) {
 
   return (
     <div css={theme => style(theme)}>
-      <div className="action action-first" onClick={() => openFilter()}>
+      <div
+        className="action action-first"
+        onClick={() => hasFlightsToFilter && openFilter()}
+      >
         <FormattedMessage id="filterFlights" />
       </div>
     </div>
