@@ -2,9 +2,17 @@ export default theme => `
 
     .filter-options {
         display: flex;
+        height: 0px;
+        overflow: hidden;
         flex-direction: column;
-        z-index: 10;
         background-color: ${theme.colors.ternary[500]};
+        transition: height .5s;
+    }
+
+    .filter-options.is-search-open {
+        height: 700px;
+        opacity: 1;
+        transition: height .5s;
     }
 
     .filter-value {

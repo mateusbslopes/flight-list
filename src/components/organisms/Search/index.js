@@ -14,7 +14,6 @@ import RadioList from "../../molecules/RadioList";
 import SelectAutocomplete from "../../molecules/SelectAutocomplete";
 import Passengers from "../Passengers";
 import style from "./style";
-import StringUtils from "../../../utils/StringUtils";
 
 function Search({
   closeSearch,
@@ -46,6 +45,13 @@ function Search({
   useEffect(() => {
     setField("to");
   }, [to]);
+
+  let searchWrapperRef = React.createRef();
+
+  const toggleSearch = () => {
+    const wrapper = searchWrapperRef.current;
+    wrapper.classList.toggle("is-search-open");
+  };
 
   function displayWarningMessage(message) {
     cancelTimeout();
@@ -152,7 +158,12 @@ function Search({
         </div>
         <div className="filter-action">
           {search.isOpen && (
-            <div onClick={closeSearch}>
+            <div
+              onClick={() => {
+                closeSearch();
+                toggleSearch();
+              }}
+            >
               <Icon
                 name="icon-max-communication-circle-close"
                 color="ternary"
@@ -161,115 +172,119 @@ function Search({
             </div>
           )}
           {!search.isOpen && (
-            <div onClick={openSearch}>
+            <div
+              onClick={() => {
+                openSearch();
+                toggleSearch();
+              }}
+            >
               <Icon name="icon-pencil" color="ternary" size={400} />
             </div>
           )}
         </div>
       </section>
-      {search.isOpen && (
-        <div className="filter-options">
-          <div className="filter-option">
-            <SelectAutocomplete
-              data={getOutboundAiports()}
-              placeholder="fromPlaceholder"
-              label="fromLabel"
-              value={from}
-              onChange={value => setFrom(value)}
-            />
-            {getDisplayableError(errors, "from")}
-          </div>
-          <div className="filter-option">
-            <SelectAutocomplete
-              data={getInboundAiports()}
-              placeholder="toPlaceholder"
-              label="toLabel"
-              value={to}
-              onChange={value => setTo(value)}
-            />
-            {getDisplayableError(errors, "to")}
-          </div>
-          <div className="flight-dates">
-            <div className="filter-option col-sm-8">
-              <Calendar
-                label="outbound"
-                value={outboundDate}
-                handleChange={event => setOutboundDate(event.target.value)}
-              />
-              {getDisplayableError(errors, "outboundDate")}
-            </div>
-            <div className="filter-option col-sm-8">
-              <Calendar
-                label="inbound"
-                value={inboundDate}
-                handleChange={event => setInboundDate(event.target.value)}
-              />
-              {getDisplayableError(errors, "inboundDate")}
-            </div>
-          </div>
 
-          <div className="row filter-option">
-            <div className="col-sm-8 passengers">
-              <Passengers
-                adults={adults}
-                onChangeAdults={onChangeAdults}
-                children={children}
-                onChangeChildren={onChangeChildren}
-                infants={infants}
-                onChangeInfants={onChangeInfants}
-              />
-              {warningIsVisible && (
-                <div className="warning">
-                  <FormattedMessage id={warningMessage} />
-                </div>
-              )}
-            </div>
-            <div className="col-sm-8">
-              <RadioList
-                label="cabin"
-                data={cabins}
-                value={cabin}
-                onChange={cabin => setCabin(cabin)}
-                valueKey="value"
-                displayKey="label"
-              />
-            </div>
+      <div className="filter-options" ref={searchWrapperRef}>
+        <div className="filter-option">
+          <SelectAutocomplete
+            data={getOutboundAiports()}
+            placeholder="fromPlaceholder"
+            label="fromLabel"
+            value={from}
+            onChange={value => setFrom(value)}
+          />
+          {getDisplayableError(errors, "from")}
+        </div>
+        <div className="filter-option">
+          <SelectAutocomplete
+            data={getInboundAiports()}
+            placeholder="toPlaceholder"
+            label="toLabel"
+            value={to}
+            onChange={value => setTo(value)}
+          />
+          {getDisplayableError(errors, "to")}
+        </div>
+        <div className="flight-dates">
+          <div className="filter-option col-sm-8">
+            <Calendar
+              label="outbound"
+              value={outboundDate}
+              handleChange={event => setOutboundDate(event.target.value)}
+            />
+            {getDisplayableError(errors, "outboundDate")}
           </div>
-
-          <div className="w-100"></div>
-          <div className="row">
-            <div>
-              <Button
-                onClick={() =>
-                  getFlights(
-                    {
-                      ...search,
-                      outboundDate,
-                      inboundDate,
-                      from,
-                      to,
-                      adults,
-                      children,
-                      infants,
-                      cabin
-                    },
-                    search
-                  )
-                }
-              >
-                <div className="search-buttom-content">
-                  <>
-                    <Icon name="icon-max-action-search" color="ternary" />
-                    <p>
-                      <FormattedMessage id="search" />
-                    </p>
-                  </>
-                </div>
-              </Button>
-            </div>
+          <div className="filter-option col-sm-8">
+            <Calendar
+              label="inbound"
+              value={inboundDate}
+              handleChange={event => setInboundDate(event.target.value)}
+            />
+            {getDisplayableError(errors, "inboundDate")}
           </div>
         </div>
-      )}
+
+        <div className="row filter-option">
+          <div className="col-sm-8 passengers">
+            <Passengers
+              adults={adults}
+              onChangeAdults={onChangeAdults}
+              children={children}
+              onChangeChildren={onChangeChildren}
+              infants={infants}
+              onChangeInfants={onChangeInfants}
+            />
+            {warningIsVisible && (
+              <div className="warning">
+                <FormattedMessage id={warningMessage} />
+              </div>
+            )}
+          </div>
+          <div className="col-sm-8">
+            <RadioList
+              label="cabin"
+              data={cabins}
+              value={cabin}
+              onChange={cabin => setCabin(cabin)}
+              valueKey="value"
+              displayKey="label"
+            />
+          </div>
+        </div>
+
+        <div className="w-100"></div>
+        <div className="row">
+          <div>
+            <Button
+              onClick={() =>
+                getFlights(
+                  {
+                    ...search,
+                    outboundDate,
+                    inboundDate,
+                    from,
+                    to,
+                    adults,
+                    children,
+                    infants,
+                    cabin
+                  },
+                  search
+                )
+              }
+            >
+              <div className="search-buttom-content">
+                <>
+                  <Icon name="icon-max-action-search" color="ternary" />
+                  <p>
+                    <FormattedMessage id="search" />
+                  </p>
+                </>
+              </div>
+            </Button>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
