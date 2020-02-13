@@ -17,7 +17,8 @@ function Filter({
   filter,
   displayedFlights,
   toggleOutboundHour,
-  bodyRef
+  bodyRef,
+  closeFilter
 }) {
   return (
     <div css={theme => style(theme)}>
@@ -29,7 +30,7 @@ function Filter({
           header={
             <div className="header">
               <FormattedMessage id="filterHeader" />
-              <div onClick={close}>
+              <div onClick={closeFilter}>
                 <Icon name="icon-max-navigation-close" />
               </div>
             </div>

@@ -40,7 +40,7 @@ function Flights({ getAirports, locale, theme }) {
 
           <Body />
 
-          <Filter bodyRef={filterWrapperRef} close={toggleFilter} />
+          <Filter />
           <Footer />
         </div>
       </IntlProvider>

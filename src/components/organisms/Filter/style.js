@@ -16,7 +16,7 @@ export default theme => `
         transition: left .5s
     }
 
-    .filter-wrapper.is-filter-open {
+    .filter-wrapper.filter-is-open {
         left: 0px;
     }
 
