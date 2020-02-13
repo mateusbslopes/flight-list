@@ -9,6 +9,8 @@ export default theme => `
         align-items: center;
         padding: 20px;
         justify-content: center;
+        border-top: 1px solid ${theme.colors.secundary[400]};
+        border-bottom: 1px solid ${theme.colors.secundary[400]};
     }
 
     .header-navigation-item-first {
