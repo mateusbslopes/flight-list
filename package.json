@@ -10,6 +10,7 @@
     "babel-preset-es2015": "^6.24.1",
     "core-js": "^3.6.4",
     "emotion-theming": "^10.0.27",
+    "gh-pages": "^2.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-intl": "^3.12.0",
@@ -22,7 +23,8 @@
     "yup": "^0.28.0"
   },
   "scripts": {
-    "build": "webpack --env.API_TOKEN=$API_TOKEN --config webpack.config.js"
+    "build": "export API_TOKEN=batata && webpack --env.API_TOKEN=$API_TOKEN --config webpack.config.js",
+    "deploy": "gh-pages -b master -d dist"
   },
   "browserslist": {
     "production": [
